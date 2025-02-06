@@ -1,0 +1,63 @@
+/* Base Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom font declarations */
+@layer base {
+  @font-face {
+    font-family: "ChewieDEMO";
+    src: url("/fonts/ChewieDEMO-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ChewieDEMO";
+    src: url("/fonts/ChewieDEMO-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ChewieDEMO";
+    src: url("/fonts/ChewieDEMO-ExtraBold.otf") format("opentype");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ChewieDEMO";
+    src: url("/fonts/ChewieDEMO-Light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ChewieDEMO";
+    src: url("/fonts/ChewieDEMO-Medium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ChewieDEMO";
+    src: url("/fonts/ChewieDEMO-SemiBold.otf") format("opentype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ChewieDEMO";
+    src: url("/fonts/ChewieDEMO-Thin.otf") format("opentype");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+}
