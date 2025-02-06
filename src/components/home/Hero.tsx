@@ -2,25 +2,36 @@ import React from "react";
 
 const Hero: React.FC = () => {
   return (
-    <section className="mb-20">
-      <div className="flex justify-between items-start">
-        <div>
-          <h1 className="text-[#E67E5E] text-4xl mb-4">Hello there!</h1>
-          <h2 className="text-[#636B46] text-3xl mb-4">
+    <section className="min-h-[75vh] w-full pt-40 font-chewie relative">
+      <div className="fixed left-0 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 animate-bounce rotate-180 pl-2">
+        <p className="text-gray-600 [writing-mode:vertical-lr] rotate-180">Scroll</p>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 4L12 20M12 20L18 14M12 20L6 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </div>
+
+      {/* Hero Content */}
+      <div className="flex flex-col md:flex-row justify-between items-start gap-12 w-full px-4 md:px-8">
+        <div className="flex-1 space-y-8">
+          <h1 className="text-[#E67E5E] text-2xl md:text-6xl font-medium">
+            Hello there!
+          </h1>
+          <h2 className="text-[#436A21] text-2xl md:text-5xl">
             My name is Lauren Hong...
           </h2>
-          <p className="text-gray-600 max-w-xl">
+          <p className="text-gray-600 text-lg md:text-2xl max-w-3xl">
             A software developer and product designer passionate about building
             digital experiences for everyone.
           </p>
         </div>
 
-        {/* Illustration */}
-        <div className="w-40 h-40 flex-shrink-0">
+        {/* SVG Illustration */}
+        <div className="w-64 h-64 md:w-96 md:h-96 flex-shrink-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 292 294"
             fill="none"
+            className="w-full h-full"
           >
             <rect x="37" width="184" height="260" rx="30" fill="#FAC03A" />
             <path
@@ -79,24 +90,6 @@ const Hero: React.FC = () => {
             />
           </svg>
         </div>
-      </div>
-
-      <div className="mt-20">
-        <h3 className="text-[#636B46] text-2xl mb-4">
-          A little bit more about me
-        </h3>
-        <p className="text-gray-600">
-          I'm based in Ottawa, Ontario attending the University of Ottawa for{" "}
-          <span className="font-medium">Software Engineering.</span> I love to
-          create, explore, learn, and help others out. Here are some interesting
-          projects that I've been working on.
-        </p>
-        <a
-          href="/about"
-          className="inline-block mt-4 text-[#E67E5E] hover:text-[#d66c4d] transition-colors"
-        >
-          Learn more about me →
-        </a>
       </div>
     </section>
   );

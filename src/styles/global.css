@@ -1,9 +1,7 @@
-/* Base Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom font declarations */
 @layer base {
   @font-face {
     font-family: "ChewieDEMO";
@@ -59,5 +57,10 @@
     font-weight: 100;
     font-style: normal;
     font-display: swap;
+  }
+
+  @font-face {
+    font-family: "BruskestDEMO";
+    src: url("/fonts/BruskestDEMO.otf") format("opentype");
   }
 }

@@ -1,14 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/home/Hero';
+import More from '../components/home/More';
 import ProjectsSection from '../components/home/ProjectsSection';
 import PassionProjects from '../components/home/PassionProjects';
 ---
 
 <Layout title="Lauren Hong - Software Developer & Product Designer">
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <Hero client:load />
-    <ProjectsSection client:visible />
-    <PassionProjects client:visible />
+  <div class="w-full">
+    <div class="bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <Hero client:load />
+      </div>
+    </div>
+    
+
+    <div class="bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6 py-32">
+        <More client:visible />
+        <ProjectsSection client:visible />
+      </div>
+    </div>
+    
+      <div class="max-w-7xl mx-auto px-6 py-32">
+        <PassionProjects client:visible />
+    </div>
   </div>
-</Layout>         
+</Layout>

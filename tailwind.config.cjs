@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         chewie: ["ChewieDEMO", "sans-serif"],
+        bruskest: ["BruskestDEMO", "sans-serif"],
       },
     },
   },

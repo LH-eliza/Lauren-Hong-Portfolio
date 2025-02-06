@@ -15,39 +15,6 @@ const PassionProjects: React.FC = () => {
       <button className="px-4 py-2 bg-gray-200 rounded-lg text-gray-700 hover:bg-gray-300 transition-colors">
         View my other projects
       </button>
-
-      <footer className="mt-20 text-center">
-        <div className="mb-6">{/* Add your footer illustration here */}</div>
-
-        <div className="flex justify-center gap-4 mb-4">
-          <a
-            href="https://behance.net"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 hover:text-gray-900"
-          >
-            Be
-          </a>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 hover:text-gray-900"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 hover:text-gray-900"
-          >
-            LinkedIn
-          </a>
-        </div>
-
-        <p className="text-gray-600">Lauren Hong | 2025</p>
-      </footer>
     </section>
   );
 };
