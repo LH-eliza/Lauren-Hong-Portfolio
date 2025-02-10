@@ -63,4 +63,27 @@
     font-family: "BruskestDEMO";
     src: url("/fonts/BruskestDEMO.otf") format("opentype");
   }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .gradient-hover {
+    background: linear-gradient(270deg, #ff7e5f, #feb47b);
+    background-size: 200% 200%;
+    transition: background-position 0.5s ease;
+  }
+  
+  .gradient-hover:hover {
+    animation: gradient 3s ease infinite;
+    color: white;
+  }
 }
