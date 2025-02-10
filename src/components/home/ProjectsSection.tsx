@@ -31,7 +31,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ category, title, tags, imageUrl }) 
           </span>
         ))}
       </div>
-      <button className="w-full sm:w-auto px-6 py-3 bg-gray-200 rounded-lg text-gray-900 hover:bg-gray-300 transition-colors">
+      <button className="w-full sm:w-auto px-6 py-3 bg-gray-200 rounded-full text-gray-900 hover:bg-gray-300 transition-colors">
         View Work
       </button>
     </div>
@@ -43,19 +43,19 @@ const projects: Project[] = [
     category: "INTERNSHIP | SOLACE",
     title: "Enhancing Solace Documentation Navigation",
     tags: ["graphic", "full-stack", "ux/ui"],
-    imageUrl: "/public/images/Solace-docs 1.png" 
+    imageUrl: "/images/Solace-docs 1.png" 
   },
   {
     category: "LEADERSHIP | HACKATHON",
     title: "Refreshing the Hackathon Application Experience",
     tags: ["illustration", "full-stack", "ux/ui"],
-    imageUrl: "/public/images/app.png" 
+    imageUrl: "/images/app.png" 
   },
   {
     category: "LEADERSHIP | BIONICS",
     title: "Making Life More Accessible Through Software-Hardware Interaction",
     tags: ["embedded", "full-stack", "ux/ui", "simulation"],
-    imageUrl: "public/images/bionics.png" 
+    imageUrl: "/images/bionics.png" 
   }
 ];
 
