@@ -66,21 +66,20 @@ const Footer = () => {
 
           <div className="text-center">
             <div className="flex space-x-6 mb-4">
-              <a href="https://behance.net" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600 w-12">
+              <a href="https://www.behance.net/laurenhong1" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600 w-12">
                 <BehanceIcon />
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600 w-12">
+              <a href="https://github.com/LH-eliza" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600 w-12">
                 <GitHubIcon />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600 w-12">
+              <a href="https://www.linkedin.com/in/lauren-hong/" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600 w-12">
                 <LinkedInIcon />
               </a>
             </div>
             <p className="text-gray-800 mb-2 font-chewie">Lauren Hong | 2025</p>
             <div className="flex justify-center space-x-4 font-chewie">
               <a href="mailto:leliza.hong@outlook.com" className="text-gray-600 hover:text-gray-800">Email</a>
-              <a href="#" className="text-gray-600 hover:text-gray-800">Resume</a>
-              <a href="#" className="text-gray-600 hover:text-gray-800">Works</a>
+              <a href="https://drive.google.com/file/d/1hplfSkKhCLkbrJH_NOz5NTbgDtABVkLa/view?usp=sharing" className="text-gray-600 hover:text-gray-800">Resume</a>
             </div>
           </div>
 
