@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         chewie: ["ChewieDEMO", "sans-serif"],
         bruskest: ["BruskestDEMO", "sans-serif"],
+        libre: ['Libre Franklin', 'serif'],
       },
     },
   },

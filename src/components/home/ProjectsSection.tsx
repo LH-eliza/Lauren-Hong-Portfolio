@@ -7,9 +7,10 @@ interface Project {
   title: string;
   tags: string[];
   imageUrl: string;
+  link: string;
 }
 
-const ProjectCard = ({ category, title, tags, imageUrl }: Project) => {
+const ProjectCard = ({ category, title, tags, imageUrl, link }: Project) => {
   return (
     <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-start lg:items-center">
       <div className="w-full lg:flex-[2]">
@@ -32,9 +33,12 @@ const ProjectCard = ({ category, title, tags, imageUrl }: Project) => {
             </span>
           ))}
         </div>
-        <button className="w-full sm:w-auto px-6 py-3 bg-gray-200 rounded-full text-gray-900 hover:bg-gray-300 transition-colors">
+        <a 
+          href={link}
+          className="inline-block w-full sm:w-auto px-6 py-3 bg-gray-200 rounded-full text-gray-900 hover:bg-gray-300 transition-colors text-center"
+        >
           View Work
-        </button>
+        </a>
       </div>
     </div>
   );
@@ -45,19 +49,22 @@ const projects: Project[] = [
     category: "INTERNSHIP | SOLACE",
     title: "Enhancing Solace Documentation Navigation",
     tags: ["graphic", "full-stack", "ux/ui"],
-    imageUrl: "/images/Solace-docs 1.png" 
+    imageUrl: "/images/Solace-docs 1.png",
+    link: "/solace"
   },
   {
     category: "LEADERSHIP | HACKATHON",
     title: "Refreshing the Hackathon Application Experience",
     tags: ["illustration", "full-stack", "ux/ui"],
-    imageUrl: "/images/app.png" 
+    imageUrl: "/images/app.png",
+    link: "/hackathon"
   },
   {
     category: "LEADERSHIP | BIONICS",
     title: "Making Life More Accessible Through Software-Hardware Interaction",
     tags: ["embedded", "full-stack", "ux/ui", "simulation"],
-    imageUrl: "/images/bionics.png" 
+    imageUrl: "/images/bionics.png",
+    link: "/bionics"
   }
 ];
 
