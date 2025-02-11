@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AboutMe from '../components/about/About';
+---
+
+<Layout title="About Me - Lauren Hong">
+  <div class="w-full">
+    <div class="bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <AboutMe client:load />
+      </div>
+    </div>
+</Layout>
