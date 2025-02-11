@@ -1,70 +1,75 @@
-const About = () => {
-    return (
-      <div className="py-16">
-        <div className="flex gap-8 mb-16">
-          <div className="flex-1">
-            <h1 className="text-6xl text-blue-500 font-medium mb-6 mt-40 font-chewie">
-              Hi there! <span role="img" aria-label="winking face">🤗</span>
-            </h1>
-            <p className="mt-10 text-lg text-gray-700 leading-relaxed font-chewie">
-              How are you! My name is Lauren and I'm a Software Engineering student attending the 
-              University of Ottawa! I enjoy creating technologies that allows for accessibility for 
-              everyone in hopes that people of all ages and types can cross all barricades.
-            </p>
-          </div>
-          <div className="flex-1">
-            <div className="bg-gray-200 rounded-lg aspect-square"></div>
-          </div>
+import React from 'react';
+
+const AboutMe: React.FC = () => {
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      {/* Main Intro */}
+      <div className="space-y-8 mb-16">
+        <h1 className="text-3xl text-[#3B82F6] font-chewie">
+          Hello everyone! Here's a little more about me
+        </h1>
+
+        <div className="bg-gray-100 rounded-2xl p-8 aspect-[16/9]">
+          <img src="/images/Lauren.png" alt="Lauren Hong" className="rounded-2xl" />
         </div>
-  
-        <div>
-          <h2 className="text-5xl text-[#F4511E] mb-6 font-chewie">Outside of School and Work</h2>
-          <p className="mb-12 text-lg text-gray-700 font-chewie">
-            I love to explore my creative side when I'm not working. I've been video editing, 
-            animating, baking, cooking, language learning, and 3D printing. There's so much 
-            I would love to accomplish outside of my regular working schedule!
+
+        <div className="space-y-2">
+          <h2 className="text-xl font-medium font-chewie">How are you!</h2>
+          <p className="text-gray-700 leading-relaxed font-libre">
+            My name is Lauren and I'm a Software Engineering student attending the University of
+            Ottawa! I enjoy creating technologies that allows for accessibility for everyone in
+            hopes that people of all ages and types can cross all barricades. ⸜(｡˃ ᵕ ˂ )⸝
           </p>
-  
-          <section className="mb-16 font-chewie">
-            <h3 className="text-4xl text-[#558B2F] mb-4">
-              Baking <span role="img" aria-label="knife">🔪</span>
-            </h3>
-            <p className="mb-6 text-lg text-gray-700">
-              I've been baking for 15 years (that's 75% of my life!)
-            </p>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="aspect-[3/4] bg-gray-200 rounded-lg"></div>
-              <div className="grid grid-rows-2 gap-4">
-                <div className="aspect-[2/1] bg-gray-200 rounded-lg"></div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="aspect-square bg-gray-200 rounded-lg"></div>
-                  <div className="aspect-square bg-gray-200 rounded-lg"></div>
-                </div>
-              </div>
-            </div>
-          </section>
-  
-          <section>
-            <h3 className="text-4xl text-[#558B2F] mb-4 font-chewie">
-              Cooking <span role="img" aria-label="snake">🐍</span>
-            </h3>
-            <p className="mb-6 text-lg text-gray-700">
-              Cooking is something I'm good at, but some recipes still scare me
-            </p>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="aspect-[3/4] bg-gray-200 rounded-lg"></div>
-              <div className="grid grid-rows-2 gap-4">
-                <div className="aspect-[2/1] bg-gray-200 rounded-lg"></div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="aspect-square bg-gray-200 rounded-lg"></div>
-                  <div className="aspect-square bg-gray-200 rounded-lg"></div>
-                </div>
-              </div>
-            </div>
-          </section>
         </div>
       </div>
-    );
-  };
-  
-  export default About;
+
+      {/* Outside of School and Work Section */}
+      <div className="mb-16">
+        <h2 className="text-2xl text-[#EA6C3A] mb-2 font-chewie">Outside of School and Work</h2>
+        <p className="text-gray-700 mb-6 font-libre">
+          I love to explore my creative side when I'm not working. I enjoy 3D printing, cooking,
+          baking, food blogging, video editing, and creating content for my YouTube channel 🎨. I
+          also am a lead for two organizations at my univeristy: uOttaHack and uOBionics, where I
+          lead and explore new technologies and projects with my team.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <img src="/images/3D-Printing.JPG" alt="3D Printing" className="rounded-xl" />
+          <img src="/images/Ice.JPG" alt="Ice Cream" className="rounded-xl" />
+        </div>
+        <div className="mt-8">
+          <img src="/images/uOttahack7.jpg" alt="uOttaHack7" className="rounded-xl" />
+        </div>
+      </div>
+
+      {/*  
+      <div className="mb-16">
+        <h2 className="text-2xl text-[#34D399] font-chewie mb-2">Cooking</h2>
+        <p className="text-gray-700 font-libremb-6">
+          Cooking is something I'm good at, but some recipes still scare me 🥬
+        </p>
+        <div className="bg-gray-100 rounded-2xl p-8 aspect-[2/1]"></div>
+      </div>
+
+      <div className="mb-16">
+        <h2 className="text-2xl text-[#34D399] font-chewie mb-2">Baking</h2>
+        <p className="text-gray-700 font-libre mb-6">
+          Baking is all about science... proteins, gluten, fat percentages, glucose
+          <span className="text-sm text-gray-500 italic ml-1">
+            (sounds more like a chemistry experiment to me)
+          </span>
+        </p>
+        <div className="bg-gray-100 rounded-2xl p-8 aspect-[2/1]"></div>
+      </div> */}
+
+      {/* YouTube Link */}
+      <div className="font-chewie">
+        <a href="https://www.youtube.com/@grungylh" className="text-blue-600 hover:text-blue-800">
+          View my YouTube for Tutorials I've made
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export default AboutMe;
