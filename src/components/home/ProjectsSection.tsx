@@ -52,7 +52,7 @@ const projects: Project[] = [
     imageUrl: "/images/Solace-docs 1.png",
     link: "/solace"
   },
-  {
+/*   {
     category: "LEADERSHIP | HACKATHON",
     title: "Refreshing the Hackathon Application Experience",
     tags: ["illustration", "full-stack", "ux/ui"],
@@ -65,7 +65,7 @@ const projects: Project[] = [
     tags: ["embedded", "full-stack", "ux/ui", "simulation"],
     imageUrl: "/images/bionics.png",
     link: "/bionics"
-  }
+  } */
 ];
 
 const ProjectsSection = () => {
