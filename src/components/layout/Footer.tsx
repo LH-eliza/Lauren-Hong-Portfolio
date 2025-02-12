@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Logo = () => (
   <svg
@@ -13,39 +13,16 @@ const Logo = () => (
     <circle cx="133.5" cy="92.5" r="9" stroke="black" strokeWidth="3" />
     <circle cx="113" cy="86" r="2" fill="black" />
     <circle cx="146" cy="78" r="2" fill="black" />
-    <path
-      d="M65 20L82 30"
-      stroke="black"
-      strokeWidth="3"
-      strokeLinecap="round"
-    />
-    <path
-      d="M108 22.7085L113 2"
-      stroke="black"
-      strokeWidth="3"
-      strokeLinecap="round"
-    />
-    <path
-      d="M86 6L95 24.7231"
-      stroke="black"
-      strokeWidth="3"
-      strokeLinecap="round"
-    />
+    <path d="M65 20L82 30" stroke="black" strokeWidth="3" strokeLinecap="round" />
+    <path d="M108 22.7085L113 2" stroke="black" strokeWidth="3" strokeLinecap="round" />
+    <path d="M86 6L95 24.7231" stroke="black" strokeWidth="3" strokeLinecap="round" />
     <path
       d="M9.2206 158.04L46.0596 102.265C49.5991 96.9061 57.4513 96.8725 61.0364 102.201L98.564 157.976C102.586 163.954 98.3025 172 91.0969 172H16.7304C9.55958 172 5.26856 164.023 9.2206 158.04Z"
       fill="#E33840"
     />
     <circle cx="53.75" cy="140.25" r="1.25" fill="black" />
     <circle cx="71.25" cy="140.25" r="1.25" fill="black" />
-    <rect
-      x="50.625"
-      y="143.375"
-      width="25"
-      height="10"
-      rx="5"
-      stroke="black"
-      strokeWidth="1.25"
-    />
+    <rect x="50.625" y="143.375" width="25" height="10" rx="5" stroke="black" strokeWidth="1.25" />
     <mask id="path-12-inside-1_92_25" fill="white">
       <path d="M68.75 154C68.75 152.674 68.2232 151.402 67.2855 150.464C66.3479 149.527 65.0761 149 63.75 149C62.4239 149 61.1521 149.527 60.2145 150.464C59.2768 151.402 58.75 152.674 58.75 154L63.75 154H68.75Z" />
     </mask>

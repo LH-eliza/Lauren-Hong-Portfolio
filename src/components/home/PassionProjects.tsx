@@ -1,6 +1,6 @@
 'use client';
 
-import React from "react";
+import React from 'react';
 import { Github } from 'lucide-react';
 
 interface PassionProject {
@@ -12,16 +12,22 @@ interface PassionProject {
 
 const passionProjects: PassionProject[] = [
   {
-    title: "Smart Environment Monitor",
-    description: "Engineering a smart environment monitor that tracks temperature, humidity and air quality",
-    imageUrl: "/images/schematics.png",
-    githubUrl: "https://github.com/LH-eliza/Smart-Environment-Monitor"
+    title: 'Smart Environment Monitor',
+    description:
+      'Engineering a smart environment monitor that tracks temperature, humidity and air quality',
+    imageUrl: '/images/schematics.png',
+    githubUrl: 'https://github.com/LH-eliza/Smart-Environment-Monitor',
   },
   {
-    title: "LED Signboard & Photowall",
-    description: "Designing and building an LED signboard and photowall for uOttaHack7",
-    imageUrl: "/images/wall.png"
-  }
+    title: 'LED Signboard & Photowall',
+    description: 'Designing and building an LED signboard and photowall for uOttaHack7',
+    imageUrl: '/images/wall.png',
+  },
+  {
+    title: 'RSA Cryptography',
+    description: 'Creating a way to simplify RSA cryptography for beginners',
+    imageUrl: '/images/illustration.png',
+  },
 ];
 
 const PassionProjects: React.FC = () => {
@@ -45,11 +51,15 @@ const PassionProjects: React.FC = () => {
               <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
-                    <h3 className="text-white text-sm sm:text-base font-medium mb-1">{project.title}</h3>
-                    <p className="text-gray-200 text-xs sm:text-sm line-clamp-2">{project.description}</p>
+                    <h3 className="text-white text-sm sm:text-base font-medium mb-1">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-200 text-xs sm:text-sm line-clamp-2">
+                      {project.description}
+                    </p>
                   </div>
                   {project.githubUrl && (
-                    <a 
+                    <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -64,9 +74,9 @@ const PassionProjects: React.FC = () => {
           </div>
         ))}
       </div>
-      <a 
-        href="https://www.behance.net/laurenhong1" 
-        target="_blank" 
+      <a
+        href="https://www.behance.net/laurenhong1"
+        target="_blank"
         rel="noopener noreferrer"
         className="block w-full sm:inline-block sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-gray-200 rounded-full text-sm sm:text-base text-gray-900 hover:bg-gray-300 transition-colors text-center mt-6 sm:mt-8"
       >

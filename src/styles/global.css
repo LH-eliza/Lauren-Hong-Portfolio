@@ -5,64 +5,64 @@
 @layer base {
   @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap');
   @font-face {
-    font-family: "ChewieDEMO";
-    src: url("/fonts/ChewieDEMO-Regular.otf") format("opentype");
+    font-family: 'ChewieDEMO';
+    src: url('/fonts/ChewieDEMO-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: "ChewieDEMO";
-    src: url("/fonts/ChewieDEMO-Bold.otf") format("opentype");
+    font-family: 'ChewieDEMO';
+    src: url('/fonts/ChewieDEMO-Bold.otf') format('opentype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: "ChewieDEMO";
-    src: url("/fonts/ChewieDEMO-ExtraBold.otf") format("opentype");
+    font-family: 'ChewieDEMO';
+    src: url('/fonts/ChewieDEMO-ExtraBold.otf') format('opentype');
     font-weight: 800;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: "ChewieDEMO";
-    src: url("/fonts/ChewieDEMO-Light.otf") format("opentype");
+    font-family: 'ChewieDEMO';
+    src: url('/fonts/ChewieDEMO-Light.otf') format('opentype');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: "ChewieDEMO";
-    src: url("/fonts/ChewieDEMO-Medium.otf") format("opentype");
+    font-family: 'ChewieDEMO';
+    src: url('/fonts/ChewieDEMO-Medium.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: "ChewieDEMO";
-    src: url("/fonts/ChewieDEMO-SemiBold.otf") format("opentype");
+    font-family: 'ChewieDEMO';
+    src: url('/fonts/ChewieDEMO-SemiBold.otf') format('opentype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: "ChewieDEMO";
-    src: url("/fonts/ChewieDEMO-Thin.otf") format("opentype");
+    font-family: 'ChewieDEMO';
+    src: url('/fonts/ChewieDEMO-Thin.otf') format('opentype');
     font-weight: 100;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: "BruskestDEMO";
-    src: url("/fonts/BruskestDEMO.otf") format("opentype");
+    font-family: 'BruskestDEMO';
+    src: url('/fonts/BruskestDEMO.otf') format('opentype');
   }
 
   @keyframes gradient {
@@ -76,13 +76,13 @@
       background-position: 0% 50%;
     }
   }
-  
+
   .gradient-hover {
     background: linear-gradient(270deg, #ff7e5f, #feb47b);
     background-size: 200% 200%;
     transition: background-position 0.5s ease;
   }
-  
+
   .gradient-hover:hover {
     animation: gradient 3s ease infinite;
     color: white;

@@ -1,27 +1,35 @@
-import React from "react";
+import React from 'react';
 
 const Hero: React.FC = () => {
   return (
     <section className="min-h-[75vh] w-full pt-40 font-chewie relative">
       <div className="fixed left-0 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 animate-bounce rotate-180 pl-2">
         <p className="text-gray-600 [writing-mode:vertical-lr] rotate-180">Scroll</p>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 4L12 20M12 20L18 14M12 20L6 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 4L12 20M12 20L18 14M12 20L6 14"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </div>
 
       {/* Hero Content */}
       <div className="flex flex-col md:flex-row justify-between items-start gap-12 w-full px-4 md:px-8">
         <div className="flex-1 space-y-8">
-          <h1 className="text-[#E67E5E] text-2xl md:text-6xl font-medium">
-            Hello there!
-          </h1>
-          <h2 className="text-[#436A21] text-2xl md:text-5xl">
-            My name is Lauren Hong...
-          </h2>
+          <h1 className="text-[#E67E5E] text-2xl md:text-6xl font-medium">Hello there!</h1>
+          <h2 className="text-[#436A21] text-2xl md:text-5xl">My name is Lauren Hong...</h2>
           <p className="text-gray-600 text-lg md:text-2xl max-w-3xl">
-            A software developer and product designer passionate about building
-            digital experiences for everyone.
+            A software developer and product designer passionate about building digital experiences
+            for everyone.
           </p>
         </div>
 
@@ -53,35 +61,15 @@ const Hero: React.FC = () => {
               d="M58.9589 180.027C62.8553 173.628 72.1447 173.628 76.0411 180.027L116.701 246.799C120.758 253.463 115.962 262 108.159 262H26.8406C19.0384 262 14.2417 253.463 18.2995 246.799L58.9589 180.027Z"
               fill="#E33840"
             />
-            <rect
-              x="135"
-              y="203"
-              width="100"
-              height="57"
-              rx="10"
-              fill="#37429B"
-            />
-            <rect
-              x="135"
-              y="203"
-              width="92"
-              height="57"
-              rx="10"
-              fill="#3A8FC2"
-            />
+            <rect x="135" y="203" width="100" height="57" rx="10" fill="#37429B" />
+            <rect x="135" y="203" width="92" height="57" rx="10" fill="#3A8FC2" />
             <circle cx="82" cy="56" r="2" fill="black" />
             <circle cx="117" cy="56" r="2" fill="black" />
             <circle cx="55" cy="229" r="2" fill="black" />
             <circle cx="75" cy="229" r="2" fill="black" />
             <circle cx="184" cy="137" r="2" fill="black" />
             <circle cx="219" cy="137" r="2" fill="black" />
-            <circle
-              cx="64.5"
-              cy="235.5"
-              r="4.5"
-              stroke="black"
-              strokeWidth="2"
-            />
+            <circle cx="64.5" cy="235.5" r="4.5" stroke="black" strokeWidth="2" />
             <path
               d="M166.5 202V202C166.5 198.41 169.41 195.5 173 195.5H189C192.59 195.5 195.5 198.41 195.5 202V202"
               stroke="black"

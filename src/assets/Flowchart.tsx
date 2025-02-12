@@ -10,8 +10,8 @@ const FlowchartSection = () => {
       flowchart: {
         useMaxWidth: true,
         htmlLabels: true,
-        curve: 'basis'
-      }
+        curve: 'basis',
+      },
     });
   }, []);
 
