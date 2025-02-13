@@ -13,7 +13,7 @@ const AppSite = () => {
         subtitle="Creating a unique design experience for students to apply to Canada's 2nd largest hackathon"
         metadata={{
           period: 'Sept 2024 - Jan 2025',
-          role: 'UI Designer, Illustrator',
+          role: 'Product Designer, Illustrator',
           team: '1 Designer, 3 Developers',
           tools: 'Figma, Adobe Illustrator, Angluar, MongoDB, Express, Node.js, Huroku',
         }}

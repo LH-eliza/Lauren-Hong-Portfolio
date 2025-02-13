@@ -70,7 +70,7 @@ const SolaceStudy = () => {
   }, []);
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
-      <h1 className="text-4xl font-medium mb-4 font-chewie">
+      <h1 className="text-4xl text-[#5F5F5F] mb-4 font-chewie">
         Enhancing Solace Documentation Navigation
       </h1>
       <p className="text-lg text-gray-600 mb-6 font-libre">
