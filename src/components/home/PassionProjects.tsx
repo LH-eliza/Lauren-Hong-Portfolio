@@ -12,21 +12,26 @@ interface PassionProject {
 
 const passionProjects: PassionProject[] = [
   {
-    title: 'Smart Environment Monitor',
-    description:
-      'Engineering a smart environment monitor that tracks temperature, humidity and air quality',
-    imageUrl: '/images/schematics.png',
-    githubUrl: 'https://github.com/LH-eliza/Smart-Environment-Monitor',
-  },
-  {
     title: 'LED Signboard & Photowall',
     description: 'Designing and building an LED signboard and photowall for uOttaHack7',
     imageUrl: '/images/wall.png',
   },
   {
+    title: 'Social Media Posts and Illustrations - uOttaHack',
+    description: 'Designed a social media campaign for uOttaHack7',
+    imageUrl: '/images/hand.png',
+  },
+  {
     title: 'RSA Cryptography',
     description: 'Creating a way to simplify RSA cryptography for beginners',
     imageUrl: '/images/illustration.png',
+  },
+  {
+    title: 'Smart Environment Monitor',
+    description:
+      'Engineering a smart environment monitor that tracks temperature, humidity and air quality',
+    imageUrl: '/images/schematics.png',
+    githubUrl: 'https://github.com/LH-eliza/Smart-Environment-Monitor',
   },
 ];
 

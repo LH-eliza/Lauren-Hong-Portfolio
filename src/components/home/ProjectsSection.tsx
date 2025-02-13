@@ -50,13 +50,13 @@ const projects: Project[] = [
     title: 'Refreshing the Hackathon Application Experience',
     tags: ['illustration', 'full-stack', 'ux/ui'],
     imageUrl: '/images/app.png',
-    link: '/hackathon',
+    link: '/uotta-app',
   },
   {
     category: 'LEADERSHIP | BIONICS',
     title: 'Making Life More Accessible Through Software-Hardware Interaction',
     tags: ['embedded', 'full-stack', 'ux/ui', 'simulation'],
-    imageUrl: '/images/bionics.png',
+    imageUrl: '/images/Bionics/bionics.png',
     link: '/bionics',
   },
 ];
