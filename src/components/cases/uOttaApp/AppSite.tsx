@@ -1,6 +1,6 @@
 import React from 'react';
 import CaseStudy from '../../../assets/Header';
-import FeatureCard from './FeatureCards';
+import TextLink from '../../../assets/TextLink';
 import QuoteBlock from '../../../assets/Quote';
 import StepTitle from '../../../assets/StepTitle';
 import GifDisplay from '../../../assets/GifDisplay';
@@ -18,6 +18,7 @@ const AppSite = () => {
           tools: 'Figma, Adobe Illustrator, Angluar, MongoDB, Express, Node.js, Huroku',
         }}
         githubLink="https://github.com/uOttaHack/ApplyPage-uOttaHack-2025"
+        projectLink="https://apply.uottahack.ca/"
         heroImage="/images/uottapp_tn.svg"
       />
       <div className="max-w-7xl mx-auto px-6 py-16">
@@ -333,7 +334,7 @@ const AppSite = () => {
         </div>
         <div className="md:col-span-3 space-y-8">
           <div>
-            <p className="text-gray-700 font-libre mb-32">
+            <p className="text-gray-700 font-libre">
               The application was released in December 2024 and over 2700+ students applied to
               uOttaHack. The feedback was positive and the application was a success. The next steps
               would be to continue to improve the application and make it more accessible to all
@@ -343,6 +344,19 @@ const AppSite = () => {
             </p>
           </div>
         </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="md:col-span-1">
+          <h2 className="text-4xl text-[#1A4FAC] font-chewie">View Style Guide</h2>
+          <p className="mt-2 font-libre text-[#7A7A7A]">Illustrated by Lauren Hong</p>
+        </div>
+      </div>
+      <div className="mb-32">
+        <img
+          src="/images/Application/StyleGuide.svg"
+          alt="Style Guide"
+          className="w-full h-auto rounded-lg"
+        />
       </div>
     </div>
   );
