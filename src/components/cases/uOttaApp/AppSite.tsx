@@ -3,7 +3,7 @@ import CaseStudy from '../../../assets/Header';
 import FeatureCard from './FeatureCards';
 import QuoteBlock from '../../../assets/Quote';
 import StepTitle from '../../../assets/StepTitle';
-import { div } from 'motion/react-client';
+import GifDisplay from '../../../assets/GifDisplay';
 
 const AppSite = () => {
   return (
@@ -57,7 +57,6 @@ const AppSite = () => {
             </div>
           </div>
         </div>
-        <FeatureCard />
         <div className="mb-32">
           <img src="/images/ApplicantsNeeds.svg" alt="" className="w-full h-auto" />
         </div>
@@ -228,7 +227,7 @@ const AppSite = () => {
         </div>
       </div>
       <div className="mb-32">
-        <img src="/images/Flow.svg" alt="" className="w-full h-auto" />
+        <GifDisplay src="/images/Application/Step2.gif" alt="Application demo" />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
         <div className="md:col-span-1">
@@ -249,6 +248,98 @@ const AppSite = () => {
               an applicant from their application. The focus was mainly on the word count
               requirements as well as different input states. This was to ensure that the user
               doesn’t feel overwhelmed by the application.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="mb-32">
+        <img
+          src="/images/Application/LongAnswer.svg"
+          alt="Application demo"
+          className="w-full h-auto"
+        />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
+        <div className="md:col-span-1">
+          <StepTitle step={4} title="Review" />
+        </div>
+        <div className="md:col-span-3 space-y-8">
+          <div>
+            <p className="text-gray-700 font-libre">
+              The final step of the application is the review page. This is where the applicant can
+              review their application and make any changes if needed. The applicant can also see
+              the word count for each section and the total word count for the application.
+            </p>
+          </div>
+          <div>
+            <p className="text-gray-700 font-libre">
+              This is also where the applicant can see their character and the character’s
+              description. This is a fun way to end the application and makes the user feel
+              accomplished.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="mb-32">
+        <GifDisplay src="/images/Application/Step4.gif" alt="Application demo" />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
+        <div className="md:col-span-1">
+          <h2 className="text-4xl text-[#1A4FAC] font-chewie">Confirmation</h2>
+        </div>
+        <div className="md:col-span-3 space-y-8">
+          <div>
+            <p className="text-gray-700 font-libre">
+              And that's all! The confirmation step of the application is the confirmation page.
+              Once the application is submitted the applicant can see a confirmation message. This
+              is where the student can view their status and recieve a conformation email.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="mb-32">
+        <img src="/images/Application/Step5.svg" alt="Application demo" className="w-full h-auto" />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
+        <div className="md:col-span-1">
+          <h2 className="text-4xl text-[#1A4FAC] font-chewie">Reflection</h2>
+        </div>
+        <div className="md:col-span-3 space-y-8">
+          <div>
+            <p className="text-gray-700 font-libre">
+              The design of the application was just one portion of the project. The development
+              team had to work on the backend and frontend of the application. The application was
+              built using Angular, MongoDB, Express, and Node.js. The application was deployed on
+              Heroku. The application was built to be responsive and accessible to all users.
+            </p>
+          </div>
+          <div>
+            <p className="text-gray-700 font-libre">
+              After countless nights alone designing, studying student interests, and diving into
+              discord messages, my app was finally ready. Through design reviews, dev reviews, and
+              last minute syncs, I poured myself into every prototype and design iteration. The
+              feedback I got made all those solitary hours of scrutiny worth it. Oftentimes I get so
+              sucked into the details of my work that I forget the impact it can have on the people
+              I'm designing for. This project brought to light how important it is to design for
+              passion, not just perfection. It's moments like these that remind me why I continue to
+              do what I'm doing.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
+        <div className="md:col-span-1">
+          <h2 className="text-4xl text-[#1A4FAC] font-chewie">Next Steps...</h2>
+        </div>
+        <div className="md:col-span-3 space-y-8">
+          <div>
+            <p className="text-gray-700 font-libre mb-32">
+              The application was released in December 2024 and over 2700+ students applied to
+              uOttaHack. The feedback was positive and the application was a success. The next steps
+              would be to continue to improve the application and make it more accessible to all
+              students. The next steps are incorporating more accessibility features and making the
+              application app more interactive and connected to other services our team offers such
+              as profile cards, raffles, queues for food, and more in-person event involvements.
             </p>
           </div>
         </div>
