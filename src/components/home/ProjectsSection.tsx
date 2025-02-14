@@ -12,7 +12,7 @@ interface Project {
 
 const ProjectCard = ({ category, title, tags, imageUrl, link }: Project) => {
   return (
-    
+
     <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-start lg:items-center">
       <div className="w-full lg:flex-[2]">
         <img src={imageUrl} alt={title} className="rounded-lg w-full aspect-[1.5] object-cover" />
@@ -53,13 +53,13 @@ const projects: Project[] = [
     imageUrl: '/images/app.png',
     link: '/uotta-app',
   },
-  {
+/*   {
     category: 'LEADERSHIP | BIONICS',
     title: 'Making Life More Accessible Through Software-Hardware Interaction',
     tags: ['embedded', 'full-stack', 'ux/ui', 'simulation'],
     imageUrl: '/images/Bionics/bionics.png',
     link: '/bionics',
-  },
+  }, */
 ];
 
 const ProjectsSection = () => {
