@@ -17,16 +17,6 @@ const passionProjects: PassionProject[] = [
     imageUrl: '/images/wall.png',
   },
   {
-    title: 'Social Media Posts and Illustrations - uOttaHack',
-    description: 'Designed a social media campaign for uOttaHack7',
-    imageUrl: '/images/hand.png',
-  },
-  {
-    title: 'RSA Cryptography',
-    description: 'Creating a way to simplify RSA cryptography for beginners',
-    imageUrl: '/images/illustration.png',
-  },
-  {
     title: 'Smart Environment Monitor',
     description:
       'Engineering a smart environment monitor that tracks temperature, humidity and air quality',
@@ -37,8 +27,9 @@ const passionProjects: PassionProject[] = [
 
 const PassionProjects: React.FC = () => {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-4 sm:py-6 md:py-8">
-      <h2 className="text-gray-800 mb-4 text-lg sm:text-xl md:text-2xl font-medium font-chewie">
+    <section className="max-w-6xl mx-auto px-4 py-4 sm:py-6 md:py-4">
+      <hr className="my-8 border-gray-300" />
+      <h2 className="text-gray-800 mb-4 text-lg sm:text-xl md:text-2xl font-chewie">
         Passion Projects - Hardware, Illustration and Engineering Projects
       </h2>
 
@@ -83,7 +74,7 @@ const PassionProjects: React.FC = () => {
         href="https://www.behance.net/laurenhong1"
         target="_blank"
         rel="noopener noreferrer"
-        className="block w-full sm:inline-block sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-gray-200 rounded-full text-sm sm:text-base text-gray-900 hover:bg-gray-300 transition-colors text-center mt-6 sm:mt-8"
+        className="block w-full sm:inline-block sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-gray-200 rounded-full text-sm sm:text-base text-gray-900 hover:bg-gray-300 transition-colors text-center"
       >
         View my other projects
       </a>

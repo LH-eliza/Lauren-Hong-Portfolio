@@ -12,6 +12,7 @@ interface Project {
 
 const ProjectCard = ({ category, title, tags, imageUrl, link }: Project) => {
   return (
+    
     <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-start lg:items-center">
       <div className="w-full lg:flex-[2]">
         <img src={imageUrl} alt={title} className="rounded-lg w-full aspect-[1.5] object-cover" />
