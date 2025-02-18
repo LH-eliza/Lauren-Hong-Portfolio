@@ -108,7 +108,7 @@ const SolaceStudy = () => {
 
       <div className="mb-16">
         <MagnifiableImage
-          src="/images/SolaceDocs.svg"
+          src="/images/Solace/SolaceDocs.svg"
           alt="Solace Documentation Project"
           className="w-full rounded-3xl"
         />
@@ -166,7 +166,7 @@ const SolaceStudy = () => {
             <div className="bg-white rounded-xl shadow-lg p-4">
               <div className="aspect-video">
                 <MagnifiableImage
-                  src="/images/Redesign.svg"
+                  src="/images/Solace/Redesign.svg"
                   alt="Solace redesigned interface"
                   className="w-full h-full object-cover rounded-lg"
                 />
@@ -179,7 +179,7 @@ const SolaceStudy = () => {
             <div className="bg-white rounded-xl shadow-lg p-4">
               <div className="aspect-video">
                 <MagnifiableImage
-                  src="/images/Legacy.svg"
+                  src="/images/Solace/Legacy.svg"
                   alt="Solace legacy interface"
                   className="w-full h-full object-cover rounded-lg"
                 />
@@ -393,6 +393,13 @@ const SolaceStudy = () => {
             the most effective documentation experience possible.
           </p>
         </div>
+      </div>
+      <div>
+        <img
+          src="/images/Solace/SolaceStyling.svg"
+          alt="Solace Documentation"
+          className="w-full rounded-3xl"
+        />
       </div>
     </div>
   );

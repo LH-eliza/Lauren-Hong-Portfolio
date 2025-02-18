@@ -70,7 +70,7 @@ const Header = () => {
             <a href="/about" className="text-gray-700 hover:text-gray-900">
               About
             </a>
-            <a href="/solace" className="text-gray-700 hover:text-gray-900">
+            <a href="/works" className="text-gray-700 hover:text-gray-900">
               Work
             </a>
             <a
@@ -109,7 +109,7 @@ const Header = () => {
                 About
               </a>
               <a
-                href="/solace"
+                href="/works"
                 className="px-4 py-4 text-gray-700 hover:text-gray-900 border-b border-gray-100"
               >
                 Work

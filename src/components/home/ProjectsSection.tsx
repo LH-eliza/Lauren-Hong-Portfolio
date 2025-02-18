@@ -12,7 +12,6 @@ interface Project {
 
 const ProjectCard = ({ category, title, tags, imageUrl, link }: Project) => {
   return (
-
     <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-start lg:items-center">
       <div className="w-full lg:flex-[2]">
         <img src={imageUrl} alt={title} className="rounded-lg w-full aspect-[1.5] object-cover" />
@@ -43,23 +42,30 @@ const projects: Project[] = [
     category: 'INTERNSHIP | SOLACE',
     title: 'Enhancing Solace Documentation Navigation',
     tags: ['graphic', 'full-stack', 'ux/ui'],
-    imageUrl: '/images/Solace-docs 1.png',
+    imageUrl: '/images/Solace/Solace-docs 1.png',
     link: '/solace',
   },
   {
     category: 'LEADERSHIP | HACKATHON',
     title: 'Refreshing the Hackathon Application Experience',
     tags: ['illustration', 'full-stack', 'ux/ui'],
-    imageUrl: '/images/app.png',
+    imageUrl: '/images/Application/app.png',
     link: '/uotta-app',
   },
-/*   {
+  {
+    category: 'LEADERSHIP | ECOMMERCE',
+    title: 'Creating the One-Stop-Shop for Sponsorship Needs',
+    tags: ['graphic', 'full-stack', 'ux/ui'],
+    imageUrl: '/images/uottashop/uOttaShop.svg',
+    link: '/uottashop',
+  },
+  {
     category: 'LEADERSHIP | BIONICS',
     title: 'Making Life More Accessible Through Software-Hardware Interaction',
     tags: ['embedded', 'full-stack', 'ux/ui', 'simulation'],
     imageUrl: '/images/Bionics/bionics.png',
     link: '/bionics',
-  }, */
+  },
 ];
 
 const ProjectsSection = () => {

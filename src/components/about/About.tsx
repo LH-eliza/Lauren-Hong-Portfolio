@@ -9,20 +9,19 @@ const AboutMe: React.FC = () => {
           Hello everyone! Here's a little more about me
         </h1>
 
-        <div className="bg-gray-100 rounded-2xl p-8 aspect-[16/9]">
-          <img src="/images/Lauren.png" alt="Lauren Hong" className="rounded-2xl" />
+        <div className="w-full">
+          <img src="/images/Lauren.svg" alt="Lauren Hong" />
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-xl font-medium font-chewie">How are you!</h2>
-          <p className="text-gray-700 leading-relaxed font-libre">
-            My name is Lauren and I'm a Software Engineering student attending the University of
-            Ottawa! I enjoy creating technologies that allows for accessibility for everyone in
-            hopes that people of all ages and types can cross all barricades. ⸜(｡˃ ᵕ ˂ )⸝
+          <p className="text-center text-gray-700 leading-relaxed font-libre">
+            <span className="font-bold">How are you!</span> My name is Lauren and I'm a Software
+            Engineering student attending the University of Ottawa! I enjoy creating technologies
+            that allows for accessibility for everyone in hopes that people of all ages and types
+            can cross all barricades. ⸜(｡˃ ᵕ ˂ )⸝
           </p>
         </div>
       </div>
-
       {/* Outside of School and Work Section */}
       <div className="mb-16">
         <h2 className="text-2xl text-[#EA6C3A] mb-2 font-chewie">Outside of School and Work</h2>
@@ -32,16 +31,23 @@ const AboutMe: React.FC = () => {
           also am a lead for two organizations at my univeristy: uOttaHack and uOBionics, where I
           lead and explore new technologies and projects with my team.
         </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <img src="/images/3D-Printing.JPG" alt="3D Printing" className="rounded-xl" />
-          <img src="/images/Ice.JPG" alt="Ice Cream" className="rounded-xl" />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="relative rounded-3xl overflow-hidden border-4 border-orange-300">
+          <img
+            src="/images/3d-printer.jpg"
+            alt="3D printer mechanism"
+            className="w-full h-full object-cover"
+          />
         </div>
-        <div className="mt-8">
-          <img src="/images/uOttahack7.jpg" alt="uOttaHack7" className="rounded-xl" />
+        <div className="relative rounded-3xl overflow-hidden border-4 border-orange-300">
+          <img
+            src="/images/robot.jpg"
+            alt="Robot on concrete floor"
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
-
       {/*  
       <div className="mb-16">
         <h2 className="text-2xl text-[#34D399] font-chewie mb-2">Cooking</h2>
@@ -61,7 +67,6 @@ const AboutMe: React.FC = () => {
         </p>
         <div className="bg-gray-100 rounded-2xl p-8 aspect-[2/1]"></div>
       </div> */}
-
       {/* YouTube Link */}
       <div className="font-chewie">
         <a href="https://www.youtube.com/@grungylh" className="text-blue-600 hover:text-blue-800">

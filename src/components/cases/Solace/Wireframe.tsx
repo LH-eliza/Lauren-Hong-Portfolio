@@ -9,7 +9,7 @@ const Wireframe = () => {
           {/* Model 1 */}
           <div className="space-y-2">
             <img
-              src="/images/Model 1.svg"
+              src="/images/Solace/Model 1.svg"
               alt="Model 1"
               className="w-full rounded-lg border border-gray-200"
             />
@@ -17,7 +17,7 @@ const Wireframe = () => {
           {/* Model 1 - ON */}
           <div className="space-y-2">
             <img
-              src="/images/Model 1 - ON.svg"
+              src="/images/Solace/Model 1 - ON.svg"
               alt="Model 1 - ON"
               className="w-full rounded-lg border border-gray-200"
             />
@@ -26,7 +26,7 @@ const Wireframe = () => {
           {/* Model 2 */}
           <div className="space-y-2">
             <img
-              src="/images/Model 2.svg"
+              src="/images/Solace/Model 2.svg"
               alt="Model 2"
               className="w-full rounded-lg border border-gray-200"
             />
@@ -35,7 +35,7 @@ const Wireframe = () => {
           {/* Model 2 - ON */}
           <div className="space-y-2">
             <img
-              src="/images/Model 2 -ON.svg"
+              src="/images/Solace/Model 2 -ON.svg"
               alt="Model 2 - ON"
               className="w-full rounded-lg border border-gray-200"
             />

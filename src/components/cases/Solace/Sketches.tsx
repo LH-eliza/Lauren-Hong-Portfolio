@@ -15,7 +15,7 @@ const Sketches: React.FC = () => {
         <div className="space-y-4">
           <div className="w-full">
             <img
-              src="/images/Sketches.svg"
+              src="/images/Solace/Sketches.svg"
               alt="Preliminary sketches"
               className="w-full h-auto rounded-lg border border-gray-200 shadow-sm"
             />

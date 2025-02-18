@@ -1,6 +1,6 @@
 import React from 'react';
 import CaseStudy from '../../../assets/Header';
-import TextLink from '../../../assets/TextLink';
+
 import QuoteBlock from '../../../assets/Quote';
 import StepTitle from '../../../assets/StepTitle';
 import GifDisplay from '../../../assets/GifDisplay';
@@ -59,7 +59,7 @@ const AppSite = () => {
           </div>
         </div>
         <div className="mb-32">
-          <img src="/images/ApplicantsNeeds.svg" alt="" className="w-full h-auto" />
+          <img src="/images/Application/ApplicantsNeeds.svg" alt="" className="w-full h-auto" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
           <div className="md:col-span-1">
@@ -102,7 +102,7 @@ const AppSite = () => {
           </div>
         </div>
         <div className="mb-32">
-          <img src="/images/Characteristics.svg" alt="" className="w-full h-auto" />
+          <img src="/images/Application/Characteristics.svg" alt="" className="w-full h-auto" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-1">
@@ -190,7 +190,7 @@ const AppSite = () => {
         </div>
       </div>
       <div className="mb-32">
-        <img src="/images/Flow.svg" alt="" className="w-full h-auto" />
+        <img src="/images/Application/Flow.svg" alt="" className="w-full h-auto" />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
         <div className="md:col-span-1">
@@ -343,6 +343,12 @@ const AppSite = () => {
               as profile cards, raffles, queues for food, and more in-person event involvements.
             </p>
           </div>
+        </div>
+        <div className="text-4xl text-[#1A4FAC] font-chewie">Try it out yourself!</div>
+        <div className="md:col-span-3 space-y-8">
+          <a href="https://apply.uottahack.ca/" className="text-2xl text-gray-700 font-libre underline">
+            Apply to uOttaHack 2025 →
+          </a>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
