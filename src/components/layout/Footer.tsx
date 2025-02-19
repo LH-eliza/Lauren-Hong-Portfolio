@@ -209,7 +209,9 @@ const Footer = () => {
               </SocialIcon>
             </div>
 
-            <p className="text-gray-800 mb-2 font-chewie">Lauren Hong | 2025</p>
+            <p className="text-gray-800 mb-2 font-chewie">
+              Designed and Developed by Lauren Hong | 2025
+            </p>
 
             <div className="flex justify-center space-x-4 font-chewie">
               <motion.a
