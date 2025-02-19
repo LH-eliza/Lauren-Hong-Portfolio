@@ -115,7 +115,7 @@ const Header = () => {
                 Work
               </a>
               <a
-                href="https://drive.google.com/file/d/1hplfSkKhCLkbrJH_NOz5NTbgDtABVkLa/view?usp=sharing"
+                href="https://drive.google.com/file/d/15YuRvO0faA__bnlZDMHcs0yFEkEBfqJM/view?usp=sharing"
                 className="px-4 py-4 text-gray-700 hover:text-gray-900 border-b border-gray-100"
               >
                 Resume
