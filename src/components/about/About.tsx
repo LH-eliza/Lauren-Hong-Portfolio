@@ -33,16 +33,16 @@ const AboutMe: React.FC = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="relative rounded-3xl overflow-hidden border-4 border-orange-300">
+        <div className="relative rounded-xl overflow-hidden border-2 border-green-700">
           <img
-            src="/images/3d-printer.jpg"
+            src="/images/uOttaHack6.jpg"
             alt="3D printer mechanism"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="relative rounded-3xl overflow-hidden border-4 border-orange-300">
+        <div className="relative rounded-xl overflow-hidden border-2 border-green-700">
           <img
-            src="/images/robot.jpg"
+            src="/images/uOttahack7.jpg"
             alt="Robot on concrete floor"
             className="w-full h-full object-cover"
           />
