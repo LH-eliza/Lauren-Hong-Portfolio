@@ -220,7 +220,7 @@ const Footer = () => {
                 Email
               </motion.a>
               <motion.a
-                href="https://drive.google.com/file/d/1hplfSkKhCLkbrJH_NOz5NTbgDtABVkLa/view?usp=sharing"
+                href="https://drive.google.com/file/d/1vJI74PSADYNJr2vsUDZjZ3zmphDMVeiQ/view?usp=sharing"
                 className="text-gray-600 hover:text-gray-800"
                 whileHover={{ scale: 1.1 }}
               >
