@@ -74,7 +74,7 @@ const Header = () => {
               Work
             </a>
             <a
-              href="https://drive.google.com/file/d/1vJI74PSADYNJr2vsUDZjZ3zmphDMVeiQ/view?usp=sharing"
+              href="https://drive.google.com/file/d/15YuRvO0faA__bnlZDMHcs0yFEkEBfqJM/view?usp=sharing"
               className="text-gray-700 hover:text-gray-900"
             >
               Resume
