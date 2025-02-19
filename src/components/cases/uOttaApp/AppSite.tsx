@@ -346,7 +346,10 @@ const AppSite = () => {
         </div>
         <div className="text-4xl text-[#1A4FAC] font-chewie">Try it out yourself!</div>
         <div className="md:col-span-3 space-y-8">
-          <a href="https://apply.uottahack.ca/" className="text-2xl text-gray-700 font-libre underline">
+          <a
+            href="https://apply.uottahack.ca/"
+            className="text-2xl text-gray-700 font-libre underline"
+          >
             Apply to uOttaHack 2025 →
           </a>
         </div>
