@@ -1,13 +1,18 @@
-import React from 'react';
+'use client';
 
+import React, { useRef, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
+
+// Original SVG components without complex animations
 const Logo = () => (
-  <svg
+  <motion.svg
     xmlns="http://www.w3.org/2000/svg"
     width="118"
     height="112"
     viewBox="0 0 178 172"
     fill="none"
     className="w-full h-full"
+    whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
   >
     <circle cx="113" cy="103" r="65" fill="#FAC03A" />
     <circle cx="133.5" cy="92.5" r="9" stroke="black" strokeWidth="3" />
@@ -23,26 +28,27 @@ const Logo = () => (
     <circle cx="53.75" cy="140.25" r="1.25" fill="black" />
     <circle cx="71.25" cy="140.25" r="1.25" fill="black" />
     <rect x="50.625" y="143.375" width="25" height="10" rx="5" stroke="black" strokeWidth="1.25" />
-    <mask id="path-12-inside-1_92_25" fill="white">
+    <mask id="path-footer-mask" fill="white">
       <path d="M68.75 154C68.75 152.674 68.2232 151.402 67.2855 150.464C66.3479 149.527 65.0761 149 63.75 149C62.4239 149 61.1521 149.527 60.2145 150.464C59.2768 151.402 58.75 152.674 58.75 154L63.75 154H68.75Z" />
     </mask>
     <path
       d="M68.75 154C68.75 152.674 68.2232 151.402 67.2855 150.464C66.3479 149.527 65.0761 149 63.75 149C62.4239 149 61.1521 149.527 60.2145 150.464C59.2768 151.402 58.75 152.674 58.75 154L63.75 154H68.75Z"
       stroke="black"
       strokeWidth="2.5"
-      mask="url(#path-12-inside-1_92_25)"
+      mask="url(#path-footer-mask)"
     />
-  </svg>
+  </motion.svg>
 );
 
 const BlueSquare = () => (
-  <svg
+  <motion.svg
     xmlns="http://www.w3.org/2000/svg"
     width="106"
     height="63"
     viewBox="0 0 136 63"
     fill="none"
     className="w-full h-full"
+    whileHover={{ y: -5, transition: { duration: 0.3 } }}
   >
     <rect width="136" height="63" rx="10" fill="#3A8FC2" />
     <circle
@@ -53,21 +59,25 @@ const BlueSquare = () => (
       stroke="black"
       strokeWidth="1.5"
     />
-    <circle
+    <motion.circle
       cx="0.999997"
       cy="0.999997"
       r="0.999997"
       transform="matrix(-0.998801 0.0489504 0.0489504 0.998801 34.6735 24.188)"
       fill="black"
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3 }}
     />
-    <circle
+    <motion.circle
       cx="0.999997"
       cy="0.999997"
       r="0.999997"
       transform="matrix(-0.998801 0.0489504 0.0489504 0.998801 17.9976 21)"
       fill="black"
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.4 }}
     />
-  </svg>
+  </motion.svg>
 );
 
 const BehanceIcon = () => (
@@ -126,65 +136,104 @@ const LinkedInIcon = () => (
   </svg>
 );
 
-const Footer = () => {
-  return (
-    <footer className="relative">
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-[#EA6C3A]" />
-      <div className="max-w-4xl mx-auto px-4 pb-20">
-        <div className="flex justify-between items-end">
-          <div className="flex items-end">
-            <Logo />
-          </div>
+// Simplified hover animation for social links
+const SocialIcon = ({ children, href }: { children: React.ReactNode; href: string }) => (
+  <motion.a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-800 hover:text-gray-600 w-12"
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    {children}
+  </motion.a>
+);
 
-          <div className="text-center">
+const Footer = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+  // Main animation controls
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5 },
+    },
+  };
+
+  return (
+    <footer className="relative" ref={ref}>
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-16 bg-[#EA6C3A]"
+        initial={{ scaleY: 0 }}
+        animate={isInView ? { scaleY: 1 } : {}}
+        transition={{ duration: 0.5 }}
+        style={{ originY: 1 }}
+      />
+
+      <motion.div
+        className="max-w-4xl mx-auto px-4 pb-20"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+      >
+        <div className="flex justify-between items-end">
+          <motion.div variants={itemVariants} className="flex items-end">
+            <Logo />
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="text-center">
             <div className="flex space-x-6 mb-4">
-              <a
-                href="https://www.behance.net/laurenhong1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-800 hover:text-gray-600 w-12"
-              >
+              <SocialIcon href="https://www.behance.net/laurenhong1">
                 <BehanceIcon />
-              </a>
-              <a
-                href="https://github.com/LH-eliza"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-800 hover:text-gray-600 w-12"
-              >
+              </SocialIcon>
+              <SocialIcon href="https://github.com/LH-eliza">
                 <GitHubIcon />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/lauren-hong/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-800 hover:text-gray-600 w-12"
-              >
+              </SocialIcon>
+              <SocialIcon href="https://www.linkedin.com/in/lauren-hong/">
                 <LinkedInIcon />
-              </a>
+              </SocialIcon>
             </div>
+
             <p className="text-gray-800 mb-2 font-chewie">Lauren Hong | 2025</p>
+
             <div className="flex justify-center space-x-4 font-chewie">
-              <a
+              <motion.a
                 href="mailto:leliza.hong@outlook.com"
                 className="text-gray-600 hover:text-gray-800"
+                whileHover={{ scale: 1.1 }}
               >
                 Email
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="https://drive.google.com/file/d/1hplfSkKhCLkbrJH_NOz5NTbgDtABVkLa/view?usp=sharing"
                 className="text-gray-600 hover:text-gray-800"
+                whileHover={{ scale: 1.1 }}
               >
                 Resume
-              </a>
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center">
+          <motion.div variants={itemVariants} className="flex items-center">
             <BlueSquare />
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 };
