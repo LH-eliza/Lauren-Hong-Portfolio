@@ -362,7 +362,7 @@ const AppSite = () => {
       </div>
       <div className="mb-32">
         <img
-          src="/images/Application/psvg"
+          src="/images/Application/p.svg"
           alt="Style Guide"
           className="w-full h-auto rounded-lg"
         />
