@@ -28,7 +28,7 @@ const passionProjects: PassionProject[] = [
   },
   {
     title: 'Sports Medicine Logo',
-    description: 'Illustrating a logo for a sports medicine clinic',
+    description: 'Illustrating a logo for the University of Ottawa Sports Medicine Club',
     imageUrl: '/images/Personal/Sports.png',
     behanceUrl: 'https://www.behance.net/gallery/220510147/Sports-Logo-University-of-Ottawa',
     instagramUrl: 'https://www.instagram.com/uosportsmed/',
