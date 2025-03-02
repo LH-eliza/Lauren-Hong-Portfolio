@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="min-h-[75vh] w-full pt-40 font-chewie relative overflow-hidden">
+    <section className="min-h-screen w-full flex items-center pt-20 pb-20 font-chewie relative overflow-hidden">
       <motion.div
         className="fixed left-0 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 pl-2 z-10"
         animate={{
