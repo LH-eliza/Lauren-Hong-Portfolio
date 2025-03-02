@@ -43,14 +43,14 @@ const passionProjects: PassionProject[] = [
   {
     title: 'uOttaHack 6',
     description: 'Designing and leading the branding for uOttaHack6 (650+ Students)',
-    imageUrl: '/images/Personal/Thumbo6.png',
+    imageUrl: '/images/Personal/Thumb06.png',
     instagramUrl: 'https://www.instagram.com/uottahack/',
     behanceUrl: 'https://2024.uottahack.ca/',
   },
   {
     title: 'uOttaHack 7',
     description: 'Designing and leading the branding for uOttaHack7 (850+ Students)',
-    imageUrl: '/images/Personal/Thumb07.png',
+    imageUrl: '/images/Personal/Thumbo7.png',
     instagramUrl: 'https://www.instagram.com/uottahack/',
     behanceUrl: 'https://2025.uottahack.ca/',
   },
