@@ -34,6 +34,13 @@ const passionProjects: PassionProject[] = [
     instagramUrl: 'https://www.instagram.com/uosportsmed/',
   },
   {
+    title: 'uOttaHack 5',
+    description: 'Designing and marketed the branding for uOttaHack5',
+    imageUrl: '/images/Personal/Thumbo5.png',
+    instagramUrl: 'https://www.instagram.com/uottahack/',
+    behanceUrl: 'https://2023.uottahack.ca/',
+  },
+  {
     title: 'uOttaHack 6',
     description: 'Designing and leading the branding for uOttaHack6',
     imageUrl: '/images/Personal/Thumbo7.png',
