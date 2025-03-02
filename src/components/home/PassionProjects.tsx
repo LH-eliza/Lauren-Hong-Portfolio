@@ -33,6 +33,20 @@ const passionProjects: PassionProject[] = [
     behanceUrl: 'https://www.behance.net/gallery/220510147/Sports-Logo-University-of-Ottawa',
     instagramUrl: 'https://www.instagram.com/uosportsmed/',
   },
+  {
+    title: 'uOttaHack 6',
+    description: 'Designing and leading the branding for uOttaHack6',
+    imageUrl: '/images/Personal/Thumbo7.png',
+    instagramUrl: 'https://www.instagram.com/uottahack/',
+    behanceUrl: 'https://2024.uottahack.ca/',
+  },
+  {
+    title: 'uOttaHack 7',
+    description: 'Designing and leading the branding for uOttaHack7',
+    imageUrl: '/images/Personal/Thumb06.png',
+    instagramUrl: 'https://www.instagram.com/uottahack/',
+    behanceUrl: 'https://2025.uottahack.ca/',
+  },
 ];
 
 const PassionProjects: React.FC = () => {
