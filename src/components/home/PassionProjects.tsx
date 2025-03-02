@@ -1,13 +1,15 @@
 'use client';
 
 import React from 'react';
-import { Github } from 'lucide-react';
+import { Github, Instagram, ExternalLink } from 'lucide-react';
 
 interface PassionProject {
   title: string;
   description: string;
   imageUrl: string;
   githubUrl?: string;
+  instagramUrl?: string;
+  behanceUrl?: string;
 }
 
 const passionProjects: PassionProject[] = [
@@ -15,6 +17,7 @@ const passionProjects: PassionProject[] = [
     title: 'LED Signboard & Photowall',
     description: 'Designing and building an LED signboard and photowall for uOttaHack7',
     imageUrl: '/images/wall.png',
+    instagramUrl: 'https://www.instagram.com/uottahack/',
   },
   {
     title: 'Smart Environment Monitor',
@@ -22,6 +25,13 @@ const passionProjects: PassionProject[] = [
       'Engineering a smart environment monitor that tracks temperature, humidity and air quality',
     imageUrl: '/images/schematics.png',
     githubUrl: 'https://github.com/LH-eliza/Smart-Environment-Monitor',
+  },
+  {
+    title: 'Sports Medicine Logo',
+    description: 'Illustrating a logo for a sports medicine clinic',
+    imageUrl: '/images/Personal/Sports.png',
+    behanceUrl: 'https://www.behance.net/gallery/220510147/Sports-Logo-University-of-Ottawa',
+    instagramUrl: 'https://www.instagram.com/uosportsmed/',
   },
 ];
 
@@ -54,16 +64,41 @@ const PassionProjects: React.FC = () => {
                       {project.description}
                     </p>
                   </div>
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ml-3 text-white hover:text-gray-300 transition-colors"
-                    >
-                      <Github size={16} className="sm:w-5 sm:h-5" />
-                    </a>
-                  )}
+                  <div className="flex ml-3 gap-2">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white hover:text-gray-300 transition-colors"
+                        aria-label="GitHub"
+                      >
+                        <Github size={16} className="sm:w-5 sm:h-5" />
+                      </a>
+                    )}
+                    {project.instagramUrl && (
+                      <a
+                        href={project.instagramUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white hover:text-gray-300 transition-colors"
+                        aria-label="Instagram"
+                      >
+                        <Instagram size={16} className="sm:w-5 sm:h-5" />
+                      </a>
+                    )}
+                    {project.behanceUrl && (
+                      <a
+                        href={project.behanceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white hover:text-gray-300 transition-colors"
+                        aria-label="Behance"
+                      >
+                        <ExternalLink size={16} className="sm:w-5 sm:h-5" />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
