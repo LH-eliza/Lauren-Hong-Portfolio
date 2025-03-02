@@ -36,7 +36,7 @@ const passionProjects: PassionProject[] = [
   {
     title: 'uOttaHack 5',
     description: 'Designing and marketing uOttaHack5 (450+ Students)',
-    imageUrl: '/images/Personal/Thumbo5.png',
+    imageUrl: '/images/Personal/Thumb05.png',
     instagramUrl: 'https://www.instagram.com/uottahack/',
     behanceUrl: 'https://2023.uottahack.ca/',
   },
