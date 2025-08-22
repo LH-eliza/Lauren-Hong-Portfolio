@@ -14,19 +14,6 @@ interface PassionProject {
 
 const passionProjects: PassionProject[] = [
   {
-    title: 'LED Signboard & Photowall',
-    description: 'Designing and building an LED signboard and photowall for uOttaHack7',
-    imageUrl: '/images/wall.png',
-    instagramUrl: 'https://www.instagram.com/uottahack/',
-  },
-  {
-    title: 'Smart Environment Monitor',
-    description:
-      'Engineering a smart environment monitor that tracks temperature, humidity and air quality',
-    imageUrl: '/images/schematics.png',
-    githubUrl: 'https://github.com/LH-eliza/Smart-Environment-Monitor',
-  },
-  {
     title: 'Sports Medicine Logo',
     description: 'Illustrating a logo for the University of Ottawa Sports Medicine Club',
     imageUrl: '/images/Personal/Sports.png',
@@ -61,7 +48,7 @@ const PassionProjects: React.FC = () => {
     <section className="max-w-6xl mx-auto px-4 py-4 sm:py-6 md:py-4">
       <hr className="my-8 border-gray-300" />
       <h2 className="text-gray-800 mb-4 text-lg sm:text-xl md:text-2xl font-chewie">
-        Passion Projects - Hardware, Illustration and Engineering Projects
+        Leadership Projects & Community Involvement
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
