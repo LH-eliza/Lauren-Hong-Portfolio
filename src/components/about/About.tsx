@@ -70,95 +70,125 @@ const AboutMe: React.FC = () => {
       {/* YouTube Link */}
       {/* My Experience Section */}
       <div className="mb-16">
-        <h2 className="text-2xl text-[#EA6C3A] mb-6 font-chewie">My experience</h2>
+        <h2 className="text-2xl text-[#EA6C3A] mb-8 font-chewie">My experience</h2>
 
         {/* Experience Subsection */}
-        <div className="mb-8">
-          <h3 className="text-lg text-gray-500 mb-4 font-libre">Experience</h3>
-          <div className="space-y-4">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">
-                Giatec Scientific Inc. (May 2025 - August 2025)
-              </span>
-              <span className="text-gray-600 font-libre text-right sm:text-right">
-                Software Developer in Test Intern
-              </span>
+        <div className="mb-12">
+          <h3 className="text-lg text-gray-500 mb-6 font-libre uppercase tracking-wide">
+            Experience
+          </h3>
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4 border-b border-gray-200">
+              <div className="flex-1">
+                <h4 className="text-gray-600 font-libre font-semibold mb-1">
+                  Giatec Scientific Inc.
+                </h4>
+                <p className="text-sm text-gray-500 font-libre">May 2025 - Aug 2025</p>
+              </div>
+              <div className="sm:text-right sm:w-1/3">
+                <p className="text-gray-700 font-libre">Software Developer in Test Intern</p>
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">
-                Motorola Solutions (Sept 2024 - Dec 2024)
-              </span>
-              <span className="text-gray-600 font-libre text-right sm:text-right">
-                Software Developer Intern
-              </span>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4 border-b border-gray-200">
+              <div className="flex-1">
+                <h4 className="text-gray-600 font-libre font-semibold mb-1">Motorola Solutions</h4>
+                <p className="text-sm text-gray-500 font-libre">Sept 2024 - Dec 2024</p>
+              </div>
+              <div className="sm:text-right sm:w-1/3">
+                <p className="text-gray-700 font-libre">Software Developer Intern</p>
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">
-                Solace (Jan 2024 - April 2024)
-              </span>
-              <span className="text-gray-600 font-libre text-right sm:text-right">
-                Software Developer Intern
-              </span>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4 border-b border-gray-200">
+              <div className="flex-1">
+                <h4 className="text-gray-600 font-libre font-semibold mb-1">Solace</h4>
+                <p className="text-sm text-gray-500 font-libre">Jan 2024 - April 2024</p>
+              </div>
+              <div className="sm:text-right sm:w-1/3">
+                <p className="text-gray-700 font-libre">Software Developer Intern</p>
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">
-                Shared Services Canada (May 2023 - Aug 2023)
-              </span>
-              <span className="text-gray-600 font-libre text-right sm:text-right">
-                Project Manager Intern
-              </span>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4 border-b border-gray-200">
+              <div className="flex-1">
+                <h4 className="text-gray-600 font-libre font-semibold mb-1">
+                  Shared Services Canada
+                </h4>
+                <p className="text-sm text-gray-500 font-libre">May 2023 - Aug 2023</p>
+              </div>
+              <div className="sm:text-right sm:w-1/3">
+                <p className="text-gray-700 font-libre">Project Manager Intern</p>
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">
-                Mozilla (Jan 2021 - April 2022)
-              </span>
-              <span className="text-gray-600 font-libre text-right sm:text-right">
-                IT User Support Volunteer
-              </span>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4">
+              <div className="flex-1">
+                <h4 className="text-gray-600 font-libre font-semibold mb-1">Mozilla</h4>
+                <p className="text-sm text-gray-500 font-libre">Jan 2021 - April 2022</p>
+              </div>
+              <div className="sm:text-right sm:w-1/3">
+                <p className="text-gray-700 font-libre">IT User Support Volunteer</p>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Leadership & Activities Subsection */}
         <div>
-          <h3 className="text-lg text-gray-500 mb-4 font-libre">Leadership & Activities</h3>
-          <div className="space-y-4">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">
-                Asian Passion Project (2021-2022)
-              </span>
-              <span className="text-gray-600 font-libre text-right sm:text-right">
-                TOEFL Tutor{' '}
-              </span>
+          <h3 className="text-lg text-gray-500 mb-6 font-libre uppercase tracking-wide">
+            Leadership & Activities
+          </h3>
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4 border-b border-gray-200">
+              <div className="flex-1">
+                <h4 className="text-gray-600 font-libre font-semibold mb-1">
+                  Asian Passion Project
+                </h4>
+                <p className="text-sm text-gray-500 font-libre">2021-2022</p>
+              </div>
+              <div className="sm:text-right sm:w-1/3">
+                <p className="text-gray-700 font-libre">TOEFL Tutor</p>
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">
-                Felt Initiative (2022-2023)
-              </span>
-              <span className="text-gray-600 font-libre text-right sm:text-right">
-                English Second Language Tutor
-              </span>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4 border-b border-gray-200">
+              <div className="flex-1">
+                <h4 className="text-gray-600 font-libre font-semibold mb-1">Felt Initiative</h4>
+                <p className="text-sm text-gray-500 font-libre">2022-2023</p>
+              </div>
+              <div className="sm:text-right sm:w-1/3">
+                <p className="text-gray-700 font-libre">English Second Language Tutor</p>
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre mb-1">uOttaHack (2022-2026)</span>
-              <span className="text-gray-600 font-libre text-right sm:text-right sm:max-w-[60%]">
-                Marketing Coordinator (2022-2023), Marketing & Design Lead (2023-2024), Co-Director
-                (2024-2025), Senior Advisor & Event Coordinator (2025-2026)
-              </span>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4 border-b border-gray-200">
+              <div className="flex-1">
+                <h4 className="text-gray-600 font-libre font-semibold mb-1">uOttaHack</h4>
+                <p className="text-sm text-gray-500 font-libre">2022-2026</p>
+              </div>
+              <div className="sm:text-right sm:w-1/2">
+                <p className="text-gray-700 font-libre text-sm sm:text-base">
+                  Marketing Coordinator (2022-2023), Marketing & Design Lead (2023-2024),
+                  Co-Director (2024-2025), Senior Advisor & Event Coordinator (2025-2026)
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">uOBionics (2024-Present)</span>
-              <span className="text-gray-600 font-libre text-right sm:text-right">
-                UI/UX Designer, Software Team Lead
-              </span>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4 border-b border-gray-200">
+              <div className="flex-1">
+                <h4 className="text-gray-600 font-libre font-semibold mb-1">uOBionics</h4>
+                <p className="text-sm text-gray-500 font-libre">2024-Present</p>
+              </div>
+              <div className="sm:text-right sm:w-1/3">
+                <p className="text-gray-700 font-libre">UI/UX Designer, Software Team Lead</p>
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">
-                Women in Science and Engineering (WISE)
-              </span>
-              <span className="text-gray-600 font-libre text-right sm:text-right">
-                Outreach Coordinator (2022-2023), VP Development & Design (2025-Present)
-              </span>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4">
+              <div className="flex-1">
+                <h4 className="text-gray-600 font-libre font-semibold mb-1">
+                  Women in Science and Engineering (WISE)
+                </h4>
+                <p className="text-sm text-gray-500 font-libre">2022-Present</p>
+              </div>
+              <div className="sm:text-right sm:w-1/3">
+                <p className="text-gray-700 font-libre">
+                  Outreach Coordinator (2022-2023), VP Development & Design (2025-Present)
+                </p>
+              </div>
             </div>
           </div>
         </div>
