@@ -176,7 +176,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative" ref={ref}>
+    <footer className="relative bg-transparent" ref={ref}>
       <motion.div
         className="absolute bottom-0 left-0 right-0 h-16 bg-[#EA6C3A]"
         initial={{ scaleY: 0 }}
@@ -209,7 +209,7 @@ const Footer = () => {
               </SocialIcon>
             </div>
 
-            <p className="text-gray-800 mb-2 font-chewie text-center">Lauren Hong | 2025</p>
+            <p className="text-gray-800 mb-2 font-chewie text-center">Lauren Hong | 2025-2026</p>
 
             <div className="flex justify-center space-x-4 font-chewie">
               <motion.a
