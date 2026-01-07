@@ -77,31 +77,41 @@ const AboutMe: React.FC = () => {
           <h3 className="text-lg text-gray-500 mb-4 font-libre">Experience</h3>
           <div className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">Giatec Scientific Inc. (May 2025 - August 2025)</span>
+              <span className="font-bold text-gray-800 font-libre">
+                Giatec Scientific Inc. (May 2025 - August 2025)
+              </span>
               <span className="text-gray-600 font-libre text-right sm:text-right">
                 Software Developer in Test Intern
               </span>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">Motorola Solutions (Sept 2024 - Dec 2024)</span>
+              <span className="font-bold text-gray-800 font-libre">
+                Motorola Solutions (Sept 2024 - Dec 2024)
+              </span>
               <span className="text-gray-600 font-libre text-right sm:text-right">
                 Software Developer Intern
               </span>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">Solace (Jan 2024 - April 2024)</span>
+              <span className="font-bold text-gray-800 font-libre">
+                Solace (Jan 2024 - April 2024)
+              </span>
               <span className="text-gray-600 font-libre text-right sm:text-right">
                 Software Developer Intern
               </span>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">Shared Services Canada (Summer 2023)</span>
+              <span className="font-bold text-gray-800 font-libre">
+                Shared Services Canada (May 2023 - Aug 2023)
+              </span>
               <span className="text-gray-600 font-libre text-right sm:text-right">
                 Project Manager Intern
               </span>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">Mozilla (Jan 2021 - April 2022)</span>
+              <span className="font-bold text-gray-800 font-libre">
+                Mozilla (Jan 2021 - April 2022)
+              </span>
               <span className="text-gray-600 font-libre text-right sm:text-right">
                 IT User Support Volunteer
               </span>
@@ -114,11 +124,17 @@ const AboutMe: React.FC = () => {
           <h3 className="text-lg text-gray-500 mb-4 font-libre">Leadership & Activities</h3>
           <div className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">Asian Passion Project (2021-2022)</span>
-              <span className="text-gray-600 font-libre text-right sm:text-right">TOEFL Tutor </span>
+              <span className="font-bold text-gray-800 font-libre">
+                Asian Passion Project (2021-2022)
+              </span>
+              <span className="text-gray-600 font-libre text-right sm:text-right">
+                TOEFL Tutor{' '}
+              </span>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-              <span className="font-bold text-gray-800 font-libre">Felt Initiative (2022-2023)</span>
+              <span className="font-bold text-gray-800 font-libre">
+                Felt Initiative (2022-2023)
+              </span>
               <span className="text-gray-600 font-libre text-right sm:text-right">
                 English Second Language Tutor
               </span>
@@ -126,8 +142,8 @@ const AboutMe: React.FC = () => {
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
               <span className="font-bold text-gray-800 font-libre mb-1">uOttaHack (2022-2026)</span>
               <span className="text-gray-600 font-libre text-right sm:text-right sm:max-w-[60%]">
-                Marketing Coordinator (2022-2023), Marketing & Design Lead (2023-2024), Co-Director (2024-2025), Senior Advisor & Event
-                Coordinator (2025-2026)
+                Marketing Coordinator (2022-2023), Marketing & Design Lead (2023-2024), Co-Director
+                (2024-2025), Senior Advisor & Event Coordinator (2025-2026)
               </span>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">

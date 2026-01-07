@@ -100,14 +100,21 @@ const AppSite = () => {
                 <div>
                   <h3 className="text-xl mb-4 font-libre">01 — Brainstorm</h3>
                   <p className="text-gray-700 font-libre">
-                  After 6 annual hackathons, there has been various editions of the 
-                  application portal. While they got the job done, there was various feedback in terms of feeling very repetitive and non-memorable. The challenge: How to make an interactive and memorable way to apply to a hackathon?
+                    After 6 annual hackathons, there has been various editions of the application
+                    portal. While they got the job done, there was various feedback in terms of
+                    feeling very repetitive and non-memorable. The challenge: How to make an
+                    interactive and memorable way to apply to a hackathon?
                   </p>
                 </div>
                 <div>
                   <h3 className="text-xl mb-4 font-libre">02 — Research</h3>
                   <p className="text-gray-700 font-libre">
-                  After uOttaHack 6 - the 2024 edition of the hackathon, our team sent out surveys to conduct research of how our hackathon can improve from start to end. From that survey we received 326 responses from various students (undergraduate, graduate, PHD, high school...etc). The most  common feedback received was receiving confirmation of their submissions, process of their applications, and a more interactive experience. 
+                    After uOttaHack 6 - the 2024 edition of the hackathon, our team sent out surveys
+                    to conduct research of how our hackathon can improve from start to end. From
+                    that survey we received 326 responses from various students (undergraduate,
+                    graduate, PHD, high school...etc). The most common feedback received was
+                    receiving confirmation of their submissions, process of their applications, and
+                    a more interactive experience.
                   </p>
                 </div>
               </div>
