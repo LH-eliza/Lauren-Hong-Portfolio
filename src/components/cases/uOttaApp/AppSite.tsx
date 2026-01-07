@@ -100,19 +100,14 @@ const AppSite = () => {
                 <div>
                   <h3 className="text-xl mb-4 font-libre">01 — Brainstorm</h3>
                   <p className="text-gray-700 font-libre">
-                    Given the task to "create a project with AI that improves daily workflow" our
-                    team focused on transforming how users interact with Solace PubSub+
-                    documentation. The challenge: How might we help users find and understand
-                    technical information more efficiently while maintaining the depth of content?
+                  After 6 annual hackathons, there has been various editions of the 
+                  application portal. While they got the job done, there was various feedback in terms of feeling very repetitive and non-memorable. The challenge: How to make an interactive and memorable way to apply to a hackathon?
                   </p>
                 </div>
                 <div>
                   <h3 className="text-xl mb-4 font-libre">02 — Research</h3>
                   <p className="text-gray-700 font-libre">
-                    We conducted 7 user interviews with Solace users across different roles
-                    (developers, students, system architects) to identify pain points and insights
-                    for improving documentation accessibility. I also researched chatbot
-                    implementation in technical documentation and its impact on user engagement.
+                  After uOttaHack 6 - the 2024 edition of the hackathon, our team sent out surveys to conduct research of how our hackathon can improve from start to end. From that survey we received 326 responses from various students (undergraduate, graduate, PHD, high school...etc). The most  common feedback received was receiving confirmation of their submissions, process of their applications, and a more interactive experience. 
                   </p>
                 </div>
               </div>
