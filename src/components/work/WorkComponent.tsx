@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Lottie from 'lottie-react';
+import moveStudioAnimation from '../../assets/lottie/move-studio.json';
+import innovartAnimation from '../../assets/lottie/innovart.json';
 
 interface Project {
   title: string;
@@ -15,7 +17,7 @@ interface SchoolProject {
   title: string;
   docLink: string;
   gradientClass?: string;
-  lottieUrl?: string;
+  lottieData?: any;
   imageUrl?: string;
 }
 
@@ -53,18 +55,7 @@ const ProjectCard = ({ title, description, tag, imageUrl, link }: Project) => {
   );
 };
 
-const SchoolProjectCard = ({ title, docLink, gradientClass, lottieUrl, imageUrl }: SchoolProject) => {
-  const [lottieData, setLottieData] = React.useState<any>(null);
-
-  React.useEffect(() => {
-    if (lottieUrl) {
-      fetch(lottieUrl)
-        .then((res) => res.json())
-        .then((data) => setLottieData(data))
-        .catch((err) => console.error('Error loading Lottie animation:', err));
-    }
-  }, [lottieUrl]);
-
+const SchoolProjectCard = ({ title, docLink, gradientClass, lottieData, imageUrl }: SchoolProject) => {
   return (
     <a
       href={docLink}
@@ -73,7 +64,7 @@ const SchoolProjectCard = ({ title, docLink, gradientClass, lottieUrl, imageUrl 
       className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer"
     >
       {/* Main Content Area - Image, Lottie Animation, or Animated Gradient */}
-      <div className={`relative w-full aspect-[16/9] overflow-hidden bg-gray-100 flex items-center justify-center ${!lottieUrl && !imageUrl && gradientClass ? `${gradientClass} animated-gradient` : ''}`}>
+      <div className={`relative w-full aspect-[16/9] overflow-hidden bg-gray-100 flex items-center justify-center ${!lottieData && !imageUrl && gradientClass ? `${gradientClass} animated-gradient` : ''}`}>
         {imageUrl ? (
           <img
             src={imageUrl}
@@ -81,7 +72,7 @@ const SchoolProjectCard = ({ title, docLink, gradientClass, lottieUrl, imageUrl 
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 will-change-transform"
             loading="lazy"
           />
-        ) : lottieUrl && lottieData ? (
+        ) : lottieData ? (
           <Lottie
             animationData={lottieData}
             loop={true}
@@ -140,12 +131,12 @@ const schoolProjects: SchoolProject[] = [
   {
     title: 'MOVE STUDIO - Dance Class Booking Site',
     docLink: 'https://move-studio.vercel.app/',
-    lottieUrl: '/images/SchoolProjects/move-studio.json',
+    lottieData: moveStudioAnimation,
   },
   {
     title: 'InnovArt - Design Resources for Designers',
     docLink: 'https://innovart.vercel.app/',
-    lottieUrl: '/images/SchoolProjects/innovart.json',
+    lottieData: innovartAnimation,
   },
 ];
 
