@@ -295,7 +295,7 @@ const More: React.FC = () => {
             transition: { delay: 1.2, duration: 0.5 },
           }}
         >
-          view design works
+          view case studies
         </motion.p>
 
         <motion.div

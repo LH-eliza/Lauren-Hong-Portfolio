@@ -77,6 +77,18 @@
     }
   }
 
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
   .gradient-hover {
     background: linear-gradient(270deg, #ff7e5f, #feb47b);
     background-size: 200% 200%;
@@ -86,5 +98,18 @@
   .gradient-hover:hover {
     animation: gradient 3s ease infinite;
     color: white;
+  }
+
+  .animated-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .gradient-move-studio {
+    background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+  }
+
+  .gradient-innovart {
+    background: linear-gradient(-45deg, #f093fb, #f5576c, #4facfe, #00f2fe);
   }
 }
