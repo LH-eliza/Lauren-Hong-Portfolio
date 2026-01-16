@@ -5,7 +5,6 @@ import QuoteBlock from '../../../assets/Quote';
 import StepTitle from '../../../assets/StepTitle';
 import GifDisplay from '../../../assets/GifDisplay';
 import TableOfContents from '../../TableOfContents';
-import ScrollFadeIn from '../../ScrollFadeIn';
 import ScrollProgressBar from '../../ScrollProgressBar';
 
 const AppSite = () => {
@@ -26,9 +25,10 @@ const AppSite = () => {
       />
       <div className="relative">
         <ScrollProgressBar color="#1A4FAC" />
-        <TableOfContents />
         <div className="max-w-7xl mx-auto px-6 py-16">
-          <ScrollFadeIn>
+          <div className="flex gap-8">
+            <TableOfContents />
+            <div className="flex-1">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
                 <h2 className="text-4xl text-[#1A4FAC] font-chewie">Context</h2>
@@ -51,8 +51,6 @@ const AppSite = () => {
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={100}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
                 <h2 className="text-4xl text-[#1A4FAC] font-chewie">Result</h2>
@@ -67,13 +65,9 @@ const AppSite = () => {
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={200}>
             <div className="mb-32">
               <img src="/images/Application/ApplicantsNeeds.svg" alt="" className="w-full h-auto" />
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={300}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
                 <h2 className="text-4xl text-[#1A4FAC] font-chewie">Primary User</h2>
@@ -90,8 +84,6 @@ const AppSite = () => {
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={400}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32 mt-32">
               <div className="md:col-span-1">
                 <h2 className="text-4xl text-[#1A4FAC] font-chewie">Research & Development</h2>
@@ -119,13 +111,9 @@ const AppSite = () => {
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={500}>
             <div className="mb-32">
               <img src="/images/Application/Characteristics.svg" alt="" className="w-full h-auto" />
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={600}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
               <div className="md:col-span-1">
                 <h2 className="text-4xl text-[#1A4FAC] font-chewie">User’s Characteristics</h2>
@@ -157,13 +145,9 @@ const AppSite = () => {
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={700}>
             <div className="mb-24">
               <img src="/images/Application/Objectives.svg" alt="" className="w-full h-auto" />
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={800}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
               <div className="md:col-span-1">
                 <h2 className="text-4xl text-[#1A4FAC] font-chewie">Objectives Translated</h2>
@@ -200,8 +184,6 @@ const AppSite = () => {
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={900}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
                 <h2 className="text-4xl text-[#1A4FAC] font-chewie">Application</h2>
@@ -216,13 +198,9 @@ const AppSite = () => {
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={1000}>
             <div className="mb-32">
               <img src="/images/Application/Flow.svg" alt="" className="w-full h-auto" />
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={1100}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
                 <StepTitle step={1} title="Account Creation" />
@@ -239,13 +217,9 @@ const AppSite = () => {
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={1200}>
             <div className="mb-32">
               <img src="/images/Application/CreateAccount.svg" alt="" className="w-full h-auto" />
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={1300}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
                 <StepTitle step={2} title="Short Answer" />
@@ -263,13 +237,9 @@ const AppSite = () => {
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={1400}>
             <div className="mb-32">
               <GifDisplay src="/images/Application/Step2.gif" alt="Application demo" />
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={1500}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
                 <StepTitle step={3} title="Long Answer" />
@@ -293,8 +263,6 @@ const AppSite = () => {
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={1600}>
             <div className="mb-32">
               <img
                 src="/images/Application/LongAnswer.svg"
@@ -302,8 +270,6 @@ const AppSite = () => {
                 className="w-full h-auto"
               />
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={1700}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
                 <StepTitle step={4} title="Review" />
@@ -326,13 +292,9 @@ const AppSite = () => {
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={1800}>
             <div className="mb-32">
               <GifDisplay src="/images/Application/Step4.gif" alt="Application demo" />
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={1900}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
                 <h2 className="text-4xl text-[#1A4FAC] font-chewie">Confirmation</h2>
@@ -348,8 +310,6 @@ const AppSite = () => {
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={2000}>
             <div className="mb-32">
               <img
                 src="/images/Application/Step5.svg"
@@ -357,8 +317,6 @@ const AppSite = () => {
                 className="w-full h-auto"
               />
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={2100}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
                 <h2 className="text-4xl text-[#1A4FAC] font-chewie">Reflection</h2>
@@ -387,8 +345,6 @@ const AppSite = () => {
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={2200}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
                 <h2 className="text-4xl text-[#1A4FAC] font-chewie">Next Steps...</h2>
@@ -416,16 +372,12 @@ const AppSite = () => {
                 </a>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={2300}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
               <div className="md:col-span-1">
                 <h2 className="text-4xl text-[#1A4FAC] font-chewie">View Style Guide</h2>
                 <p className="mt-2 font-libre text-[#7A7A7A]">Illustrated by Lauren Hong</p>
               </div>
             </div>
-          </ScrollFadeIn>
-          <ScrollFadeIn delay={2400}>
             <div className="mb-32">
               <img
                 src="/images/Application/p.svg"
@@ -433,7 +385,8 @@ const AppSite = () => {
                 className="w-full h-auto rounded-lg"
               />
             </div>
-          </ScrollFadeIn>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,199 +1,89 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import React from 'react';
 
 interface Project {
-  category: string;
   title: string;
-  tags: string[];
+  description: string;
+  tag: string;
   imageUrl: string;
   link: string;
 }
 
-const ProjectCard = ({ category, title, tags, imageUrl, link }: Project) => {
-  const controls = useAnimation();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start('visible');
-    }
-  }, [controls, isInView]);
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
-  };
-
-  const contentVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
+const ProjectCard = ({ title, description, tag, imageUrl, link }: Project) => {
   return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={cardVariants}
-      className="flex flex-col lg:flex-row gap-4 lg:gap-8 items-start lg:items-center"
+    <a
+      href={link}
+      className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer"
     >
-      <motion.div
-        className="w-full lg:flex-[2] overflow-hidden rounded-lg"
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.3, ease: 'easeOut' }}
-      >
+      {/* Main Content Area - Sharp Rectangle */}
+      <div className="relative w-full aspect-[16/9] overflow-hidden bg-gray-100">
         <img
           src={imageUrl}
           alt={title}
-          className="rounded-lg w-full aspect-[1.5] object-cover hover:scale-105 transition-transform duration-700"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 will-change-transform"
+          loading="lazy"
         />
-      </motion.div>
+      </div>
 
-      <motion.div className="w-full lg:flex-1 mt-4 lg:mt-0" variants={contentVariants}>
-        <motion.p variants={itemVariants} className="text-gray-400 text-xs mb-1">
-          {category}
-        </motion.p>
-        <motion.h3
-          variants={itemVariants}
-          className="text-xl md:text-2xl font-medium mb-2 leading-snug font-chewie"
-        >
-          {title}
-        </motion.h3>
-        <motion.div variants={itemVariants} className="flex flex-wrap gap-2 mb-4">
-          {tags.map(tag => (
-            <motion.span
-              key={tag}
-              className="px-3 py-1 bg-gray-200 rounded-full text-xs"
-              whileHover={{
-                backgroundColor: '#e5e5e5',
-                scale: 1.05,
-                transition: { duration: 0.2 },
-              }}
-            >
-              {tag}
-            </motion.span>
-          ))}
-        </motion.div>
-        <motion.a
-          href={link}
-          variants={itemVariants}
-          whileHover={{
-            scale: 1.05,
-            backgroundColor: '#e5e5e5',
-          }}
-          whileTap={{ scale: 0.98 }}
-          className="inline-block w-full sm:w-auto px-6 py-3 bg-gray-200 rounded-full text-gray-900 transition-all duration-300 text-center"
-        >
-          View Work
-        </motion.a>
-      </motion.div>
-    </motion.div>
+      {/* Caption Underneath */}
+      <div className="px-5 py-4 bg-white flex justify-between items-center gap-4 border-t border-gray-200">
+        <div className="flex-1">
+          <h3 className="text-sm text-gray-900 font-chewie font-medium mb-1">
+            {title}
+          </h3>
+          <p className="text-sm text-gray-600 font-libre">
+            {description}
+          </p>
+        </div>
+        <p className="text-xs text-gray-500 font-libre uppercase tracking-wide whitespace-nowrap">
+          {tag}
+        </p>
+      </div>
+    </a>
   );
 };
 
 const projects: Project[] = [
   {
-    category: 'INTERNSHIP | SOLACE',
     title: 'Enhancing Solace Documentation Navigation',
-    tags: ['graphic', 'full-stack', 'ux/ui'],
+    description: 'Developer Documentation Navigation',
+    tag: 'SOLACE • CONCEPT 2024',
     imageUrl: '/images/Solace/Solace-docs 1.png',
     link: '/solace',
   },
   {
-    category: 'LEADERSHIP | HACKATHON',
     title: 'Refreshing the Hackathon Application Experience',
-    tags: ['illustration', 'full-stack', 'ux/ui'],
+    description: 'Hacker Application Portal',
+    tag: 'UOTTAHACK • SHIPPED 2025',
     imageUrl: '/images/Application/app.png',
     link: '/uotta-app',
   },
   {
-    category: 'LEADERSHIP | ECOMMERCE',
     title: 'Creating the One-Stop-Shop for Sponsorship Needs',
-    tags: ['graphic', 'full-stack', 'ux/ui'],
+    description: 'Sponsorship Management Portal',
+    tag: 'UOTTAHACK • SHIPPED 2024',
     imageUrl: '/images/uottashop/uOttaShop.svg',
     link: '/uottashop',
   },
   {
-    category: 'LEADERSHIP | BIONICS',
     title: 'Making Life More Accessible Through Software-Hardware Interaction',
-    tags: ['embedded', 'full-stack', 'ux/ui', 'simulation'],
+    description: 'Accessibility Indepdence',
+    tag: 'UBIONICS • SHIPPED 2025',
     imageUrl: '/images/Bionics/bionics.png',
     link: '/bionics',
   },
 ];
 
 const ProjectsSection = () => {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
-  const headerControls = useAnimation();
-
-  useEffect(() => {
-    if (isInView) {
-      headerControls.start('visible');
-    }
-  }, [headerControls, isInView]);
-
-  const headerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: 'easeOut',
-      },
-    },
-  };
-
   return (
-    <motion.div
-      ref={sectionRef}
-      initial="hidden"
-      animate={headerControls}
-      variants={headerVariants}
-      className="max-w-6xl mx-auto px-4 pt-8 md:pt-16"
-    >
-      <div className="space-y-8 md:space-y-16">
+    <div className="max-w-7xl mx-auto px-4 pt-8 md:pt-16 pb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
         {projects.map((project, index) => (
-          <div key={index}>
-            <ProjectCard {...project} />
-            {index < projects.length - 1 && (
-              <motion.hr
-                initial={{ width: '0%' }}
-                whileInView={{ width: '100%' }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: 'easeInOut', delay: 0.5 }}
-                className="my-8 border-gray-300"
-              />
-            )}
-          </div>
+          <ProjectCard key={index} {...project} />
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -24,8 +24,10 @@ const UOttaShopSite = () => {
       />
       <div className="relative">
         <ScrollProgressBar color="#1A4FAC" />
-        <TableOfContents />
         <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="flex gap-8">
+            <TableOfContents />
+            <div className="flex-1">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
             <div className="md:col-span-1">
               <h2 className="text-4xl text-[#1A4FAC] font-chewie">Problem Statement</h2>
@@ -427,20 +429,23 @@ const UOttaShopSite = () => {
               </a>
             </div>
           </div>
-        </div>
-        <div className="mb-12">
-          <img
-            src="/images/uottashop/Primary.svg"
-            alt="uOttaShop Primary Prototype"
-            className="w-full h-auto"
-          />
-        </div>
-        <div className="mb-12">
-          <img
-            src="/images/uottashop/Secondary.svg"
-            alt="uOttaShop Secondary Prototype"
-            className="w-full h-auto"
-          />
+          
+          <div className="mb-12">
+            <img
+              src="/images/uottashop/Primary.svg"
+              alt="uOttaShop Primary Prototype"
+              className="w-full h-auto"
+            />
+          </div>
+          <div className="mb-12">
+            <img
+              src="/images/uottashop/Secondary.svg"
+              alt="uOttaShop Secondary Prototype"
+              className="w-full h-auto"
+            />
+          </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

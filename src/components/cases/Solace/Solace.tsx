@@ -5,7 +5,6 @@ import Flowchart from '../../../assets/Flowchart';
 import Sketches from './Sketches';
 import Wireframe from './Wireframe';
 import TableOfContents from '../../TableOfContents';
-import ScrollFadeIn from '../../ScrollFadeIn';
 import ScrollProgressBar from '../../ScrollProgressBar';
 
 interface ImageModalProps {
@@ -74,19 +73,21 @@ const SolaceStudy = () => {
   return (
     <div className="relative">
       <ScrollProgressBar color="#EA6C3A" />
-      <TableOfContents />
       <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="flex gap-8">
+          <TableOfContents />
+          <div className="flex-1">
         <h1 className="text-4xl text-[#5F5F5F] mb-4 font-chewie">
           Enhancing Solace Documentation Navigation
         </h1>
         <p className="text-lg text-gray-600 mb-6 font-libre">
-          Project for the company's internal hackathon where our intern team won the overall prize.
+          Project for the company's internal hackathon where our intern team won people's choice.
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
           <div>
             <h3 className="text-m text-gray-500 mb-2 font-chewie">Internship:</h3>
-            <p className="font-libre">Jan 2024 - April 2024</p>
+            <p className="font-libre"> April 2024</p>
           </div>
           <div>
             <h3 className="text-m text-gray-500 mb-2 font-chewie">Role:</h3>
@@ -127,7 +128,7 @@ const SolaceStudy = () => {
         </div>
 
         {/* Project Overview Section */}
-        <ScrollFadeIn delay={100}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">Project Overview</h2>
@@ -164,10 +165,10 @@ const SolaceStudy = () => {
               </div>
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* Comparison Section */}
-        <ScrollFadeIn delay={200}>
+        
           <div className="bg-gray-50 rounded-3xl p-8 mb-32">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
@@ -197,10 +198,10 @@ const SolaceStudy = () => {
               </div>
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* Results Section */}
-        <ScrollFadeIn delay={300}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">Results</h2>
@@ -232,16 +233,16 @@ const SolaceStudy = () => {
               </div>
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* Research & Development Section */}
-        <ScrollFadeIn delay={400}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32 mt-32">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">Research & Development</h2>
             </div>
             <div className="md:col-span-3 space-y-8">
-              <ScrollFadeIn delay={500}>
+              
                 <div>
                   <h3 className="text-xl mb-4 font-libre">01 — Brainstorm</h3>
                   <p className="text-gray-700 font-libre">
@@ -251,8 +252,8 @@ const SolaceStudy = () => {
                     technical information more efficiently while maintaining the depth of content?
                   </p>
                 </div>
-              </ScrollFadeIn>
-              <ScrollFadeIn delay={600}>
+              
+              
                 <div>
                   <h3 className="text-xl mb-4 font-libre">02 — Research</h3>
                   <p className="text-gray-700 font-libre">
@@ -262,9 +263,9 @@ const SolaceStudy = () => {
                     implementation in technical documentation and its impact on user engagement.
                   </p>
                 </div>
-              </ScrollFadeIn>
+              
 
-              <ScrollFadeIn delay={700}>
+              
                 <div className="mt-12">
                   <h3 className="text-2xl mb-8 font-libre">Areas of Research</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -300,12 +301,12 @@ const SolaceStudy = () => {
                     </div>
                   </div>
                 </div>
-              </ScrollFadeIn>
+              
             </div>
           </div>
-        </ScrollFadeIn>
+        
         {/* Findings Section */}
-        <ScrollFadeIn delay={800}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">Findings</h2>
@@ -331,10 +332,10 @@ const SolaceStudy = () => {
               </div>
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* Bringing Ideas to Life Section */}
-        <ScrollFadeIn delay={900}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">Bringing our Ideas to Life</h2>
@@ -362,16 +363,16 @@ const SolaceStudy = () => {
               </div>
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* Design & Features Section */}
-        <ScrollFadeIn delay={1000}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">Design & Features</h2>
             </div>
             <div className="md:col-span-3 space-y-8">
-              <ScrollFadeIn delay={1100}>
+              
                 <div>
                   <h3 className="text-xl mb-4 font-libre">03 — Design Process</h3>
                   <p className="text-gray-700 mb-6 font-libre">
@@ -388,17 +389,17 @@ const SolaceStudy = () => {
                     <li>Real-time documentation update</li>
                   </ul>
                 </div>
-              </ScrollFadeIn>
+              
             </div>
           </div>
-        </ScrollFadeIn>
-        <ScrollFadeIn delay={1200}>
+        
+        
           <Sketches />
-        </ScrollFadeIn>
-        <ScrollFadeIn delay={1300}>
+        
+        
           <Wireframe />
-        </ScrollFadeIn>
-        <ScrollFadeIn delay={1350}>
+        
+        
           <div className="mb-24">
             <div className="relative w-full bg-gray-100 rounded-xl p-4 sm:p-8">
               {/* 16:9 aspect ratio container */}
@@ -413,8 +414,8 @@ const SolaceStudy = () => {
             </div>
             <p className="text-sm text-gray-500 italic">Prototype</p>
           </div>
-        </ScrollFadeIn>
-        <ScrollFadeIn delay={1400}>
+        
+        
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-32">
             <div className="lg:col-span-1">
               <h2 className="text-2xl sm:text-3xl text-[#EA6C3A] font-chewie">Next Steps</h2>
@@ -431,8 +432,8 @@ const SolaceStudy = () => {
               </p>
             </div>
           </div>
-        </ScrollFadeIn>
-        <ScrollFadeIn delay={1500}>
+        
+        
           <div>
             <img
               src="/images/Solace/SolaceStyling.svg"
@@ -440,9 +441,10 @@ const SolaceStudy = () => {
               className="w-full rounded-3xl"
             />
           </div>
-        </ScrollFadeIn>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
   );
 };
 

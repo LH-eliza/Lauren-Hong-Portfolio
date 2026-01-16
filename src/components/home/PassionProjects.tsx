@@ -45,69 +45,72 @@ const passionProjects: PassionProject[] = [
 
 const PassionProjects: React.FC = () => {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-4 sm:py-6 md:py-4">
+    <section className="max-w-7xl mx-auto px-4 py-4 sm:py-6 md:py-4">
       <hr className="my-8 border-gray-300" />
       <h2 className="text-gray-800 mb-4 text-lg sm:text-xl md:text-2xl font-chewie">
         Leadership Projects & Community Involvement
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10 mb-4 sm:mb-6 md:mb-8">
         {passionProjects.map((project, index) => (
-          <div key={index} className="relative rounded-lg overflow-hidden group bg-gray-100">
-            <div className="aspect-video">
+          <div key={index} className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer">
+            {/* Main Content Area - Sharp Rectangle */}
+            <div className="relative w-full aspect-[16/9] overflow-hidden bg-gray-100">
               <img
                 src={project.imageUrl}
                 alt={project.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 will-change-transform"
+                loading="lazy"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <h3 className="text-white text-sm sm:text-base font-medium mb-1">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-200 text-xs sm:text-sm line-clamp-2">
-                      {project.description}
-                    </p>
-                  </div>
-                  <div className="flex ml-3 gap-2">
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white hover:text-gray-300 transition-colors"
-                        aria-label="GitHub"
-                      >
-                        <Github size={16} className="sm:w-5 sm:h-5" />
-                      </a>
-                    )}
-                    {project.instagramUrl && (
-                      <a
-                        href={project.instagramUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white hover:text-gray-300 transition-colors"
-                        aria-label="Instagram"
-                      >
-                        <Instagram size={16} className="sm:w-5 sm:h-5" />
-                      </a>
-                    )}
-                    {project.behanceUrl && (
-                      <a
-                        href={project.behanceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white hover:text-gray-300 transition-colors"
-                        aria-label="Behance"
-                      >
-                        <ExternalLink size={16} className="sm:w-5 sm:h-5" />
-                      </a>
-                    )}
-                  </div>
-                </div>
+
+            {/* Caption Underneath */}
+            <div className="px-5 py-4 bg-white flex justify-between items-center gap-4 border-t border-gray-200">
+              <div className="flex-1">
+                <h3 className="text-sm text-gray-900 font-chewie font-medium mb-1">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-gray-600 font-libre">
+                  {project.description}
+                </p>
+              </div>
+              <div className="flex gap-2">
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-500 hover:text-gray-700 transition-colors"
+                    aria-label="GitHub"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Github size={18} />
+                  </a>
+                )}
+                {project.instagramUrl && (
+                  <a
+                    href={project.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-500 hover:text-gray-700 transition-colors"
+                    aria-label="Instagram"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Instagram size={18} />
+                  </a>
+                )}
+                {project.behanceUrl && (
+                  <a
+                    href={project.behanceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-500 hover:text-gray-700 transition-colors"
+                    aria-label="Behance"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <ExternalLink size={18} />
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -117,7 +120,7 @@ const PassionProjects: React.FC = () => {
         href="https://www.behance.net/laurenhong1"
         target="_blank"
         rel="noopener noreferrer"
-        className="block w-full sm:inline-block sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-gray-200 rounded-full text-sm sm:text-base text-gray-900 hover:bg-gray-300 transition-colors text-center"
+        className="block w-full sm:inline-block sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-gray-200 text-sm sm:text-base text-gray-900 hover:bg-gray-300 transition-colors text-center"
       >
         View my other projects
       </a>

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Github, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { X } from 'lucide-react';
 import TableOfContents from '../../TableOfContents';
-import ScrollFadeIn from '../../ScrollFadeIn';
 import ScrollProgressBar from '../../ScrollProgressBar';
 
 interface ImageModalProps {
@@ -56,201 +55,18 @@ const MagnifiableImage: React.FC<MagnifiableImageProps> = ({ src, alt, className
   );
 };
 
-import mermaid from 'mermaid';
-
-const ExoArmFlowchart: React.FC = () => {
-  useEffect(() => {
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'neutral',
-      securityLevel: 'loose',
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true,
-        curve: 'basis',
-      },
-    });
-
-    mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-  }, []);
-
-  return (
-    <div className="max-w-4xl mx-auto mb-16">
-      <h3 className="text-xl sm:text-2xl mb-4 font-libre">User Flow Visualization</h3>
-      <div className="bg-white p-4 rounded-xl shadow-lg overflow-auto">
-        <div className="mermaid">
-          {`
-          flowchart TD
-            A[User Opens App] --> B{First Time User?}
-            B -->|Yes| C[Onboarding Flow]
-            B -->|No| D[Login]
-            
-            C --> C1[Age Selection]
-            C1 --> C2[Name & Email]
-            C2 --> C3[Health Metrics Input]
-            C3 --> C4[Medical Information]
-            C4 --> C5[Emergency Contact]
-            C5 --> C6[Password Creation]
-            C6 --> D
-            
-            D --> E[Dashboard]
-            
-            E --> F[View Heart Rate]
-            E --> G[View Blood Pressure]
-            E --> H[View Temperature]
-            E --> I[View Oxygen Levels]
-            
-            F & G & H & I --> J[Record New Measurement]
-            J --> K[Connect to ExoArm]
-            K --> L[Measurement Complete]
-            L --> M[View Analysis]
-            M --> E
-            
-            classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px
-            classDef decision fill:#fef2f2,stroke:#b91c1c,stroke-width:1px
-            classDef mainflow fill:#f8fafc,stroke:#475569,stroke-width:1px
-            classDef metrics fill:#f0fdf4,stroke:#15803d,stroke-width:1px
-            
-            class B decision
-            class A,C,C1,C2,C3,C4,C5,C6,D,E,J,K,L,M mainflow
-            class F,G,H,I metrics
-          `}
-        </div>
-      </div>
-      <p className="text-sm sm:text-base text-gray-600 mt-4 font-libre">
-        The user flow diagram maps the complete journey from first-time setup through regular health
-        monitoring and vital sign recording.
-      </p>
-    </div>
-  );
-};
-
-const ExoArmUserPersonas: React.FC = () => {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-      <div className="bg-white p-6 rounded-xl shadow-md">
-        <h3 className="text-xl font-medium mb-4 font-libre">Sarah Chen, 45</h3>
-        <h4 className="text-lg mb-2 text-gray-700 font-libre">Health-Conscious Professional</h4>
-        <p className="text-gray-600 mb-4 font-libre">
-          Marketing Executive balancing career demands with health awareness
-        </p>
-        <div className="mb-4">
-          <h5 className="font-medium text-gray-800 font-libre">Goals:</h5>
-          <ul className="list-disc pl-5 text-gray-600 font-libre">
-            <li>Monitor stress through vital signs</li>
-            <li>Track blood pressure</li>
-            <li>Maintain work-life balance</li>
-          </ul>
-        </div>
-        <div>
-          <h5 className="font-medium text-gray-800 font-libre">Pain Points:</h5>
-          <ul className="list-disc pl-5 text-gray-600 font-libre">
-            <li>Inconsistent smartwatch readings</li>
-            <li>Needs reliable data for doctor</li>
-            <li>Requires unobtrusive solution</li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="bg-white p-6 rounded-xl shadow-md">
-        <h3 className="text-xl font-medium mb-4 font-libre">Robert Martinez, 58</h3>
-        <h4 className="text-lg mb-2 text-gray-700 font-libre">Managing Chronic Condition</h4>
-        <p className="text-gray-600 mb-4 font-libre">
-          Semi-retired Teacher needing consistent health monitoring
-        </p>
-        <div className="mb-4">
-          <h5 className="font-medium text-gray-800 font-libre">Goals:</h5>
-          <ul className="list-disc pl-5 text-gray-600 font-libre">
-            <li>Regular BP and oxygen monitoring</li>
-            <li>Easy data sharing with doctors</li>
-            <li>Prevention of complications</li>
-          </ul>
-        </div>
-        <div>
-          <h5 className="font-medium text-gray-800 font-libre">Pain Points:</h5>
-          <ul className="list-disc pl-5 text-gray-600 font-libre">
-            <li>Multiple devices needed</li>
-            <li>Difficulty maintaining schedule</li>
-            <li>Needs simple interface</li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="bg-white p-6 rounded-xl shadow-md">
-        <h3 className="text-xl font-medium mb-4 font-libre">Emily Wright, 32</h3>
-        <h4 className="text-lg mb-2 text-gray-700 font-libre">Fitness Enthusiast</h4>
-        <p className="text-gray-600 mb-4 font-libre">
-          Personal Trainer requiring precise metric tracking
-        </p>
-        <div className="mb-4">
-          <h5 className="font-medium text-gray-800 font-libre">Goals:</h5>
-          <ul className="list-disc pl-5 text-gray-600 font-libre">
-            <li>Precise workout vital tracking</li>
-            <li>Real-time client monitoring</li>
-            <li>Professional-grade accuracy</li>
-          </ul>
-        </div>
-        <div>
-          <h5 className="font-medium text-gray-800 font-libre">Pain Points:</h5>
-          <ul className="list-disc pl-5 text-gray-600 font-libre">
-            <li>Consumer devices lack precision</li>
-            <li>Needs comprehensive data</li>
-            <li>Requires portable solution</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const UIScreenshots: React.FC = () => {
-  return (
-    <div className="grid grid-cols-2 gap-4 mb-16">
-      <div>
-        <img
-          src="/images/Bionics/Login.svg"
-          alt="ExoArm onboarding screens"
-          className="w-full h-auto rounded-lg shadow-md"
-        />
-        <p className="text-sm text-gray-500 mt-2">User onboarding flow</p>
-      </div>
-      <div>
-        <img
-          src="/images/Bionics/Dashboard.svg"
-          alt="ExoArm dashboard screens"
-          className="w-full h-auto rounded-lg shadow-md"
-        />
-        <p className="text-sm text-gray-500 mt-2">Main dashboard and vital monitoring</p>
-      </div>
-    </div>
-  );
-};
-
-const ExoArmCaseStudy: React.FC = () => {
-  useEffect(() => {
-    // Initialize mermaid for flowcharts
-    // This assumes mermaid is imported elsewhere
-    if (typeof window !== 'undefined' && 'mermaid' in window) {
-      // @ts-ignore
-      window.mermaid.initialize({
-        startOnLoad: true,
-        theme: 'neutral',
-        flowchart: {
-          curve: 'basis',
-          padding: 20,
-        },
-      });
-    }
-  }, []);
+const SmartKneeSleeveCaseStudy: React.FC = () => {
 
   return (
     <div className="relative">
       <ScrollProgressBar color="#EA6C3A" />
-      <TableOfContents />
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <h1 className="text-4xl text-[#5F5F5F] mb-4 font-chewie">
-          Enhancing Health Monitoring Through Accessible Technology
-        </h1>
+        <div className="flex gap-8">
+          <TableOfContents />
+          <div className="flex-1">
+            <h1 className="text-4xl text-[#5F5F5F] mb-4 font-chewie">
+              Enhancing Health Monitoring Through Accessible Technology
+            </h1>
         <p className="text-lg text-gray-600 mb-6 font-libre">
           Case study for an innovative mobile application connecting users with an external exoarm
           device for accurate health monitoring.
@@ -282,7 +98,6 @@ const ExoArmCaseStudy: React.FC = () => {
           className="bg-[#EA6C3A] text-white px-6 py-3 rounded-lg hover:bg-[#d55c2d] transition-colors mb-16 font-chewie inline-flex items-center gap-2"
         >
           View Repo
-          <Github className="w-5 h-5" />
         </a>
 
         <div className="mb-16">
@@ -300,7 +115,7 @@ const ExoArmCaseStudy: React.FC = () => {
         </div>
 
         {/* Problem Statement */}
-        <ScrollFadeIn>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">Problem Statement</h2>
@@ -316,10 +131,10 @@ const ExoArmCaseStudy: React.FC = () => {
               </p>
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* Project Overview Section */}
-        <ScrollFadeIn delay={100}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">Project Overview</h2>
@@ -351,10 +166,10 @@ const ExoArmCaseStudy: React.FC = () => {
               </div>
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* Comparison Section */}
-        <ScrollFadeIn delay={200}>
+        
           <div className="bg-gray-50 rounded-3xl p-8 mb-32">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
@@ -386,10 +201,10 @@ const ExoArmCaseStudy: React.FC = () => {
               </div>
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* User Personas Section */}
-        <ScrollFadeIn delay={300}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">User Personas</h2>
@@ -401,19 +216,18 @@ const ExoArmCaseStudy: React.FC = () => {
                 the project.
               </p>
 
-              <ExoArmUserPersonas />
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* Research & Development Section */}
-        <ScrollFadeIn delay={400}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">Research & Development</h2>
             </div>
             <div className="md:col-span-3 space-y-8">
-              <ScrollFadeIn delay={500}>
+              
                 <div>
                   <h3 className="text-xl mb-4 font-libre">01 — Problem Discovery</h3>
                   <p className="text-gray-700 font-libre">
@@ -423,8 +237,8 @@ const ExoArmCaseStudy: React.FC = () => {
                     ease of use and accuracy in their health tracking devices.
                   </p>
                 </div>
-              </ScrollFadeIn>
-              <ScrollFadeIn delay={600}>
+              
+              
                 <div>
                   <h3 className="text-xl mb-4 font-libre">02 — User Research</h3>
                   <p className="text-gray-700 font-libre">
@@ -434,9 +248,9 @@ const ExoArmCaseStudy: React.FC = () => {
                     enthusiasts needing precise performance metrics.
                   </p>
                 </div>
-              </ScrollFadeIn>
+              
 
-              <ScrollFadeIn delay={700}>
+              
                 <div className="mt-12">
                   <h3 className="text-2xl mb-8 font-libre">Research Focus Areas</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -472,13 +286,13 @@ const ExoArmCaseStudy: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </ScrollFadeIn>
+              
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* Findings Section */}
-        <ScrollFadeIn delay={800}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">Key Findings</h2>
@@ -510,10 +324,10 @@ const ExoArmCaseStudy: React.FC = () => {
               </div>
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* User Flow Section */}
-        <ScrollFadeIn delay={900}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">User Flow Design</h2>
@@ -530,7 +344,6 @@ const ExoArmCaseStudy: React.FC = () => {
                   on our research findings.
                 </p>
 
-                <ExoArmFlowchart />
 
                 <p className="text-gray-700 font-libre">
                   The user flow diagram illustrates how users interact with our ExoArm application -
@@ -541,16 +354,16 @@ const ExoArmCaseStudy: React.FC = () => {
               </div>
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* UI Design Section */}
-        <ScrollFadeIn delay={1000}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">UI Design</h2>
             </div>
             <div className="md:col-span-3 space-y-8">
-              <ScrollFadeIn delay={1100}>
+              
                 <div>
                   <h3 className="text-xl mb-4 font-libre">03 — Interface Design</h3>
                   <p className="text-gray-700 mb-6 font-libre">
@@ -567,11 +380,10 @@ const ExoArmCaseStudy: React.FC = () => {
                     <li>Emergency contact information readily accessible</li>
                   </ul>
                 </div>
-              </ScrollFadeIn>
+              
 
-              <ScrollFadeIn delay={1200}>
-                <UIScreenshots />
-              </ScrollFadeIn>
+              
+              
 
               <div>
                 <h3 className="text-xl mb-4 font-libre">Persona-Specific UI Features:</h3>
@@ -611,10 +423,10 @@ const ExoArmCaseStudy: React.FC = () => {
               </div>
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* Results Section */}
-        <ScrollFadeIn delay={1300}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">Results</h2>
@@ -645,10 +457,10 @@ const ExoArmCaseStudy: React.FC = () => {
               </div>
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* Problem Resolution Section */}
-        <ScrollFadeIn delay={1400}>
+        
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16 mt-32">
             <div className="md:col-span-1">
               <h2 className="text-3xl text-[#EA6C3A] font-chewie">Problem Resolution</h2>
@@ -683,10 +495,10 @@ const ExoArmCaseStudy: React.FC = () => {
               </div>
             </div>
           </div>
-        </ScrollFadeIn>
+        
 
         {/* Next Steps Section */}
-        <ScrollFadeIn delay={1500}>
+        
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-32">
             <div className="lg:col-span-1">
               <h2 className="text-2xl sm:text-3xl text-[#EA6C3A] font-chewie">Next Steps</h2>
@@ -703,9 +515,7 @@ const ExoArmCaseStudy: React.FC = () => {
               </p>
             </div>
           </div>
-        </ScrollFadeIn>
-
-        <ScrollFadeIn delay={1600}>
+          
           <div>
             <img
               src="/images/Bionics/uobionics.svg"
@@ -713,10 +523,11 @@ const ExoArmCaseStudy: React.FC = () => {
               className="w-full rounded-3xl"
             />
           </div>
-        </ScrollFadeIn>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default ExoArmCaseStudy;
+export default SmartKneeSleeveCaseStudy;

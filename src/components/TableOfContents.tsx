@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 interface Heading {
   id: string;
@@ -15,14 +14,6 @@ interface TableOfContentsProps {
 const TableOfContents: React.FC<TableOfContentsProps> = ({ className = '' }) => {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>('');
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(() => {
-    // Load collapsed state from localStorage, default to false (expanded)
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('toc-collapsed');
-      return saved === 'true';
-    }
-    return false;
-  });
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -69,20 +60,23 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ className = '' }) => 
         observerRef.current.disconnect();
       }
 
-      observerRef.current = new IntersectionObserver(entries => {
+      observerRef.current = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
         // Find the entry with the highest intersection ratio that's intersecting
         let maxRatio = 0;
         let activeEntry: IntersectionObserverEntry | null = null;
 
-        entries.forEach(entry => {
+        for (const entry of entries) {
           if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
             maxRatio = entry.intersectionRatio;
             activeEntry = entry;
           }
-        });
+        }
 
         if (activeEntry) {
-          setActiveId(activeEntry.target.id);
+          const target = activeEntry.target as HTMLElement;
+          if (target && target.id) {
+            setActiveId(target.id);
+          }
         }
       }, observerOptions);
 
@@ -160,17 +154,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ className = '' }) => 
         top: offsetPosition,
         behavior: 'smooth',
       });
-
-      // Auto-collapse after clicking a heading
-      setIsCollapsed(true);
-      localStorage.setItem('toc-collapsed', 'true');
     }
-  };
-
-  const toggleCollapse = () => {
-    const newState = !isCollapsed;
-    setIsCollapsed(newState);
-    localStorage.setItem('toc-collapsed', String(newState));
   };
 
   if (headings.length === 0) {
@@ -178,51 +162,27 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ className = '' }) => 
   }
 
   return (
-    <div
-      className={`fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden lg:block ${className}`}
-      style={{ maxWidth: isCollapsed ? 'auto' : '280px' }}
-    >
-      <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
-        {isCollapsed ? (
-          <button
-            onClick={toggleCollapse}
-            className="p-3 hover:bg-gray-50 transition-colors flex items-center justify-center"
-            aria-label="Expand table of contents"
-          >
-            <ChevronRight className="w-5 h-5 text-gray-600" />
-          </button>
-        ) : (
-          <div className="p-4 max-h-[70vh] overflow-y-auto">
-            <div className="flex items-center justify-between mb-3">
-              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-2">
-                Contents
-              </div>
-              <button
-                onClick={toggleCollapse}
-                className="p-1 hover:bg-gray-100 rounded transition-colors"
-                aria-label="Collapse table of contents"
-              >
-                <ChevronLeft className="w-4 h-4 text-gray-600" />
-              </button>
-            </div>
-            <nav className="space-y-1">
-              {headings.map(heading => (
-                <button
-                  key={heading.id}
-                  onClick={() => scrollToHeading(heading.id)}
-                  className={`block w-full text-left px-2 py-1.5 rounded text-sm transition-colors truncate font-medium ${
-                    activeId === heading.id
-                      ? 'bg-[#EA6C3A]/10 text-[#EA6C3A]'
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                  }`}
-                  title={heading.text}
-                >
-                  {heading.text}
-                </button>
-              ))}
-            </nav>
-          </div>
-        )}
+    <div className={`w-64 flex-shrink-0 hidden lg:block ${className}`}>
+      <div className="sticky top-24 bg-white border-r border-gray-200 pr-6">
+        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-4">
+          Contents
+        </div>
+        <nav className="space-y-1">
+          {headings.map(heading => (
+            <button
+              key={heading.id}
+              onClick={() => scrollToHeading(heading.id)}
+              className={`block w-full text-left px-2 py-1.5 rounded text-sm transition-colors truncate font-medium ${
+                activeId === heading.id
+                  ? 'bg-[#EA6C3A]/10 text-[#EA6C3A]'
+                  : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+              }`}
+              title={heading.text}
+            >
+              {heading.text}
+            </button>
+          ))}
+        </nav>
       </div>
     </div>
   );
