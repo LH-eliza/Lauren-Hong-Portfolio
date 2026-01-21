@@ -14,9 +14,16 @@ import '@fontsource/libre-franklin/700.css';
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
+  ogUrl?: string;
 }
 
-const { title, description = "Lauren's Portfolio - Developer & Designer" } = Astro.props;
+const { 
+  title, 
+  description = "Lauren's Portfolio - Developer & Designer",
+  ogImage = "https://www.laurenhong.me/Logo.svg",
+  ogUrl = "https://www.laurenhong.me"
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -26,7 +33,31 @@ const { title, description = "Lauren's Portfolio - Developer & Designer" } = Ast
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href="/Logo.svg" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={ogUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Lauren Hong Portfolio" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={ogUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#E67E5E" />
   </head>
   <body class="bg-gray-50">
     <Header client:load />
