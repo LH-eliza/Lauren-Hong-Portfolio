@@ -29,12 +29,8 @@ const ProjectCard = ({ title, description, tag, imageUrl, link }: Project) => {
       {/* Caption Underneath */}
       <div className="px-5 py-4 bg-white flex justify-between items-center gap-4 border-t border-gray-200">
         <div className="flex-1">
-          <h3 className="text-sm text-gray-900 font-chewie font-medium mb-1">
-            {title}
-          </h3>
-          <p className="text-sm text-gray-600 font-libre">
-            {description}
-          </p>
+          <h3 className="text-sm text-gray-900 font-chewie font-medium mb-1">{title}</h3>
+          <p className="text-sm text-gray-600 font-libre">{description}</p>
         </div>
         <p className="text-xs text-gray-500 font-libre uppercase tracking-wide whitespace-nowrap">
           {tag}

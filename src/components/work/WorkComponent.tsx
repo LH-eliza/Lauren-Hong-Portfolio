@@ -38,12 +38,8 @@ const ProjectCard = ({ title, description, tag, imageUrl, link }: Project) => {
       {/* Caption Underneath */}
       <div className="px-5 py-4 bg-white flex justify-between items-center gap-4 border-t border-gray-200">
         <div className="flex-1">
-          <h3 className="text-sm text-gray-900 font-chewie font-medium mb-1">
-            {title}
-          </h3>
-          <p className="text-sm text-gray-600 font-libre">
-            {description}
-          </p>
+          <h3 className="text-sm text-gray-900 font-chewie font-medium mb-1">{title}</h3>
+          <p className="text-sm text-gray-600 font-libre">{description}</p>
         </div>
         <p className="text-xs text-gray-500 font-libre uppercase tracking-wide whitespace-nowrap">
           {tag}
@@ -53,15 +49,21 @@ const ProjectCard = ({ title, description, tag, imageUrl, link }: Project) => {
   );
 };
 
-const SchoolProjectCard = ({ title, docLink, gradientClass, lottieUrl, imageUrl }: SchoolProject) => {
+const SchoolProjectCard = ({
+  title,
+  docLink,
+  gradientClass,
+  lottieUrl,
+  imageUrl,
+}: SchoolProject) => {
   const [lottieData, setLottieData] = React.useState<any>(null);
 
   React.useEffect(() => {
     if (lottieUrl) {
       fetch(lottieUrl)
-        .then((res) => res.json())
-        .then((data) => setLottieData(data))
-        .catch((err) => console.error('Error loading Lottie animation:', err));
+        .then(res => res.json())
+        .then(data => setLottieData(data))
+        .catch(err => console.error('Error loading Lottie animation:', err));
     }
   }, [lottieUrl]);
 
@@ -73,7 +75,9 @@ const SchoolProjectCard = ({ title, docLink, gradientClass, lottieUrl, imageUrl 
       className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer"
     >
       {/* Main Content Area - Image, Lottie Animation, or Animated Gradient */}
-      <div className={`relative w-full aspect-[16/9] overflow-hidden bg-gray-100 flex items-center justify-center ${!lottieUrl && !imageUrl && gradientClass ? `${gradientClass} animated-gradient` : ''}`}>
+      <div
+        className={`relative w-full aspect-[16/9] overflow-hidden bg-gray-100 flex items-center justify-center ${!lottieUrl && !imageUrl && gradientClass ? `${gradientClass} animated-gradient` : ''}`}
+      >
         {imageUrl ? (
           <img
             src={imageUrl}
@@ -97,9 +101,7 @@ const SchoolProjectCard = ({ title, docLink, gradientClass, lottieUrl, imageUrl 
 
       {/* Caption Underneath */}
       <div className="px-5 py-4 bg-white border-t border-gray-200">
-        <h3 className="text-sm text-gray-900 font-chewie font-medium">
-          {title}
-        </h3>
+        <h3 className="text-sm text-gray-900 font-chewie font-medium">{title}</h3>
       </div>
     </a>
   );

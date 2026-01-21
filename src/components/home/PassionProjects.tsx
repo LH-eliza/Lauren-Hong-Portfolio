@@ -53,7 +53,10 @@ const PassionProjects: React.FC = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10 mb-4 sm:mb-6 md:mb-8">
         {passionProjects.map((project, index) => (
-          <div key={index} className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer">
+          <div
+            key={index}
+            className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer"
+          >
             {/* Main Content Area - Sharp Rectangle */}
             <div className="relative w-full aspect-[16/9] overflow-hidden bg-gray-100">
               <img
@@ -70,9 +73,7 @@ const PassionProjects: React.FC = () => {
                 <h3 className="text-sm text-gray-900 font-chewie font-medium mb-1">
                   {project.title}
                 </h3>
-                <p className="text-sm text-gray-600 font-libre">
-                  {project.description}
-                </p>
+                <p className="text-sm text-gray-600 font-libre">{project.description}</p>
               </div>
               <div className="flex gap-2">
                 {project.githubUrl && (
@@ -82,7 +83,7 @@ const PassionProjects: React.FC = () => {
                     rel="noopener noreferrer"
                     className="text-gray-500 hover:text-gray-700 transition-colors"
                     aria-label="GitHub"
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={e => e.stopPropagation()}
                   >
                     <Github size={18} />
                   </a>
@@ -94,7 +95,7 @@ const PassionProjects: React.FC = () => {
                     rel="noopener noreferrer"
                     className="text-gray-500 hover:text-gray-700 transition-colors"
                     aria-label="Instagram"
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={e => e.stopPropagation()}
                   >
                     <Instagram size={18} />
                   </a>
@@ -106,7 +107,7 @@ const PassionProjects: React.FC = () => {
                     rel="noopener noreferrer"
                     className="text-gray-500 hover:text-gray-700 transition-colors"
                     aria-label="Behance"
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={e => e.stopPropagation()}
                   >
                     <ExternalLink size={18} />
                   </a>
