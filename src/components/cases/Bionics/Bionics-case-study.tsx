@@ -15,13 +15,20 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imageSrc, altT
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="relative max-w-6xl w-full">
+    <div 
+      className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div 
+        className="relative max-w-6xl w-full"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           onClick={onClose}
-          className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
+          className="absolute top-4 right-4 bg-black bg-opacity-70 hover:bg-opacity-90 text-white rounded-full p-2 transition-all z-10"
+          aria-label="Close image"
         >
-          <X className="w-8 h-8" />
+          <X className="w-6 h-6" />
         </button>
         <img src={imageSrc} alt={altText} className="w-full h-auto rounded-lg" />
       </div>
