@@ -124,7 +124,9 @@ const AppSite = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">User’s Characteristics</h2>
+                  <h2 className="text-2xl md:text-4xl text-[#1A4FAC] font-chewie break-words">
+                    User’s Characteristics
+                  </h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
@@ -372,7 +374,11 @@ const AppSite = () => {
                     </p>
                   </div>
                 </div>
-                <div className="text-4xl text-[#1A4FAC] font-chewie">Try it out yourself!</div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
+                <div className="md:col-span-1">
+                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Try it out yourself!</h2>
+                </div>
                 <div className="md:col-span-3 space-y-8">
                   <a
                     href="https://apply.uottahack.ca/"
