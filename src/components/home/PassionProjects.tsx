@@ -14,29 +14,29 @@ interface PassionProject {
 
 const passionProjects: PassionProject[] = [
   {
-    title: 'Sports Medicine Logo',
-    description: 'Illustrating a logo for the University of Ottawa Sports Medicine Club',
+    title: 'Sports Medicine Illustrations',
+    description: 'Illustrating assets for the University of Ottawa Sports Medicine Club',
     imageUrl: '/images/Personal/Sports.png',
     behanceUrl: 'https://www.behance.net/gallery/220510147/Sports-Logo-University-of-Ottawa',
     instagramUrl: 'https://www.instagram.com/uosportsmed/',
   },
   {
     title: 'uOttaHack 5',
-    description: 'Designing and marketing uOttaHack5 (450+ Students)',
+    description: 'Illustrating and marketing uOttaHack5 (450+ Students)',
     imageUrl: '/images/Personal/Thumb05.png',
     instagramUrl: 'https://www.instagram.com/uottahack/',
     behanceUrl: 'https://2023.uottahack.ca/',
   },
   {
     title: 'uOttaHack 6',
-    description: 'Designing and leading the branding for uOttaHack6 (650+ Students)',
+    description: 'Designing and leading the branding for uOttaHack 6 (650+ Students)',
     imageUrl: '/images/Personal/Thumb06.png',
     instagramUrl: 'https://www.instagram.com/uottahack/',
     behanceUrl: 'https://2024.uottahack.ca/',
   },
   {
     title: 'uOttaHack 7',
-    description: 'Designing and leading the branding for uOttaHack7 (850+ Students)',
+    description: 'Designing and leading the branding for uOttaHack 7 (850+ Students)',
     imageUrl: '/images/Personal/Thumbo7.png',
     instagramUrl: 'https://www.instagram.com/uottahack/',
     behanceUrl: 'https://2025.uottahack.ca/',
