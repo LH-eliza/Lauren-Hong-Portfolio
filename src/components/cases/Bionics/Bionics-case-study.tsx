@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
+import CaseStudy from '../../../assets/Header';
 import TableOfContents from '../../TableOfContents';
 import ScrollProgressBar from '../../ScrollProgressBar';
 
@@ -57,61 +58,30 @@ const MagnifiableImage: React.FC<MagnifiableImageProps> = ({ src, alt, className
 
 const SmartKneeSleeveCaseStudy: React.FC = () => {
   return (
-    <div className="relative">
-      <ScrollProgressBar color="#EA6C3A" />
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="flex gap-8">
-          <TableOfContents />
-          <div className="flex-1">
-            <h1 className="text-4xl text-[#5F5F5F] mb-4 font-chewie">
-              Enhancing Health Monitoring Through Accessible Technology
-            </h1>
-            <p className="text-lg text-gray-600 mb-6 font-libre">
-              Case study for an innovative mobile application connecting users with an external
-              exoarm device for accurate health monitoring.
-            </p>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-              <div>
-                <h3 className="text-m text-gray-500 mb-2 font-chewie">Duration:</h3>
-                <p className="font-libre">Jan 2025 - April 2025</p>
+    <div>
+      <CaseStudy
+        title="Making Life More Accessible Through Software-Hardware Interaction"
+        subtitle="Case study for an innovative mobile application connecting users with an external exoarm device for accurate health monitoring"
+        metadata={{
+          period: 'Jan 2025 - April 2025',
+          role: 'Lead Developer, UX Researcher',
+          team: '2 designers, 3 developers, 1 medical advisor',
+          tools: 'Figma, React Native, ExoArm API',
+        }}
+        githubLink="https://github.com/exoarm-health/mobile-app"
+        heroImage="/images/Bionics/bionics.svg"
+      />
+      <div className="relative">
+        <ScrollProgressBar color="#EA6C3A" />
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="flex gap-8">
+            <TableOfContents />
+            <div className="flex-1">
+              <div className="bg-gray-100 rounded-3xl p-8 mb-16">
+                <h2 className="text-2xl text-gray-800 font-libre">
+                  "How do we make medical-grade health monitoring accessible to everyone?"
+                </h2>
               </div>
-              <div>
-                <h3 className="text-m text-gray-500 mb-2 font-chewie">Role:</h3>
-                <p className="font-libre">Lead Product Designer, UX Researcher</p>
-              </div>
-              <div>
-                <h3 className="text-m text-gray-500 mb-2 font-chewie">Team:</h3>
-                <p className="font-libre">2 designers, 3 developers, 1 medical advisor</p>
-              </div>
-              <div>
-                <h3 className="text-m text-gray-500 mb-2 font-chewie">Tools:</h3>
-                <p className="font-libre">Figma, React Native, ExoArm API</p>
-              </div>
-            </div>
-
-            <a
-              href="https://github.com/exoarm-health/mobile-app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#EA6C3A] text-white px-6 py-3 rounded-lg hover:bg-[#d55c2d] transition-colors mb-16 font-chewie inline-flex items-center gap-2"
-            >
-              View Repo
-            </a>
-
-            <div className="mb-16">
-              <MagnifiableImage
-                src="/images/Bionics/bionics.svg"
-                alt="ExoArm Health Monitoring App"
-                className="w-full rounded-3xl"
-              />
-            </div>
-
-            <div className="bg-gray-100 rounded-3xl p-8 mb-16">
-              <h2 className="text-2xl text-gray-800 font-libre">
-                "How do we make medical-grade health monitoring accessible to everyone?"
-              </h2>
-            </div>
 
             {/* Problem Statement */}
 
@@ -241,6 +211,21 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
                   </p>
                 </div>
 
+                <div className="mt-8 mb-8">
+                  <h3 className="text-xl mb-4 font-libre">Competitive Analysis</h3>
+                  <p className="text-gray-700 mb-6 font-libre">
+                    We analyzed existing health monitoring solutions to understand the competitive
+                    landscape and identify opportunities for differentiation.
+                  </p>
+                  <div className="bg-white rounded-xl shadow-md p-4">
+                    <MagnifiableImage
+                      src="/images/Bionics/Competitve-Analysis.svg"
+                      alt="Competitive Analysis of Health Monitoring Solutions"
+                      className="w-full rounded-lg"
+                    />
+                  </div>
+                </div>
+
                 <div className="mt-12">
                   <h3 className="text-2xl mb-8 font-libre">Research Focus Areas</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -331,8 +316,18 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
                     on our research findings.
                   </p>
 
+                  <div className="mb-8">
+                    <div className="bg-white rounded-xl shadow-md p-4">
+                      <MagnifiableImage
+                        src="/images/Bionics/User-Journey.svg"
+                        alt="User Journey Map for ExoArm Health Monitoring Application"
+                        className="w-full rounded-lg"
+                      />
+                    </div>
+                  </div>
+
                   <p className="text-gray-700 font-libre">
-                    The user flow diagram illustrates how users interact with our ExoArm application
+                    The user journey diagram illustrates how users interact with our ExoArm application
                     - from their initial setup through daily health monitoring. It maps out key
                     interactions including onboarding, vital sign recording, and data analysis,
                     showing how the interface adapts to different user needs.
@@ -474,6 +469,49 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
               </div>
             </div>
 
+            {/* Low-Fidelity Wireframe Section */}
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
+              <div className="md:col-span-1">
+                <h2 className="text-3xl text-[#EA6C3A] font-chewie">Low-Fidelity Wireframe</h2>
+              </div>
+              <div className="md:col-span-3 space-y-6">
+                <p className="text-gray-700 font-libre">
+                  Created a digital basic layout wireframe based on the final informational architecture as a baseline.
+                </p>
+                <div className="bg-white rounded-xl shadow-md p-4">
+                  <MagnifiableImage
+                    src="/images/Bionics/Low-Fidelity Wireframe.svg"
+                    alt="Low-Fidelity Wireframe for ExoArm Health Monitoring Application"
+                    className="w-full rounded-lg"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Final Design Results Section */}
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
+              <div className="md:col-span-1">
+                <h2 className="text-3xl text-[#EA6C3A] font-chewie">Final Design Results</h2>
+              </div>
+              <div className="md:col-span-3 space-y-6">
+                <p className="text-gray-700 font-libre">
+                  The final ExoArm application design offers a sophisticated, medical-grade experience that bridges the gap between complex health data and user-friendly interaction. By moving to a persona-driven interface, we made the transition from hardware setup to daily monitoring easier to navigate and far less intimidating for users of all technical abilities.
+                </p>
+                <p className="text-gray-700 font-libre">
+                  The visuals feel clinical but welcoming, utilizing high-contrast typography and thoughtful color-coding to help users instantly interpret their vitals. The platform is fully responsive and optimized for React Native, ensuring that whether a user is syncing their exoarm device on a smartphone or reviewing trends on a tablet, the experience remains smooth, reliable, and intuitive.
+                </p>
+                <div className="bg-white rounded-xl shadow-md p-4">
+                  <MagnifiableImage
+                    src="/images/Bionics/Final Version.svg"
+                    alt="Final Design Version of ExoArm Health Monitoring Application"
+                    className="w-full rounded-lg"
+                  />
+                </div>
+              </div>
+            </div>
+
             {/* Next Steps Section */}
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-32">
@@ -492,16 +530,9 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
                 </p>
               </div>
             </div>
-
-            <div>
-              <img
-                src="/images/Bionics/uobionics.svg"
-                alt="ExoArm Design System"
-                className="w-full rounded-3xl"
-              />
-            </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

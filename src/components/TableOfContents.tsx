@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Heading {
   id: string;
@@ -14,6 +15,7 @@ interface TableOfContentsProps {
 const TableOfContents: React.FC<TableOfContentsProps> = ({ className = '' }) => {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>('');
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -162,27 +164,45 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ className = '' }) => 
   }
 
   return (
-    <div className={`w-64 flex-shrink-0 hidden lg:block ${className}`}>
+    <div className={`${isCollapsed ? 'w-12' : 'w-64'} flex-shrink-0 hidden lg:block transition-all duration-300 ${className}`}>
       <div className="sticky top-24 bg-white border-r border-gray-200 pr-6">
-        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-4">
-          Contents
+        <div className="flex items-center justify-between mb-4">
+          {!isCollapsed && (
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+              Contents
+            </div>
+          )}
+          <button
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="p-1 rounded hover:bg-gray-100 transition-colors flex-shrink-0"
+            aria-label={isCollapsed ? 'Expand contents' : 'Collapse contents'}
+            title={isCollapsed ? 'Expand contents' : 'Collapse contents'}
+          >
+            {isCollapsed ? (
+              <ChevronRight className="w-4 h-4 text-gray-600" />
+            ) : (
+              <ChevronLeft className="w-4 h-4 text-gray-600" />
+            )}
+          </button>
         </div>
-        <nav className="space-y-1">
-          {headings.map(heading => (
-            <button
-              key={heading.id}
-              onClick={() => scrollToHeading(heading.id)}
-              className={`block w-full text-left px-2 py-1.5 rounded text-sm transition-colors truncate font-medium ${
-                activeId === heading.id
-                  ? 'bg-[#EA6C3A]/10 text-[#EA6C3A]'
-                  : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-              }`}
-              title={heading.text}
-            >
-              {heading.text}
-            </button>
-          ))}
-        </nav>
+        {!isCollapsed && (
+          <nav className="space-y-1">
+            {headings.map(heading => (
+              <button
+                key={heading.id}
+                onClick={() => scrollToHeading(heading.id)}
+                className={`block w-full text-left px-2 py-1.5 rounded text-sm transition-colors truncate font-medium ${
+                  activeId === heading.id
+                    ? 'bg-[#EA6C3A]/10 text-[#EA6C3A]'
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                }`}
+                title={heading.text}
+              >
+                {heading.text}
+              </button>
+            ))}
+          </nav>
+        )}
       </div>
     </div>
   );

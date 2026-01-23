@@ -76,22 +76,37 @@ const UOttaShopSite = () => {
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
-                      45% of testing users said they would much rather use this website with the
-                      redesign.
+                    <p className="text-gray-700 font-libre mb-6">
+                      Our solution addressed key pain points identified in the research phase. Here's how the uOttaShop portal transformed the sponsorship experience:
                     </p>
                   </div>
-                  <div>
-                    <p className="text-gray-700 font-libre">
-                      70% of testing users said they would feel more comfortable receiving
-                      information through this website.
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-gray-700 font-libre">
-                      100% of testing users said they would utilize both legacy methods and the
-                      uOttaShop portal to receive resources from the organization.
-                    </p>
+                  <div className="overflow-x-auto">
+                    <table className="w-full border-collapse border border-gray-300 mb-6">
+                      <thead>
+                        <tr className="bg-gray-100">
+                          <th className="border border-gray-300 px-4 py-3 text-left font-chewie text-[#1A4FAC]">The Problem (Legacy Email)</th>
+                          <th className="border border-gray-300 px-4 py-3 text-left font-chewie text-[#1A4FAC]">The UX Solution (uOttaShop)</th>
+                          <th className="border border-gray-300 px-4 py-3 text-left font-chewie text-[#1A4FAC]">Result</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre">Hasty/Manual Scheduling</td>
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre">Automated Dashboard Scheduling</td>
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre font-semibold">45% prefer the new speed.</td>
+                        </tr>
+                        <tr className="bg-gray-50">
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre">Information Silos</td>
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre">Centralized Information Board</td>
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre font-semibold">70% feel more comfortable.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre">Tracking Issues</td>
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre">Portal + Legacy Integration</td>
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre font-semibold">100% utility across platforms.</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                   <div>
                     <p className="text-gray-700 font-libre">
@@ -159,6 +174,29 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
+                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">User Journey</h2>
+                </div>
+                <div className="md:col-span-3 space-y-8">
+                  <div>
+                    <p className="text-gray-700 font-libre">
+                      Based on our research findings, I mapped out the user journey to visualize how
+                      sponsors interact with the sponsorship process, from initial contact through
+                      event participation. This journey map helped identify pain points and
+                      opportunities for improvement throughout the sponsorship experience.
+                    </p>
+                  </div>
+                  <div className="bg-white rounded-xl shadow-md p-4">
+                    <img
+                      src="/images/uottashop/UserJourney_UOS.svg"
+                      alt="User Journey Map for uOttaShop Sponsorship Experience"
+                      className="w-full h-auto rounded-lg"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
+                <div className="md:col-span-1">
                   <h2 className="text-4xl text-[#1A4FAC] font-chewie">Goals</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
@@ -200,7 +238,7 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">
+                  <h2 className="text-2xl md:text-4xl text-[#1A4FAC] font-chewie break-words">
                     Ideation for Sponsorship Communication
                   </h2>
                 </div>
@@ -246,7 +284,7 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">
+                  <h2 className="text-2xl md:text-4xl text-[#1A4FAC] font-chewie break-words">
                     Ideation for Sponsorship Regulation
                   </h2>
                 </div>
@@ -346,6 +384,102 @@ const UOttaShopSite = () => {
                         information. It allows for a very independent view.
                       </li>
                     </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 4: Stakeholder Feedback & Iteration */}
+
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
+                <div className="md:col-span-1">
+                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Stakeholder Feedback & Iteration</h2>
+                </div>
+                <div className="md:col-span-3 space-y-8">
+                  <div>
+                    <h3 className="text-xl mb-4 font-libre font-semibold">Bridging the Gap Between Director Vision and Developer Feasibility</h3>
+                    <p className="text-gray-700 font-libre">
+                      As a co-director, I held weekly "sync-and-critique" sessions with the development team and other directors to ensure our three ideation options were realistic.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-xl mb-4 font-libre font-semibold">The Pivot on Option 3:</h3>
+                    <p className="text-gray-700 font-libre">
+                      While "Quick Response Time" felt traditional, we collectively decided to eliminate it. Our developers noted that it was the least scalable and most prone to "human error," requiring too many manual hours to regulate.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-xl mb-4 font-libre font-semibold">The Dashboard Refinement:</h3>
+                    <p className="text-gray-700 font-libre">
+                      Based on director feedback, we realized the dashboard needed to be more than just a data view; it needed to be autonomous. We added "Widgets" (Idea 1) specifically because our research showed sponsors wanted their coworkers to stay informed without needing to share login credentials.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 5: Usability Testing Process */}
+
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
+                <div className="md:col-span-1">
+                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Usability Testing Process</h2>
+                </div>
+                <div className="md:col-span-3 space-y-8">
+                  <div>
+                    <h3 className="text-xl mb-4 font-libre font-semibold">Validating the uOttaShop Experience</h3>
+                    <p className="text-gray-700 font-libre">
+                      We didn't just look at the results; we looked at the behavior. I conducted moderated usability tests with 42 representatives across Ontario to validate the "Professional Atmosphere" goal.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-xl mb-4 font-libre font-semibold">The Task:</h3>
+                    <p className="text-gray-700 font-libre italic mb-4">
+                      "Find your booth assignment and upload your company logo for the event program."
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-xl mb-4 font-libre font-semibold">The Finding:</h3>
+                    <p className="text-gray-700 font-libre">
+                      100% of users successfully used the uOttaShop portal alongside legacy methods, proving that the portal didn't replace the relationship—it enhanced the logistics.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-xl mb-4 font-libre font-semibold">The "Comfort" Metric:</h3>
+                    <p className="text-gray-700 font-libre">
+                      The 70% preference for the website over email was driven by the Information Board (Idea 2), which reduced the "unknown info" fear that sponsors reported in our early surveys.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 6: Handoff & Monitoring */}
+
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
+                <div className="md:col-span-1">
+                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Handoff & Monitoring</h2>
+                </div>
+                <div className="md:col-span-3 space-y-8">
+                  <div>
+                    <h3 className="text-xl mb-4 font-libre font-semibold">Ensuring a Seamless Build for the Hackathon Season</h3>
+                    <p className="text-gray-700 font-libre">
+                      A design is only as good as its implementation. Within one month, I finalized the interactive prototype for the uOttaShop Portal and led the handoff to the engineering team.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-xl mb-4 font-libre font-semibold">Documentation:</h3>
+                    <p className="text-gray-700 font-libre">
+                      Provided a full design system in Figma, including "Empty States" (what the dashboard looks like before a sponsor signs up) and "Success States."
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-xl mb-4 font-libre font-semibold">KPI Tracking:</h3>
+                    <p className="text-gray-700 font-libre">
+                      We are monitoring Time-to-Completion for sponsor requests. Our goal is to reduce the "Sponsorship Team" manual intervention by 50% during the peak hackathon month.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-xl mb-4 font-libre font-semibold">Iterative Loops:</h3>
+                    <p className="text-gray-700 font-libre">
+                      As we move into the next hackathon season, we will gather live feedback to refine the "Project Management Flow" (Idea 3) for more complex sponsor tiers.
+                    </p>
                   </div>
                 </div>
               </div>

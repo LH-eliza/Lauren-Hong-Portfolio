@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface Project {
   title: string;
@@ -10,11 +10,17 @@ interface Project {
   link: string;
 }
 
-const ProjectCard = ({ title, description, tag, imageUrl, link }: Project) => {
+interface ProjectCardProps extends Project {
+  onHoverChange: (hovered: boolean) => void;
+}
+
+const ProjectCard = ({ title, description, tag, imageUrl, link, onHoverChange }: ProjectCardProps) => {
   return (
     <a
       href={link}
-      className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer"
+      className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-none relative"
+      onMouseEnter={() => onHoverChange(true)}
+      onMouseLeave={() => onHoverChange(false)}
     >
       {/* Main Content Area - Sharp Rectangle */}
       <div className="relative w-full aspect-[16/9] overflow-hidden bg-gray-100">
@@ -42,13 +48,6 @@ const ProjectCard = ({ title, description, tag, imageUrl, link }: Project) => {
 
 const projects: Project[] = [
   {
-    title: 'Enhancing Solace Documentation Navigation',
-    description: 'Developer Documentation Navigation',
-    tag: 'SOLACE • CONCEPT 2024',
-    imageUrl: '/images/Solace/Solace-docs 1.png',
-    link: '/solace',
-  },
-  {
     title: 'Refreshing the Hackathon Application Experience',
     description: 'Hacker Application Portal',
     tag: 'UOTTAHACK • SHIPPED 2025',
@@ -69,17 +68,64 @@ const projects: Project[] = [
     imageUrl: '/images/Bionics/bionics.png',
     link: '/bionics',
   },
+  {
+    title: 'Enhancing Solace Documentation Navigation',
+    description: 'Developer Documentation Navigation',
+    tag: 'SOLACE • CONCEPT 2024',
+    imageUrl: '/images/Solace/Solace-docs 1.png',
+    link: '/solace',
+  },
 ];
 
 const ProjectsSection = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isAnyCardHovered, setIsAnyCardHovered] = useState(false);
+  const hoverCountRef = useRef(0);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const handleHoverChange = (hovered: boolean) => {
+    if (hovered) {
+      hoverCountRef.current += 1;
+    } else {
+      hoverCountRef.current = Math.max(0, hoverCountRef.current - 1);
+    }
+    setIsAnyCardHovered(hoverCountRef.current > 0);
+  };
+
   return (
-    <div className="max-w-7xl mx-auto px-4 pt-8 md:pt-16 pb-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} {...project} />
-        ))}
+    <>
+      <div className="max-w-7xl mx-auto px-4 pt-8 md:pt-16 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+          {projects.map((project, index) => (
+            <ProjectCard 
+              key={index} 
+              {...project}
+              onHoverChange={handleHoverChange}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+      {isAnyCardHovered && (
+        <div
+          className="fixed pointer-events-none z-50 bg-[#EA6C3A] text-white px-4 py-2 rounded-full text-sm font-libre whitespace-nowrap shadow-lg transition-opacity duration-200"
+          style={{
+            left: `${mousePosition.x}px`,
+            top: `${mousePosition.y}px`,
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          Read Case Study
+        </div>
+      )}
+    </>
   );
 };
 

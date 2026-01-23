@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Github, X } from 'lucide-react';
 import mermaid from 'mermaid';
+import CaseStudy from '../../../assets/Header';
 import Flowchart from '../../../assets/Flowchart';
 import Sketches from './Sketches';
 import Wireframe from './Wireframe';
@@ -71,62 +72,30 @@ const SolaceStudy = () => {
     });
   }, []);
   return (
-    <div className="relative">
-      <ScrollProgressBar color="#EA6C3A" />
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="flex gap-8">
-          <TableOfContents />
-          <div className="flex-1">
-            <h1 className="text-4xl text-[#5F5F5F] mb-4 font-chewie">
-              Enhancing Solace Documentation Navigation
-            </h1>
-            <p className="text-lg text-gray-600 mb-6 font-libre">
-              Project for the company's internal hackathon where our intern team won people's
-              choice.
-            </p>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-              <div>
-                <h3 className="text-m text-gray-500 mb-2 font-chewie">Internship:</h3>
-                <p className="font-libre"> April 2024</p>
+    <div>
+      <CaseStudy
+        title="Enhancing Solace Documentation Navigation"
+        subtitle="Project for the company's internal hackathon where our intern team won people's choice"
+        metadata={{
+          period: 'April 2024',
+          role: 'Software Developer, UI designer',
+          team: '4 developers, 2 UI designers/developers',
+          tools: 'Figma, React, Python, HTML, CSS',
+        }}
+        githubLink="https://github.com/Patrick-Bonini/SuperChargedChatBot"
+        heroImage="/images/Solace/SolaceDocs.svg"
+      />
+      <div className="relative">
+        <ScrollProgressBar color="#EA6C3A" />
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="flex gap-8">
+            <TableOfContents />
+            <div className="flex-1">
+              <div className="bg-gray-100 rounded-3xl p-8 mb-16">
+                <h2 className="text-2xl text-gray-800 font-libre">
+                  "How do we make understanding documentation and onboarding easier?"
+                </h2>
               </div>
-              <div>
-                <h3 className="text-m text-gray-500 mb-2 font-chewie">Role:</h3>
-                <p className="font-libre">Software Developer, UI designer</p>
-              </div>
-              <div>
-                <h3 className="text-m text-gray-500 mb-2 font-chewie">Team:</h3>
-                <p className="font-libre">4 developers, 2 UI designers/developers</p>
-              </div>
-              <div>
-                <h3 className="text-m text-gray-500 mb-2 font-chewie">Tools:</h3>
-                <p className="font-libre">Figma, React, Python, HTML, CSS</p>
-              </div>
-            </div>
-
-            <a
-              href="https://github.com/Patrick-Bonini/SuperChargedChatBot"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#EA6C3A] text-white px-6 py-3 rounded-lg hover:bg-[#d55c2d] transition-colors mb-16 font-chewie inline-flex items-center gap-2"
-            >
-              View Repo
-              <Github className="w-5 h-5" />
-            </a>
-
-            <div className="mb-16">
-              <MagnifiableImage
-                src="/images/Solace/SolaceDocs.svg"
-                alt="Solace Documentation Project"
-                className="w-full rounded-3xl"
-              />
-            </div>
-
-            <div className="bg-gray-100 rounded-3xl p-8 mb-16">
-              <h2 className="text-2xl text-gray-800 font-libre">
-                "How do we make understanding documentation and onboarding easier?"
-              </h2>
-            </div>
 
             {/* Project Overview Section */}
 
@@ -173,29 +142,25 @@ const SolaceStudy = () => {
             <div className="bg-gray-50 rounded-3xl p-8 mb-32">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <h2 className="text-2xl text-[#EA6C3A] mb-6 font-chewie">Redesign</h2>
-                  <div className="bg-white rounded-xl shadow-lg p-4">
-                    <div className="aspect-video">
-                      <MagnifiableImage
-                        src="/images/Solace/Redesign.svg"
-                        alt="Solace redesigned interface"
-                        className="w-full h-full object-cover rounded-lg"
-                      />
-                    </div>
+                  <div className="mb-4">
+                    <MagnifiableImage
+                      src="/images/Solace/New.png"
+                      alt="Solace redesigned interface"
+                      className="w-full h-auto"
+                    />
                   </div>
+                  <p className="text-center text-gray-700 font-libre">Solace Documentation with Chatbot</p>
                 </div>
 
                 <div>
-                  <h2 className="text-2xl text-emerald-500 mb-6 font-chewie">Legacy</h2>
-                  <div className="bg-white rounded-xl shadow-lg p-4">
-                    <div className="aspect-video">
-                      <MagnifiableImage
-                        src="/images/Solace/Legacy.svg"
-                        alt="Solace legacy interface"
-                        className="w-full h-full object-cover rounded-lg"
-                      />
-                    </div>
+                  <div className="mb-4">
+                    <MagnifiableImage
+                      src="/images/Solace/Legacy.png"
+                      alt="Solace legacy interface"
+                      className="w-full h-auto"
+                    />
                   </div>
+                  <p className="text-center text-gray-700 font-libre">Current Solace Documentation</p>
                 </div>
               </div>
             </div>
@@ -430,6 +395,7 @@ const SolaceStudy = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
