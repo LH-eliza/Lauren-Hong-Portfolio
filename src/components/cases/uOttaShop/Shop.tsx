@@ -631,13 +631,6 @@ const UOttaShopSite = () => {
                   className="w-full h-auto"
                 />
               </div>
-              <div className="mb-12">
-                <img
-                  src="/images/uottashop/Secondary.svg"
-                  alt="uOttaShop Secondary Prototype"
-                  className="w-full h-auto"
-                />
-              </div>
             </div>
           </div>
         </div>
