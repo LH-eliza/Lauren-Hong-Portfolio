@@ -104,7 +104,7 @@ const AboutMe: React.FC = () => {
                 <p className="text-sm text-gray-500 font-libre">Sept 2024 - Dec 2024</p>
               </div>
               <div className="sm:text-right sm:w-1/3">
-                <p className="text-gray-700 font-libre">Software Developer Intern</p>
+                <p className="text-gray-700 font-libre">DevOps Engineer Intern</p>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4 border-b border-gray-200">
@@ -113,7 +113,7 @@ const AboutMe: React.FC = () => {
                 <p className="text-sm text-gray-500 font-libre">Jan 2024 - April 2024</p>
               </div>
               <div className="sm:text-right sm:w-1/3">
-                <p className="text-gray-700 font-libre">Software Developer Intern</p>
+                <p className="text-gray-700 font-libre">Backend Developer Intern</p>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4 border-b border-gray-200">
