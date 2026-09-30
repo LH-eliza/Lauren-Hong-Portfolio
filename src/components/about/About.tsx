@@ -75,9 +75,18 @@ const AboutMe: React.FC = () => {
         {/* Experience Subsection */}
         <div className="mb-12">
           <h3 className="text-lg text-gray-500 mb-6 font-libre uppercase tracking-wide">
-            Experience
+            Technical Experience
           </h3>
           <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4 border-b border-gray-200">
+              <div className="flex-1">
+                <h4 className="text-gray-600 font-libre font-semibold mb-1">Solace</h4>
+                <p className="text-sm text-gray-500 font-libre">May 2026 - Aug 2026</p>
+              </div>
+              <div className="sm:text-right sm:w-1/3">
+                <p className="text-gray-700 font-libre">Junior UX Designer Intern</p>
+              </div>
+            </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-4 border-b border-gray-200">
               <div className="flex-1">
                 <h4 className="text-gray-600 font-libre font-semibold mb-1">
