@@ -4,31 +4,27 @@ import CaseStudy from '../../../assets/Header';
 import QuoteBlock from '../../../assets/Quote';
 import StepTitle from '../../../assets/StepTitle';
 import GifDisplay from '../../../assets/GifDisplay';
-import TableOfContents from '../../TableOfContents';
+import CaseStudyShell from '../../CaseStudyShell';
 import ScrollProgressBar from '../../ScrollProgressBar';
 
 const AppSite = () => {
   return (
-    <div>
-      <CaseStudy
-        title="Refreshing the Hackathon Application Experience"
-        subtitle="Creating a unique design experience for students to apply to Canada's 2nd largest hackathon"
-        metadata={{
-          period: 'Sept 2024 - Jan 2025',
-          role: 'Product Designer, Illustrator',
-          team: '1 Designer, 3 Developers',
-          tools: 'Figma, Adobe Illustrator, Angluar, MongoDB, Express, Node.js, Huroku',
-        }}
-        githubLink="https://github.com/uOttaHack/ApplyPage-uOttaHack-2025"
-        projectLink="https://apply.uottahack.ca/"
-        heroImage="/images/uottapp_tn.svg"
-      />
-      <div className="relative">
-        <ScrollProgressBar color="#1A4FAC" />
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="flex gap-8">
-            <TableOfContents />
-            <div className="flex-1">
+    <div className="relative w-full">
+      <ScrollProgressBar color="#1A4FAC" />
+      <CaseStudyShell accentColor="#1A4FAC" solutionId="solution">
+        <CaseStudy
+          title="Refreshing the Hackathon Application Experience"
+          subtitle="Creating a unique design experience for students to apply to Canada's 2nd largest hackathon"
+          metadata={{
+            period: 'Sept 2024 - Jan 2025',
+            role: 'Product Designer, Illustrator',
+            team: '1 Designer, 3 Developers',
+            tools: 'Figma, Adobe Illustrator, Angluar, MongoDB, Express, Node.js, Huroku',
+          }}
+          githubLink="https://github.com/uOttaHack/ApplyPage-uOttaHack-2025"
+          projectLink="https://apply.uottahack.ca/"
+          heroImage="/images/uottapp_tn.svg"
+        />
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
                   <h2 className="text-4xl text-[#1A4FAC] font-chewie">Context</h2>
@@ -51,7 +47,7 @@ const AppSite = () => {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
+              <div id="solution" className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32 scroll-mt-28">
                 <div className="md:col-span-1">
                   <h2 className="text-4xl text-[#1A4FAC] font-chewie">Result</h2>
                 </div>
@@ -401,10 +397,7 @@ const AppSite = () => {
                   className="w-full h-auto rounded-lg"
                 />
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </CaseStudyShell>
     </div>
   );
 };

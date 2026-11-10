@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import CaseStudy from '../../../assets/Header';
-import TableOfContents from '../../TableOfContents';
+import CaseStudyShell from '../../CaseStudyShell';
 import ScrollProgressBar from '../../ScrollProgressBar';
 
 interface ImageModalProps {
@@ -65,25 +65,21 @@ const MagnifiableImage: React.FC<MagnifiableImageProps> = ({ src, alt, className
 
 const SmartKneeSleeveCaseStudy: React.FC = () => {
   return (
-    <div>
-      <CaseStudy
-        title="Making Life More Accessible Through Software-Hardware Interaction"
-        subtitle="Case study for an innovative mobile application connecting users with an external exoarm device for accurate health monitoring"
-        metadata={{
-          period: 'Jan 2025 - April 2025',
-          role: 'Lead Developer, UX Researcher',
-          team: '2 designers, 3 developers, 1 medical advisor',
-          tools: 'Figma, React Native, ExoArm API',
-        }}
-        githubLink="https://github.com/exoarm-health/mobile-app"
-        heroImage="/images/Bionics/bionics.svg"
-      />
-      <div className="relative">
-        <ScrollProgressBar color="#EA6C3A" />
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="flex gap-8">
-            <TableOfContents />
-            <div className="flex-1">
+    <div className="relative w-full">
+      <ScrollProgressBar color="#EA6C3A" />
+      <CaseStudyShell accentColor="#EA6C3A" solutionId="solution">
+        <CaseStudy
+          title="Making Life More Accessible Through Software-Hardware Interaction"
+          subtitle="Case study for an innovative mobile application connecting users with an external exoarm device for accurate health monitoring"
+          metadata={{
+            period: 'Jan 2025 - April 2025',
+            role: 'Lead Developer, UX Researcher',
+            team: '2 designers, 3 developers, 1 medical advisor',
+            tools: 'Figma, React Native, ExoArm API',
+          }}
+          githubLink="https://github.com/exoarm-health/mobile-app"
+          heroImage="/images/Bionics/bionics.svg"
+        />
               <div className="bg-gray-100 rounded-3xl p-8 mb-16">
                 <h2 className="text-2xl text-gray-800 font-libre">
                   "How do we make medical-grade health monitoring accessible to everyone?"
@@ -408,7 +404,7 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
 
             {/* Results Section */}
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div id="solution" className="grid grid-cols-1 md:grid-cols-4 gap-8 scroll-mt-28">
               <div className="md:col-span-1">
                 <h2 className="text-3xl text-[#EA6C3A] font-chewie">Results</h2>
               </div>
@@ -537,10 +533,7 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      </div>
+      </CaseStudyShell>
     </div>
   );
 };

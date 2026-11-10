@@ -3,7 +3,33 @@
 @tailwind utilities;
 
 @layer base {
-  @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  :root {
+    --accent: #de4343;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-black antialiased;
+    font-family: 'Be Vietnam Pro', Helvetica, Arial, sans-serif;
+  }
+
+  @media (pointer: fine) {
+    body,
+    a,
+    button,
+    [role='button'] {
+      cursor: none;
+    }
+  }
+
+  ::selection {
+    background-color: #de4343;
+    color: white;
+  }
+
   @font-face {
     font-family: 'ChewieDEMO';
     src: url('/fonts/ChewieDEMO-Regular.otf') format('opentype');
@@ -64,28 +90,21 @@
     font-family: 'BruskestDEMO';
     src: url('/fonts/BruskestDEMO.otf') format('opentype');
   }
+}
 
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+@layer utilities {
+  .page-ease-in {
+    animation: page-ease-in 0.9s ease-in both;
   }
 
-  @keyframes gradient-shift {
-    0% {
-      background-position: 0% 50%;
+  @keyframes page-ease-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
     }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
@@ -111,5 +130,29 @@
 
   .gradient-innovart {
     background: linear-gradient(-45deg, #f093fb, #f5576c, #4facfe, #00f2fe);
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 }

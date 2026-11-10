@@ -1,0 +1,1533 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap');
+
+.giatec-portal button,
+.giatec-portal a,
+.giatec-portal select,
+.giatec-portal input{
+  font: inherit;
+}
+.giatec-portal button{
+  cursor: pointer;
+}
+.giatec-portal button:disabled{
+  cursor: not-allowed;
+}
+.giatec-portal h1{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  line-height: 32px;
+  letter-spacing: 0.25px;
+  font-weight: 400;
+}
+.giatec-portal h2{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.45;
+  font-weight: 400;
+}
+.giatec-portal h3{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 400;
+}
+.giatec-portal h4{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  margin-top: 18px;
+  font-weight: 400;
+}
+.giatec-portal p{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  line-height: 1.45;
+  color: #5d6c65;
+}
+
+
+.giatec-portal *{
+  scrollbar-color: #a9b7ae transparent;
+}
+.giatec-portal .app-shell{
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f5;
+}
+.giatec-portal aside{
+  position: fixed;
+  z-index: 20;
+  inset: 0 auto 0 0;
+  width: 224px;
+  overflow-y: auto;
+  background: white;
+  border-right: 1px solid #dfe6e1;
+  padding: 26px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.giatec-portal .brand{
+  padding: 0 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.giatec-portal .brand img{
+  width: 160px;
+  height: 40px;
+  object-fit: contain;
+}
+.giatec-portal .brand span{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #5d6c65;
+}
+.giatec-portal .workspace-switch{
+  border: 1px solid #dfe6e1;
+  border-radius: 6px;
+  padding: 12px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #fff;
+}
+.giatec-portal .workspace-switch b{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+.giatec-portal .workspace-switch span{
+  font-size: 11px;
+  color: #5d6c65;
+}
+.giatec-portal nav{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.giatec-portal nav label{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  color: #78857e;
+  margin-bottom: 2px;
+}
+.giatec-portal nav a{
+  height: 42px;
+  border: 0;
+  border-radius: 6px;
+  background: white;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #5d6c65;
+  text-align: left;
+  text-decoration: none;
+}
+.giatec-portal nav a img{
+  width: 18px;
+  height: 18px;
+}
+.giatec-portal .analytics-icon{
+  position: relative;
+  display: inline-block;
+  width: 26px;
+  height: 25px;
+  flex: 0 0 26px;
+}
+.giatec-portal .analytics-icon img,
+.giatec-portal nav a .analytics-icon img,
+.giatec-portal .product-icon .analytics-icon img,
+.giatec-portal .product-strip .analytics-icon img,
+.giatec-portal .search-modal .analytics-icon img{
+  position: absolute;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: none;
+}
+.giatec-portal .mixpilot-icon img{
+  left: 0;
+  top: 3px;
+}
+.giatec-portal .smartrock-icon img{
+  left: 3px;
+  top: 0;
+}
+.giatec-portal .smartmix-icon{
+  width: 21.083px;
+  height: 25.804px;
+  flex-basis: 21.083px;
+}
+.giatec-portal .smartmix-icon .smartmix-signal-frame{
+  position: absolute;
+  display: block;
+  left: 5.19px;
+  top: 0;
+  width: 10.618px;
+  height: 4.495px;
+  overflow: visible;
+}
+.giatec-portal .smartmix-icon .smartmix-signal-frame img{
+  left: -4.32%;
+  top: -10.2%;
+}
+.giatec-portal .smartmix-icon .smartmix-console{
+  left: 0;
+  top: 7.22px;
+}
+.giatec-portal nav a span{
+  flex: 1;
+}
+.giatec-portal nav a .analytics-icon{
+  flex: 0 0 26px;
+}
+.giatec-portal nav a .smartmix-icon{
+  flex-basis: 21.083px;
+}
+.giatec-portal nav a em{
+  font-style: normal;
+  color: #32863f;
+}
+.giatec-portal nav a:hover,
+.giatec-portal nav a.active{
+  background: #f2f9f1;
+  color: #32863f;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .support{
+  margin-top: auto;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f4f6f5;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.giatec-portal .support b{
+  font-size: 12px;
+}
+.giatec-portal .support span{
+  color: #5d6c65;
+}
+.giatec-portal .support a{
+  color: #32863f;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .workspace{
+  margin-left: 224px;
+  min-width: 0;
+  flex: 1;
+}
+.giatec-portal header{
+  height: 76px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: white;
+  border-bottom: 1px solid #dfe6e1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+}
+.giatec-portal .breadcrumb{
+  color: #5d6c65;
+  font-size: 12px;
+}
+.giatec-portal .breadcrumb span{
+  margin: 0 10px;
+  color: #78857e;
+}
+.giatec-portal .breadcrumb b{
+  color: #182c25;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .account-tools{
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.giatec-portal .search{
+  width: 230px;
+  height: 36px;
+  border: 0;
+  border-radius: 6px;
+  background: #f4f6f5;
+  color: #5d6c65;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.giatec-portal .search img{
+  width: 16px;
+}
+.giatec-portal .search kbd{
+  margin-left: auto;
+}
+.giatec-portal .icon-button{
+  border: 0;
+  background: none;
+  padding: 2px;
+}
+.giatec-portal .icon-button img{
+  width: 20px;
+  height: 20px;
+}
+.giatec-portal .account{
+  border: 0;
+  background: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+.giatec-portal .account > span{
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e9f5ed;
+}
+.giatec-portal .account img{
+  width: 22px;
+}
+.giatec-portal .account b{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+.giatec-portal .account small{
+  display: block;
+  color: #5d6c65;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  margin-top: 2px;
+}
+.giatec-portal main{
+  padding: 32px;
+  max-width: 1440px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.giatec-portal .page-heading{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.giatec-portal .heading-title{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.giatec-portal .heading-title .analytics-icon{
+  flex: 0 0 auto;
+}
+.giatec-portal .page-heading p{
+  margin-top: 7px;
+}
+.giatec-portal .btn{
+  min-height: 40px;
+  border: 1px solid #32863f;
+  border-radius: 6px;
+  background: #32863f;
+  color: white;
+  padding: 9px 16px;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.giatec-portal .button-icon{
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+.giatec-portal .btn:hover:not(:disabled){
+  background: #236f32;
+}
+.giatec-portal .btn.secondary{
+  color: #182c25;
+  border-color: #dfe6e1;
+  background: white;
+}
+.giatec-portal .btn.secondary:hover:not(:disabled){
+  background: #f2f9f1;
+}
+.giatec-portal .btn:disabled{
+  background: #e7ebe8;
+  border-color: #e7ebe8;
+  color: #9aa79f;
+  cursor: not-allowed;
+}
+.giatec-portal .card{
+  position: relative;
+  background: white;
+  border: 1px solid #dfe6e1;
+  border-radius: 8px;
+  padding: 24px;
+  min-width: 0;
+}
+.giatec-portal .card p{
+  margin: 12px 0;
+}
+.giatec-portal .card-head,
+.giatec-portal .section-title{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.giatec-portal .card-head > span,
+.giatec-portal .section-title > span{
+  font-size: 10px;
+  color: #5d6c65;
+}
+.giatec-portal .card-head h3{
+  font-size: 16px;
+}
+.giatec-portal .section-title p{
+  font-size: 12px;
+  margin-top: 6px;
+}
+.giatec-portal .section-title > b{
+  font-size: 10px;
+  color: #5d6c65;
+}
+.giatec-portal .section-title.compact{
+  align-items: center;
+}
+.giatec-portal .welcome-banner,
+.giatec-portal .overview-banner{
+  background: #103d2a;
+  border-radius: 10px;
+  color: white;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.giatec-portal .welcome-banner i{
+  width: 4px;
+  height: 100px;
+  background: linear-gradient(#00833f, #60bb46);
+  border-radius: 2px;
+}
+.giatec-portal .welcome-banner > div{
+  flex: 1;
+}
+.giatec-portal .welcome-banner h2{
+  font-size: 26px;
+
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .welcome-banner p{
+  color: #c8ddd0;
+  font-size: 14px;
+  margin: 12px 0;
+}
+.giatec-portal .welcome-banner small{
+  color: #b7dbbf;
+  font-size: 11px;
+}
+.giatec-portal .welcome-banner img{
+  width: 110px;
+  height: 110px;
+  padding: 27px;
+  background: #1a5138;
+  border-radius: 24px;
+}
+.giatec-portal .overview-banner{
+  justify-content: space-between;
+  padding: 24px 28px;
+}
+.giatec-portal .overview-banner h2{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.giatec-portal .overview-banner small{
+  display: block;
+  margin-bottom: 8px;
+}
+.giatec-portal .overview-banner p,
+.giatec-portal .overview-banner small{
+  color: #c8ddd0;
+}
+.giatec-portal .overview-banner > div:last-child{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+.giatec-portal .overview-banner button{
+  border: 0;
+  background: none;
+  color: #d1e8d9;
+}
+.giatec-portal .three-col{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.giatec-portal .four-col{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.giatec-portal .step{
+  display: flex;
+  justify-content: space-between;
+  color: #32863f;
+}
+.giatec-portal .step span{
+  font-size: 24px;
+}
+.giatec-portal .step small{
+  color: #182c25;
+}
+.giatec-portal .three-col .card > h3{
+  margin: 28px 0 12px;
+}
+.giatec-portal .three-col .card > p{
+  min-height: 55px;
+}
+.giatec-portal .three-col .card .btn{
+  margin-top: 4px;
+}
+.giatec-portal .quiet-stats{
+  margin-top: 20px;
+}
+.giatec-portal .quiet-stats > div{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.giatec-portal .quiet-stats strong{
+  font-size: 24px;
+  color: #a9b7ae;
+}
+.giatec-portal .quiet-stats span{
+  font-size: 11px;
+  color: #78857e;
+}
+.giatec-portal .metric-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.giatec-portal .metric-grid:has(.metric:nth-child(3):last-child){
+  grid-template-columns: repeat(3, 1fr);
+}
+.giatec-portal .metric{
+  min-height: 136px;
+}
+.giatec-portal .metric .eyebrow{
+  color: #5d6c65;
+  font-size: 12px;
+}
+.giatec-portal .metric-value{
+  font-size: 32px;
+  letter-spacing: -0.8px;
+  margin: 16px 0;
+
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .metric .trend{
+  position: absolute;
+  right: 18px;
+  top: 17px;
+  color: #32863f;
+}
+.giatec-portal .metric.featured{
+  background: #103d2a;
+  border-color: #103d2a;
+  color: white;
+}
+.giatec-portal .metric.featured .eyebrow,
+.giatec-portal .metric.featured .muted{
+  color: #d1e8d9;
+}
+.giatec-portal .muted{
+  color: #5d6c65;
+}
+.giatec-portal .tiny{
+  font-size: 10px;
+}
+.giatec-portal .filters{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.giatec-portal .filters select,
+.giatec-portal .form-card select{
+  height: 40px;
+  border: 1px solid #dfe6e1;
+  border-radius: 6px;
+  background: white;
+  padding: 0 14px;
+  color: #182c25;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .filters .sync{
+  margin-left: auto;
+  color: #5d6c65;
+  font-size: 10px;
+}
+.giatec-portal .sync:first-letter{
+  color: #32863f;
+}
+.giatec-portal .tabs{
+  border-bottom: 1px solid #dfe6e1;
+  display: flex;
+  gap: 28px;
+}
+.giatec-portal .tabs button{
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  padding: 0 0 13px;
+  color: #5d6c65;
+}
+.giatec-portal .tabs button.active{
+  color: #32863f;
+  border-color: #32863f;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .content-grid{
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(260px, 0.95fr);
+  gap: 24px;
+}
+.giatec-portal .chart{
+  height: 190px;
+  position: relative;
+  margin: 12px 8px 0 42px;
+}
+.giatec-portal .chart svg{
+  position: absolute;
+  inset: 0 0 26px;
+  width: 100%;
+  height: 145px;
+  overflow: visible;
+}
+.giatec-portal .gridline{
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #dfe6e1;
+}
+.giatec-portal .chart-labels{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: #78857e;
+}
+.giatec-portal .health{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 18px 0;
+}
+.giatec-portal .health b,
+.giatec-portal .health small{
+  display: block;
+}
+.giatec-portal .health small{
+  color: #5d6c65;
+  margin-top: 4px;
+}
+.giatec-portal .status{
+  display: inline-flex;
+  align-items: center;
+  border-radius: 16px;
+  padding: 4px 8px;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  background: #e9f5ed;
+  color: #32863f;
+  white-space: nowrap;
+}
+.giatec-portal .status.orange{
+  background: #fff5e3;
+  color: #c35b20;
+}
+.giatec-portal .status.red{
+  background: #fcefed;
+  color: #b33932;
+}
+.giatec-portal .status.blue{
+  background: #edf4fa;
+  color: #356f99;
+}
+.giatec-portal .status.gray{
+  background: #f4f6f5;
+  color: #5d6c65;
+}
+.giatec-portal .warning,
+.giatec-portal .info{
+  border-radius: 8px;
+  background: #fff5e3;
+  color: #c35b20;
+  padding: 17px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.giatec-portal .warning span,
+.giatec-portal .info span{
+  color: #5d6c65;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.giatec-portal .warning-icon,
+.giatec-portal .notice-icon{
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+.giatec-portal .warning-copy{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+}
+.giatec-portal .warning.mini{
+  margin-top: 16px;
+  padding: 14px;
+}
+.giatec-portal .warning.mini span{
+  padding-left: 0;
+}
+.giatec-portal .info{
+  background: #edf4fa;
+  color: #356f99;
+}
+.giatec-portal .info span{
+  flex: 1;
+}
+.giatec-portal table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin-top: 18px;
+}
+.giatec-portal th{
+  text-align: left;
+  background: #f4f6f5;
+  padding: 12px;
+  color: #5d6c65;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal td{
+  padding: 14px 12px;
+  border-bottom: 1px solid #dfe6e1;
+  color: #5d6c65;
+}
+.giatec-portal .green-text{
+  color: #32863f;
+}
+.giatec-portal .orange-text{
+  color: #c35b20;
+}
+.giatec-portal .red-text{
+  color: #b33932;
+}
+.giatec-portal .link{
+  border: 0;
+  background: none;
+  color: #32863f;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  padding: 0;
+}
+.giatec-portal .link:disabled{
+  color: #9aa79f;
+  text-decoration: none;
+}
+.giatec-portal .product-icon{
+  width: 42px;
+  height: 42px;
+  background: #e9f5ed;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+}
+.giatec-portal .product-icon img{
+  width: 24px;
+}
+.giatec-portal .product-cards h2{
+  margin-top: 18px;
+
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .product-number{
+  display: block;
+  font-size: 22px;
+  margin: 18px 0 7px;
+}
+.giatec-portal .card-link{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border: 0;
+  border-top: 1px solid #dfe6e1;
+  background: white;
+  color: #32863f;
+  padding: 16px 0 0;
+  margin-top: 18px;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .stepper{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 20px;
+}
+.giatec-portal .stepper span{
+  font-size: 11px;
+  color: #5d6c65;
+}
+.giatec-portal .stepper .active{
+  color: #182c25;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .stepper .done{
+  color: #32863f;
+}
+.giatec-portal .form-layout{
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.9fr);
+  gap: 24px;
+}
+.giatec-portal .form-card{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.giatec-portal .product-strip{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f4f6f5;
+  padding: 18px;
+  border-radius: 6px;
+}
+.giatec-portal .product-strip img{
+  width: 24px;
+}
+.giatec-portal .product-strip small{
+  display: block;
+  color: #5d6c65;
+  margin-top: 5px;
+}
+.giatec-portal .form-card label{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.giatec-portal .form-card input{
+  width: 100%;
+  height: 42px;
+  border: 1px solid #a9b7ae;
+  border-radius: 5px;
+  padding: 0 12px;
+  background: white;
+}
+.giatec-portal .form-card input.invalid{
+  border-color: #b33932;
+}
+.giatec-portal .form-card label small{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  color: #78857e;
+}
+.giatec-portal .form-card .error{
+  color: #b33932;
+}
+.giatec-portal .input-wrap{
+  position: relative;
+}
+.giatec-portal .input-wrap button{
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  border: 0;
+  background: none;
+  color: #5d6c65;
+}
+.giatec-portal .error-box,
+.giatec-portal .success-box{
+  background: #fcefed;
+  color: #b33932;
+  border-radius: 7px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.giatec-portal .error-box span,
+.giatec-portal .success-box span{
+  font-size: 11px;
+  color: #5d6c65;
+}
+.giatec-portal .success-box{
+  background: #e9f5ed;
+  color: #32863f;
+}
+.giatec-portal .form-actions{
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #dfe6e1;
+  padding-top: 16px;
+}
+.giatec-portal .form-actions > div,
+.giatec-portal .button-row{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.giatec-portal .side-stack{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.giatec-portal .side-stack p{
+  font-size: 11px;
+}
+.giatec-portal .big-callout{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  margin: 24px 0;
+}
+.giatec-portal .bar-row{
+  display: grid;
+  grid-template-columns: 55px 1fr 48px;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0;
+  font-size: 11px;
+  color: #5d6c65;
+}
+.giatec-portal .bar-row i{
+  height: 18px;
+  background: #f4f6f5;
+  border-radius: 3px;
+}
+.giatec-portal .bar-row i b{
+  display: block;
+  height: 100%;
+  background: #32863f;
+  border-radius: 3px;
+}
+.giatec-portal .bar-row em{
+  font-style: normal;
+  text-align: right;
+}
+.giatec-portal .project-tags{
+  display: flex;
+  gap: 10px;
+}
+.giatec-portal .project-tags .status:last-child{
+  margin-left: auto;
+}
+.giatec-portal .sensor-values{
+  display: flex;
+  gap: 28px;
+  margin: 24px 0;
+}
+.giatec-portal .sensor-values span,
+.giatec-portal .sensor-values b{
+  display: block;
+}
+.giatec-portal .sensor-values span{
+  font-size: 10px;
+  color: #78857e;
+}
+.giatec-portal .sensor-values b{
+  font-size: 24px;
+  margin-top: 4px;
+}
+.giatec-portal .event{
+  display: flex;
+  gap: 18px;
+  padding: 10px 0;
+}
+.giatec-portal .event time{
+  color: #78857e;
+  font-size: 11px;
+}
+.giatec-portal .event span{
+  color: #5d6c65;
+}
+.giatec-portal .alert-summary{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.giatec-portal .alert-summary > span:last-child{
+  color: #5d6c65;
+  font-size: 11px;
+}
+.giatec-portal .alerts-layout{
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(420px, 1.25fr);
+  gap: 24px;
+}
+.giatec-portal .alert-list{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.giatec-portal .alert-list > button{
+  text-align: left;
+  border: 1px solid #dfe6e1;
+  border-radius: 8px;
+  background: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.giatec-portal .alert-list > button.selected{
+  border: 2px solid #32863f;
+  background: #f2f9f1;
+}
+.giatec-portal .alert-list button > div{
+  display: flex;
+  justify-content: space-between;
+}
+.giatec-portal .alert-list small,
+.giatec-portal .alert-list > button > span{
+  font-size: 10px;
+  color: #5d6c65;
+}
+.giatec-portal .alert-detail > p{
+  margin: 20px 0;
+}
+.giatec-portal .team-layout{
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.85fr);
+  gap: 24px;
+}
+.giatec-portal .table-actions{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 16px;
+  color: #5d6c65;
+  font-size: 10px;
+}
+.giatec-portal .invite-card,
+.giatec-portal .report-config{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.giatec-portal .invite-card label,
+.giatec-portal .report-config label,
+.giatec-portal .report-config legend{
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #182c25;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+}
+.giatec-portal .invite-card input,
+.giatec-portal .invite-card select,
+.giatec-portal .report-config input,
+.giatec-portal .report-config select{
+  width: 100%;
+  height: 42px;
+  border: 1px solid #a9b7ae;
+  border-radius: 5px;
+  background: white;
+  padding: 0 12px;
+  color: #182c25;
+}
+.giatec-portal .invite-card p{
+  margin: -2px 0 0;
+}
+.giatec-portal .invite-card .btn,
+.giatec-portal .report-config .btn{
+  align-self: flex-start;
+}
+.giatec-portal .report-layout{
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.giatec-portal .report-config fieldset{
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  border: 0;
+  padding: 0;
+}
+.giatec-portal .report-config .check-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  color: #5d6c65;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .report-config .check-row input{
+  width: 14px;
+  height: 14px;
+  accent-color: #32863f;
+}
+.giatec-portal .report-preview-shell{
+  border-radius: 8px;
+  background: #e7ebe8;
+  padding: 24px;
+}
+.giatec-portal .report-preview-head,
+.giatec-portal .report-brand{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.giatec-portal .report-preview-head{
+  margin-bottom: 18px;
+  font-size: 10px;
+  color: #5d6c65;
+}
+.giatec-portal .report-preview{
+  background: white;
+  padding: 32px;
+  box-shadow: 0 2px 10px rgba(16, 61, 42, 0.06);
+}
+.giatec-portal .report-brand img{
+  width: 120px;
+  height: 30px;
+  object-fit: contain;
+}
+.giatec-portal .report-brand span{
+  color: #78857e;
+  font-size: 9px;
+}
+.giatec-portal .report-preview h2{
+  margin-top: 28px;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+}
+.giatec-portal .report-preview hr{
+  height: 2px;
+  margin: 24px 0;
+  border: 0;
+  background: #32863f;
+}
+.giatec-portal .report-totals{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 24px;
+}
+.giatec-portal .report-totals small,
+.giatec-portal .report-totals strong,
+.giatec-portal .report-totals span{
+  display: block;
+}
+.giatec-portal .report-totals small{
+  color: #78857e;
+  font-size: 9px;
+}
+.giatec-portal .report-totals strong{
+  margin: 8px 0;
+  color: #32863f;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+}
+.giatec-portal .report-totals > div:last-child strong{
+  color: #182c25;
+}
+.giatec-portal .report-totals span{
+  color: #78857e;
+  font-size: 9px;
+}
+.giatec-portal .report-bar{
+  display: grid;
+  grid-template-columns: 78px 1fr 32px;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  color: #5d6c65;
+  font-size: 9px;
+}
+.giatec-portal .report-bar i{
+  height: 14px;
+  background: #f4f6f5;
+}
+.giatec-portal .report-bar b{
+  display: block;
+  height: 100%;
+  background: #32863f;
+}
+.giatec-portal .report-bar em{
+  font-style: normal;
+  text-align: right;
+}
+.giatec-portal .report-note{
+  font-size: 9px;
+}
+.giatec-portal .checklist{
+  color: #5d6c65;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 12px 0 18px;
+  padding-left: 20px;
+}
+.giatec-portal .checklist li{
+  list-style: circle;
+}
+.giatec-portal footer{
+  display: flex;
+  justify-content: space-between;
+  color: #5d6c65;
+  font-size: 10px;
+  margin-top: 10px;
+}
+.giatec-portal .mobile-menu,
+.giatec-portal .scrim{
+  display: none;
+}
+.giatec-portal .modal-layer{
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  background: rgba(16, 61, 42, 0.28);
+  display: flex;
+  justify-content: center;
+  padding-top: 11vh;
+}
+.giatec-portal .search-modal{
+  width: min(560px, calc(100% - 32px));
+  height: max-content;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 24px 70px rgba(16, 61, 42, 0.22);
+  overflow: hidden;
+}
+.giatec-portal .search-modal > div{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid #dfe6e1;
+}
+.giatec-portal .search-modal > div img{
+  width: 20px;
+}
+.giatec-portal .search-modal input{
+  flex: 1;
+  border: 0;
+  outline: 0;
+  font-size: 16px;
+}
+.giatec-portal .search-modal kbd{
+  color: #78857e;
+}
+.giatec-portal .search-modal > button{
+  width: 100%;
+  border: 0;
+  background: white;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+.giatec-portal .search-modal > button:hover{
+  background: #f2f9f1;
+}
+.giatec-portal .search-modal > button img{
+  width: 20px;
+}
+.giatec-portal .search-modal > button span{
+  flex: 1;
+}
+.giatec-portal .search-modal > button .analytics-icon{
+  flex: 0 0 26px;
+}
+.giatec-portal .search-modal > button .smartmix-icon{
+  flex-basis: 21.083px;
+}
+.giatec-portal .search-modal > button small{
+  display: block;
+  color: #78857e;
+  margin-top: 3px;
+}
+.giatec-portal .toast{
+  position: fixed;
+  z-index: 60;
+  right: 24px;
+  bottom: 24px;
+  background: #103d2a;
+  color: white;
+  border-radius: 7px;
+  padding: 14px 18px;
+  box-shadow: 0 12px 40px rgba(16, 61, 42, 0.25);
+}
+
+@media (max-width: 1000px) {
+  .giatec-portal aside{
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+  .giatec-portal .mobile-menu{
+    display: block;
+    position: fixed;
+    z-index: 30;
+    left: 14px;
+    top: 17px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #dfe6e1;
+    border-radius: 6px;
+    background: white;
+  }
+  .giatec-portal .scrim{
+    display: block;
+    position: fixed;
+    z-index: 15;
+    inset: 0;
+    border: 0;
+    background: rgba(16, 61, 42, 0.2);
+  }
+  .giatec-portal aside.open{
+    transform: translateX(0);
+  }
+  .giatec-portal .workspace{
+    margin-left: 0;
+  }
+  .giatec-portal header{
+    padding-left: 70px;
+  }
+  .giatec-portal .content-grid{
+    grid-template-columns: 1fr;
+  }
+  .giatec-portal .account b{
+    display: none;
+  }
+}
+@media (max-width: 720px) {
+  .giatec-portal header{
+    height: 64px;
+    padding-right: 16px;
+  }
+  .giatec-portal .breadcrumb,
+.giatec-portal .icon-button{
+    display: none;
+  }
+  .giatec-portal .search{
+    width: 44px;
+    font-size: 0;
+  }
+  .giatec-portal .search kbd{
+    display: none;
+  }
+  .giatec-portal .account-tools{
+    margin-left: auto;
+  }
+  .giatec-portal .account{
+    padding: 0;
+  }
+  .giatec-portal .account > span{
+    width: 32px;
+    height: 32px;
+  }
+  .giatec-portal main{
+    padding: 22px 16px;
+    gap: 18px;
+  }
+  .giatec-portal .page-heading{
+    align-items: flex-start;
+  }
+  .giatec-portal .page-heading .btn{
+    font-size: 0;
+    padding: 8px 13px;
+  }
+  .giatec-portal .page-heading .btn::first-letter{
+    font-size: 16px;
+  }
+  .giatec-portal .welcome-banner,
+.giatec-portal .overview-banner{
+    padding: 24px;
+    align-items: flex-start;
+  }
+  .giatec-portal .welcome-banner img{
+    display: none;
+  }
+  .giatec-portal .welcome-banner h2{
+    font-size: 22px;
+  
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+  .giatec-portal .overview-banner{
+    flex-direction: column;
+  }
+  .giatec-portal .overview-banner > div:last-child{
+    align-items: flex-start;
+  }
+  .giatec-portal .three-col,
+.giatec-portal .four-col,
+.giatec-portal .metric-grid,
+.giatec-portal .metric-grid:has(.metric:nth-child(3):last-child){
+    grid-template-columns: 1fr;
+  }
+  .giatec-portal .metric{
+    min-height: 120px;
+  }
+  .giatec-portal .content-grid,
+.giatec-portal .form-layout,
+.giatec-portal .alerts-layout,
+.giatec-portal .team-layout,
+.giatec-portal .report-layout{
+    grid-template-columns: 1fr;
+  }
+  .giatec-portal .stepper{
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .giatec-portal .tabs{
+    gap: 18px;
+    overflow-x: auto;
+  }
+  .giatec-portal .tabs button{
+    white-space: nowrap;
+  }
+  .giatec-portal .filters{
+    flex-wrap: wrap;
+  }
+  .giatec-portal .filters .sync{
+    margin-left: 0;
+    width: 100%;
+  }
+  .giatec-portal .project-tags{
+    flex-wrap: wrap;
+  }
+  .giatec-portal .project-tags .status:last-child{
+    margin-left: 0;
+  }
+  .giatec-portal .alert-detail{
+    padding: 18px;
+  }
+  .giatec-portal .table-scroll{
+    overflow-x: auto;
+  }
+  .giatec-portal .table-scroll table{
+    min-width: 650px;
+  }
+  .giatec-portal .section-title{
+    flex-direction: column;
+  }
+  .giatec-portal .quiet-stats{
+    grid-template-columns: 1fr 1fr;
+  }
+  .giatec-portal .form-actions{
+    gap: 10px;
+  }
+  .giatec-portal .form-actions > div{
+    display: flex;
+    gap: 6px;
+  }
+  .giatec-portal .form-actions .btn{
+    padding: 8px 10px;
+  }
+  .giatec-portal footer{
+    flex-direction: column;
+    gap: 7px;
+  }
+  .giatec-portal .toast{
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+/* Embed frame - keep portal inside the case study */
+.giatec-portal {
+  position: relative;
+  height: min(85vh, 920px);
+  min-height: 640px;
+  border: 1px solid #dfe6e1;
+  border-radius: 12px;
+  overflow: hidden;
+  isolation: isolate;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #182c25;
+  background: #f4f6f5;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.45;
+}
+.giatec-portal *,
+.giatec-portal *::before,
+.giatec-portal *::after {
+  box-sizing: border-box;
+}
+.giatec-portal .app-shell {
+  min-height: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.giatec-portal aside {
+  position: absolute !important;
+  transform: none;
+}
+.giatec-portal aside.open {
+  transform: none;
+}
+.giatec-portal .workspace {
+  height: 100%;
+  overflow: auto;
+  margin-left: 224px;
+}
+.giatec-portal header {
+  position: sticky;
+  top: 0;
+}
+.giatec-portal .modal-layer,
+.giatec-portal .mobile-menu,
+.giatec-portal .scrim,
+.giatec-portal .toast {
+  position: absolute !important;
+}
+.giatec-portal .toast {
+  right: 24px;
+  bottom: 24px;
+  left: auto;
+}
+@media (max-width: 1000px) {
+  .giatec-portal aside {
+    transform: translateX(-100%) !important;
+  }
+  .giatec-portal aside.open {
+    transform: translateX(0) !important;
+  }
+  .giatec-portal .workspace {
+    margin-left: 0;
+  }
+}

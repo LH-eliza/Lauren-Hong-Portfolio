@@ -3,31 +3,27 @@ import CaseStudy from '../../../assets/Header';
 import QuoteBlock from '../../../assets/Quote';
 import StepTitle from '../../../assets/StepTitle';
 import GifDisplay from '../../../assets/GifDisplay';
-import TableOfContents from '../../TableOfContents';
+import CaseStudyShell from '../../CaseStudyShell';
 import ScrollProgressBar from '../../ScrollProgressBar';
 
 const UOttaShopSite = () => {
   return (
-    <div>
-      <CaseStudy
-        title="Enhancing the Sponsorship Experience"
-        subtitle="Creating an interactive portal for sponsors of Canada's 2nd largest hackathon"
-        metadata={{
-          period: 'March - April 2024',
-          role: 'Co-Director, UX Designer',
-          team: '3 Directors, 2 Developers',
-          tools: 'Figma, React, MongoDB, Express, Node.js, Heroku',
-        }}
-        githubLink="https://github.com/uOttaHack/uOttaShop"
-        projectLink="https://shop.uottahack.ca/"
-        heroImage="/images/uottashop/uOttaShop.svg"
-      />
-      <div className="relative">
-        <ScrollProgressBar color="#1A4FAC" />
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="flex gap-8">
-            <TableOfContents />
-            <div className="flex-1">
+    <div className="relative w-full">
+      <ScrollProgressBar color="#1A4FAC" />
+      <CaseStudyShell accentColor="#1A4FAC" solutionId="solution">
+        <CaseStudy
+          title="Enhancing the Sponsorship Experience"
+          subtitle="Creating an interactive portal for sponsors of Canada's 2nd largest hackathon"
+          metadata={{
+            period: 'March - April 2024',
+            role: 'Co-Director, UX Designer',
+            team: '3 Directors, 2 Developers',
+            tools: 'Figma, React, MongoDB, Express, Node.js, Heroku',
+          }}
+          githubLink="https://github.com/uOttaHack/uOttaShop"
+          projectLink="https://shop.uottahack.ca/"
+          heroImage="/images/uottashop/uOttaShop.svg"
+        />
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
                   <h2 className="text-4xl text-[#1A4FAC] font-chewie">Problem Statement</h2>
@@ -72,7 +68,9 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Result</h2>
+                  <h2 id="solution" className="text-4xl text-[#1A4FAC] font-chewie scroll-mt-28">
+                    Result
+                  </h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
@@ -631,10 +629,7 @@ const UOttaShopSite = () => {
                   className="w-full h-auto"
                 />
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </CaseStudyShell>
     </div>
   );
 };

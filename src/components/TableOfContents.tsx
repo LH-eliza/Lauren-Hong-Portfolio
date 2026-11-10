@@ -1,35 +1,52 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+'use client';
+
+import React, { useEffect, useRef, useState } from 'react';
+import { ChevronLeft, ChevronRight, SkipForward } from 'lucide-react';
 
 interface Heading {
   id: string;
   text: string;
-  level: number;
-  element: HTMLElement;
 }
 
 interface TableOfContentsProps {
   className?: string;
+  accentColor?: string;
+  solutionId?: string;
 }
 
-const TableOfContents: React.FC<TableOfContentsProps> = ({ className = '' }) => {
+const scrollToId = (id: string) => {
+  const element = document.getElementById(id);
+  if (!element) return;
+  const offset = 100;
+  const top = element.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo({ top, behavior: 'smooth' });
+};
+
+const TableOfContents: React.FC<TableOfContentsProps> = ({
+  className = '',
+  accentColor = '#EA6C3A',
+  solutionId = 'solution',
+}) => {
   const [headings, setHeadings] = useState<Heading[]>([]);
-  const [activeId, setActiveId] = useState<string>('');
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
+  const [activeId, setActiveId] = useState('');
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [hasSolution, setHasSolution] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    // Function to find and process headings
     const findAndProcessHeadings = () => {
-      // Find all h2 headings in the document (main sections only)
-      const headingElements = Array.from(document.querySelectorAll('h2')) as HTMLElement[];
+      const headingElements = Array.from(
+        document.querySelectorAll('[data-case-content] h2')
+      ) as HTMLElement[];
 
-      if (headingElements.length === 0) {
-        return;
-      }
+      const fallback =
+        headingElements.length > 0
+          ? headingElements
+          : (Array.from(document.querySelectorAll('h2')) as HTMLElement[]);
 
-      const headingData: Heading[] = headingElements.map(element => {
-        // Generate ID from text if not already present
+      if (fallback.length === 0) return;
+
+      const headingData: Heading[] = fallback.map(element => {
         let id = element.id;
         if (!id) {
           id =
@@ -39,95 +56,46 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ className = '' }) => 
               .replace(/^-|-$/g, '') || '';
           element.id = id;
         }
-
-        return {
-          id,
-          text: element.textContent || '',
-          level: parseInt(element.tagName.charAt(1)),
-          element,
-        };
+        return { id, text: element.textContent || '' };
       });
 
       setHeadings(headingData);
+      setHasSolution(Boolean(document.getElementById(solutionId)));
 
-      // Set up Intersection Observer to track active section
-      const observerOptions = {
-        root: null,
-        rootMargin: '-20% 0px -70% 0px',
-        threshold: [0, 0.1, 0.5, 1],
-      };
+      if (observerRef.current) observerRef.current.disconnect();
 
-      // Clean up previous observer
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-
-      observerRef.current = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
-        // Find the entry with the highest intersection ratio that's intersecting
-        let maxRatio = 0;
-        let activeEntry: IntersectionObserverEntry | null = null;
-
-        for (const entry of entries) {
-          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-            maxRatio = entry.intersectionRatio;
-            activeEntry = entry;
+      observerRef.current = new IntersectionObserver(
+        entries => {
+          let maxRatio = 0;
+          let activeEntry: IntersectionObserverEntry | null = null;
+          for (const entry of entries) {
+            if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+              maxRatio = entry.intersectionRatio;
+              activeEntry = entry;
+            }
           }
-        }
-
-        if (activeEntry) {
-          const target = activeEntry.target as HTMLElement;
-          if (target && target.id) {
-            setActiveId(target.id);
+          if (activeEntry?.target && (activeEntry.target as HTMLElement).id) {
+            setActiveId((activeEntry.target as HTMLElement).id);
           }
-        }
-      }, observerOptions);
+        },
+        { root: null, rootMargin: '-20% 0px -70% 0px', threshold: [0, 0.1, 0.5, 1] }
+      );
 
-      // Observe all headings
-      headingElements.forEach(heading => {
-        if (observerRef.current) {
-          observerRef.current.observe(heading);
-        }
-      });
-
-      // Set initial active heading based on scroll position
-      const updateActiveHeading = () => {
-        const scrollPosition = window.scrollY + 150;
-
-        for (let i = headingElements.length - 1; i >= 0; i--) {
-          const heading = headingElements[i];
-          const headingTop = heading.getBoundingClientRect().top + window.scrollY;
-
-          if (headingTop <= scrollPosition) {
-            setActiveId(heading.id);
-            break;
-          }
-        }
-      };
-
-      updateActiveHeading();
+      fallback.forEach(heading => observerRef.current?.observe(heading));
     };
 
-    // Initial attempt
     findAndProcessHeadings();
+    const timeoutId = setTimeout(findAndProcessHeadings, 500);
 
-    // Retry after a short delay to catch dynamically loaded content
-    const timeoutId = setTimeout(() => {
-      findAndProcessHeadings();
-    }, 500);
-
-    // Also listen for scroll to update active heading
     const handleScroll = () => {
-      const headingElements = Array.from(document.querySelectorAll('h2')) as HTMLElement[];
-
-      if (headingElements.length === 0) return;
-
+      const headingElements = Array.from(
+        document.querySelectorAll('[data-case-content] h2, h2')
+      ) as HTMLElement[];
       const scrollPosition = window.scrollY + 150;
-
-      for (let i = headingElements.length - 1; i >= 0; i--) {
+      for (let i = headingElements.length - 1; i >= 0; i -= 1) {
         const heading = headingElements[i];
         const headingTop = heading.getBoundingClientRect().top + window.scrollY;
-
-        if (headingTop <= scrollPosition) {
+        if (headingTop <= scrollPosition && heading.id) {
           setActiveId(heading.id);
           break;
         }
@@ -139,72 +107,112 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ className = '' }) => 
     return () => {
       clearTimeout(timeoutId);
       window.removeEventListener('scroll', handleScroll);
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
+      observerRef.current?.disconnect();
     };
-  }, []);
-
-  const scrollToHeading = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 100; // Offset for sticky header
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  if (headings.length === 0) {
-    return null;
-  }
+  }, [solutionId]);
 
   return (
-    <div className={`${isCollapsed ? 'w-12' : 'w-64'} flex-shrink-0 hidden lg:block transition-all duration-300 ${className}`}>
-      <div className="sticky top-24 bg-white border-r border-gray-200 pr-6">
-        <div className="flex items-center justify-between mb-4">
+    <>
+      {/* Desktop left rail */}
+      <aside
+        className={`hidden lg:flex flex-col shrink-0 sticky top-20 h-[calc(100vh-5rem)] border-r border-[rgb(229,229,229)] bg-white transition-[width] duration-300 z-30 ${
+          isCollapsed ? 'w-14' : 'w-64'
+        } ${className}`}
+      >
+        <div className="flex items-center justify-between gap-2 px-3 py-4 border-b border-[rgb(229,229,229)]">
           {!isCollapsed && (
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+            <p className="text-[11px] font-vietnam font-semibold uppercase tracking-[0.14em] text-black/45">
               Contents
-            </div>
+            </p>
           )}
           <button
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            className="p-1 rounded hover:bg-gray-100 transition-colors flex-shrink-0"
-            aria-label={isCollapsed ? 'Expand contents' : 'Collapse contents'}
-            title={isCollapsed ? 'Expand contents' : 'Collapse contents'}
+            type="button"
+            onClick={() => setIsCollapsed(prev => !prev)}
+            className="ml-auto p-1.5 rounded-md hover:bg-black/[0.04] transition-colors"
+            aria-label={isCollapsed ? 'Open contents' : 'Collapse contents'}
+            title={isCollapsed ? 'Open contents' : 'Collapse contents'}
           >
             {isCollapsed ? (
-              <ChevronRight className="w-4 h-4 text-gray-600" />
+              <ChevronRight className="w-4 h-4 text-black/60" />
             ) : (
-              <ChevronLeft className="w-4 h-4 text-gray-600" />
+              <ChevronLeft className="w-4 h-4 text-black/60" />
             )}
           </button>
         </div>
+
         {!isCollapsed && (
-          <nav className="space-y-1">
-            {headings.map(heading => (
+          <div className="flex-1 overflow-y-auto px-3 py-4">
+            {hasSolution && (
               <button
-                key={heading.id}
-                onClick={() => scrollToHeading(heading.id)}
-                className={`block w-full text-left px-2 py-1.5 rounded text-sm transition-colors truncate font-medium ${
-                  activeId === heading.id
-                    ? 'bg-[#EA6C3A]/10 text-[#EA6C3A]'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                }`}
-                title={heading.text}
+                type="button"
+                onClick={() => scrollToId(solutionId)}
+                className="w-full mb-4 inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2.5 text-sm font-vietnam font-medium text-white transition-opacity hover:opacity-90"
+                style={{ backgroundColor: accentColor }}
               >
-                {heading.text}
+                <SkipForward className="w-4 h-4" />
+                Skip to solution
               </button>
-            ))}
-          </nav>
+            )}
+
+            <nav className="space-y-1">
+              {headings.map(heading => {
+                const active = activeId === heading.id;
+                return (
+                  <button
+                    key={heading.id}
+                    type="button"
+                    onClick={() => scrollToId(heading.id)}
+                    className={`block w-full text-left px-2.5 py-2 rounded-lg text-sm font-vietnam transition-colors truncate ${
+                      active ? 'font-medium' : 'text-black/65 hover:bg-black/[0.03] hover:text-black'
+                    }`}
+                    style={
+                      active
+                        ? { backgroundColor: `${accentColor}14`, color: accentColor }
+                        : undefined
+                    }
+                    title={heading.text}
+                  >
+                    {heading.text}
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
         )}
-      </div>
-    </div>
+
+        {isCollapsed && (
+          <div className="flex flex-col items-center gap-3 py-4">
+            {hasSolution && (
+              <button
+                type="button"
+                onClick={() => scrollToId(solutionId)}
+                className="p-2 rounded-lg text-white"
+                style={{ backgroundColor: accentColor }}
+                aria-label="Skip to solution"
+                title="Skip to solution"
+              >
+                <SkipForward className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+        )}
+      </aside>
+
+      {/* Mobile skip control */}
+      {hasSolution && (
+        <div className="lg:hidden sticky top-20 z-20 bg-white/95 backdrop-blur border-b border-[rgb(229,229,229)] px-4 py-2">
+          <button
+            type="button"
+            onClick={() => scrollToId(solutionId)}
+            className="w-full inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2.5 text-sm font-vietnam font-medium text-white"
+            style={{ backgroundColor: accentColor }}
+          >
+            <SkipForward className="w-4 h-4" />
+            Skip to solution
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 

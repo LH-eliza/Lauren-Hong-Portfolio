@@ -5,7 +5,7 @@ import CaseStudy from '../../../assets/Header';
 import Flowchart from '../../../assets/Flowchart';
 import Sketches from './Sketches';
 import Wireframe from './Wireframe';
-import TableOfContents from '../../TableOfContents';
+import CaseStudyShell from '../../CaseStudyShell';
 import ScrollProgressBar from '../../ScrollProgressBar';
 
 interface ImageModalProps {
@@ -79,25 +79,21 @@ const SolaceStudy = () => {
     });
   }, []);
   return (
-    <div>
-      <CaseStudy
-        title="Enhancing Solace Documentation Navigation"
-        subtitle="Project for the company's internal hackathon where our intern team won people's choice"
-        metadata={{
-          period: 'April 2024',
-          role: 'Software Developer, UI designer',
-          team: '4 developers, 2 UI designers/developers',
-          tools: 'Figma, React, Python, HTML, CSS',
-        }}
-        githubLink="https://github.com/Patrick-Bonini/SuperChargedChatBot"
-        heroImage="/images/Solace/SolaceDocs.svg"
-      />
-      <div className="relative">
-        <ScrollProgressBar color="#EA6C3A" />
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="flex gap-8">
-            <TableOfContents />
-            <div className="flex-1">
+    <div className="relative w-full">
+      <ScrollProgressBar color="#EA6C3A" />
+      <CaseStudyShell accentColor="#EA6C3A" solutionId="solution">
+        <CaseStudy
+          title="Enhancing Solace Documentation Navigation"
+          subtitle="Project for the company's internal hackathon where our intern team won people's choice"
+          metadata={{
+            period: 'April 2024',
+            role: 'Software Developer, UI designer',
+            team: '4 developers, 2 UI designers/developers',
+            tools: 'Figma, React, Python, HTML, CSS',
+          }}
+          githubLink="https://github.com/Patrick-Bonini/SuperChargedChatBot"
+          heroImage="/images/Solace/SolaceDocs.svg"
+        />
               <div className="bg-gray-100 rounded-3xl p-8 mb-16">
                 <h2 className="text-2xl text-gray-800 font-libre">
                   "How do we make understanding documentation and onboarding easier?"
@@ -174,7 +170,7 @@ const SolaceStudy = () => {
 
             {/* Results Section */}
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div id="solution" className="grid grid-cols-1 md:grid-cols-4 gap-8 scroll-mt-28">
               <div className="md:col-span-1">
                 <h2 className="text-3xl text-[#EA6C3A] font-chewie">Results</h2>
               </div>
@@ -400,10 +396,7 @@ const SolaceStudy = () => {
                 className="w-full rounded-3xl"
               />
             </div>
-          </div>
-        </div>
-      </div>
-      </div>
+      </CaseStudyShell>
     </div>
   );
 };

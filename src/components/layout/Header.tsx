@@ -1,45 +1,38 @@
-import React, { useState } from 'react';
+'use client';
 
-const Logo = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="60"
-    height="60"
-    viewBox="0 0 60 60"
-    fill="none"
-    className="w-full h-full"
-  >
-    <circle cx="30" cy="30" r="30" fill="#E67E5E" />
-    <text
-      x="50%"
-      y="50%"
-      textAnchor="middle"
-      fill="white"
-      fontSize="20"
-      dy=".3em"
-      className="font-bruskest"
-    >
-      LH
-    </text>
-  </svg>
-);
+import React, { useEffect, useState } from 'react';
+
+const navLinks = [
+  { href: '/', label: 'work', match: (path: string) => path === '/' },
+  { href: '/about', label: 'about me', match: (path: string) => path.startsWith('/about') },
+  {
+    href: '/playground',
+    label: 'my playground',
+    match: (path: string) => path.startsWith('/playground'),
+  },
+];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [pathname, setPathname] = useState('/');
+
+  useEffect(() => {
+    setPathname(window.location.pathname);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white z-50">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="w-full max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
         <nav className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <div className="w-12 h-12">
-            <a href="/">
-              <Logo />
-            </a>
-          </div>
+          <a href="/" className="block w-10 h-10 rounded-full overflow-hidden shrink-0">
+            <img src="/logo.png" alt="Lauren Hong" className="w-full h-full object-cover" />
+          </a>
 
-          {/* Mobile Menu Button */}
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden text-black"
+            aria-label="Toggle menu"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -65,69 +58,44 @@ const Header = () => {
             </svg>
           </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8 font-chewie">
-            <a href="/about" className="text-gray-700 hover:text-gray-900">
-              About
-            </a>
-            <a href="/works" className="text-gray-700 hover:text-gray-900">
-              Work
-            </a>
-            <a
-              href="https://drive.google.com/file/d/15YuRvO0faA__bnlZDMHcs0yFEkEBfqJM/view?usp=sharing"
-              className="text-gray-700 hover:text-gray-900"
-            >
-              Resume
-            </a>
-            <a
-              href="https://www.linkedin.com/in/lauren-hong/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-700 hover:text-gray-900"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            </a>
+          <div className="hidden lg:flex items-center gap-8 font-vietnam text-[15px] text-black">
+            {navLinks.map(link => {
+              const isActive = link.match(pathname);
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`transition-opacity hover:opacity-60 ${
+                    isActive ? 'font-semibold' : 'font-normal'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
 
-          {/* Mobile Navigation */}
           <div
-            className={`${isMenuOpen ? 'flex' : 'hidden'} lg:hidden absolute top-20 left-0 right-0 bg-white border-t border-gray-200`}
+            className={`${
+              isMenuOpen ? 'flex' : 'hidden'
+            } lg:hidden absolute top-20 left-0 right-0 bg-white border-t border-gray-100`}
           >
-            <div className="flex flex-col w-full font-chewie">
-              <a
-                href="/about"
-                className="px-4 py-4 text-gray-700 hover:text-gray-900 border-b border-gray-100"
-              >
-                About
-              </a>
-              <a
-                href="/works"
-                className="px-4 py-4 text-gray-700 hover:text-gray-900 border-b border-gray-100"
-              >
-                Work
-              </a>
-              <a
-                href="https://drive.google.com/file/d/15YuRvO0faA__bnlZDMHcs0yFEkEBfqJM/view?usp=sharing"
-                className="px-4 py-4 text-gray-700 hover:text-gray-900 border-b border-gray-100"
-              >
-                Resume
-              </a>
-              <a
-                href="https://www.linkedin.com/in/lauren-hong/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-4 text-gray-700 hover:text-gray-900"
-              >
-                LinkedIn
-              </a>
+            <div className="flex flex-col w-full font-vietnam">
+              {navLinks.map(link => {
+                const isActive = link.match(pathname);
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className={`px-6 py-4 text-black border-b border-gray-50 ${
+                      isActive ? 'font-semibold' : 'font-normal'
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </nav>
