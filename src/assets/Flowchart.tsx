@@ -17,7 +17,7 @@ const FlowchartSection = () => {
 
   return (
     <div className="max-w-4xl mx-auto mb-16">
-      <h3 className="text-xl sm:text-2xl mb-4 font-libre">User Flow Visualization</h3>
+      <h3 className="text-xl sm:text-2xl mb-4 font-castoro">User Flow Visualization</h3>
       <div className="bg-white p-4 rounded-xl shadow-lg overflow-auto">
         <div className="mermaid">
           {`
@@ -54,7 +54,7 @@ const FlowchartSection = () => {
           `}
         </div>
       </div>
-      <p className="text-sm sm:text-base text-gray-600 mt-4 font-libre">
+      <p className="text-sm sm:text-base text-gray-600 mt-4 font-vietnam">
         Interactive flowchart showing the user journey through our documentation system
       </p>
     </div>

@@ -62,7 +62,7 @@ const PassionProjects: React.FC = () => {
               href={mainLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer"
+              className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer overflow-hidden rounded-[10px] border border-[rgb(229,229,229)]"
             >
               {/* Main Content Area - Sharp Rectangle */}
               <div className="relative w-full aspect-[16/9] overflow-hidden bg-gray-100">

@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Duck &amp; Plant</title>
+<style>
+  :root { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  html, body { margin: 0; width: 100%; height: 100%; background: transparent; overflow: hidden; }
+  body {
+    -webkit-user-select: none; user-select: none;
+    display: flex; align-items: flex-end; justify-content: flex-end;
+    cursor: url("/images/cursors/tomato-cursor.png") 16 16, pointer;
+  }
+  canvas {
+    display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 160 / 92;
+    image-rendering: pixelated; image-rendering: crisp-edges;
+    background: transparent; touch-action: none; outline: none;
+    cursor: inherit;
+  }
+</style>
+</head>
+<body>
+<canvas id="c" width="160" height="92" tabindex="0" aria-label="A duck watering a potted plant. Arrow keys to walk, space to pour."></canvas>
+
+<script>
+(() => {
+  const cv = document.getElementById('c');
+  const ctx = cv.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+  const W = 160, H = 92, GROUND = 98, OFFY = 20;
+
+  // ---------- palette ----------
+  const BROWN = '#9a7b5f', CREAM = '#f1dd94', CREAMD = '#e3c871', CREAML = '#f8edbd', WHITE = '#fbfaf2';
+  const ORANGE = '#e8a65a', ORDK = '#cf8438', YEL = '#f2ef6b', EYE = '#0d0d0d';
+  const CAN = '#4f86a3', CAND = '#2d5970', CANL = '#a9d0e2';
+  const WATER = '#3f8fd0', WATERL = '#bfe3f6', SPLASH = '#6fb4e6';
+  const STEM = '#2f5a24', LEAF = '#86c765', LEAFL = '#d5efc0', LEAFDRY = '#c2b36a';
+  const POTD = '#5a2f26', POTM = '#b5693f', POTS = '#7a3c2e', POTR = '#e0a077';
+  const SOILW = '#5b3d2b', SOILM = '#8a6a4c', SOILD = '#b59a76';
+  const STONE = '#eadfc6', STONES = '#d3c3a1', STONEM = '#bfae8a', GRASS = '#8ccf6a', GRASSD = '#4e8a3a';
+  const WOOD = '#b9845a', WOODL = '#d6a577', WOODD = '#6e4a2e', HOOP = '#5a4a3a';
+  const GOLD = '#f2c744', GOLDL = '#fff3b0';
+  const HAT = '#d94a3d', HATD = '#8f2a22', HATS = '#b23329', HATL = '#ef7a6b';
+
+  const px = (x, y, c, w = 1, h = 1) => { ctx.fillStyle = c; ctx.fillRect(Math.round(x), Math.round(y), w, h); };
+
+  // ---------- audio ----------
+  let ac = null, muted = false;
+  function audio() {
+    try {
+      if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)();
+      if (ac.state === 'suspended') ac.resume();
+    } catch (e) { ac = null; }
+    return ac;
+  }
+  function tone(type, f0, f1, dur, vol, delay = 0, bp = 0) {
+    if (muted || !audio()) return;
+    try {
+      const t0 = ac.currentTime + delay;
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type = type;
+      o.frequency.setValueAtTime(f0, t0);
+      o.frequency.exponentialRampToValueAtTime(f1, t0 + dur);
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(vol, t0 + 0.015);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      let node = o;
+      if (bp) { const f = ac.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = bp; f.Q.value = 2; o.connect(f); node = f; }
+      node.connect(g).connect(ac.destination);
+      o.start(t0); o.stop(t0 + dur + 0.02);
+    } catch (e) {}
+  }
+  const quackSound = () => { tone('sawtooth', 560, 300, 0.13, 0.22, 0, 900); tone('sawtooth', 520, 280, 0.15, 0.22, 0.17, 900); };
+  const chime = (n = 1) => { for (let i = 0; i < n; i++) tone('triangle', 523 * Math.pow(1.26, i), 523 * Math.pow(1.26, i), 0.18, 0.12, i * 0.1); };
+
+  // ---------- sprites ----------
+  const DW = 42, DH = 38, DT = 56;
+
+  const bodySprite = (() => {
+    const c = document.createElement('canvas'); c.width = DW; c.height = DH;
+    const g = c.getContext('2d');
+    const topIns = [10, 7, 5, 4, 3, 2, 2, 1, 1];
+    const botIns = { 34: 1, 35: 1, 36: 2, 37: 3 };
+    const ins = r => r < topIns.length ? topIns[r] : (botIns[r] !== undefined ? botIns[r] : 0);
+    const inside = (x, y) => y >= 0 && y < DH && x >= ins(y) && x <= DW - 1 - ins(y);
+    for (let y = 0; y < DH; y++) for (let x = 0; x < DW; x++) {
+      if (!inside(x, y)) continue;
+      const edge = !inside(x - 1, y) || !inside(x + 1, y) || !inside(x, y - 1) || !inside(x, y + 1);
+      let col = CREAM;
+      if (edge) col = y <= 9 ? HATD : BROWN;
+      else if (y <= 9) col = (y >= 2 && y <= 3 && x >= 12 && x <= 17) ? HATL : ((x === 19 || x === 20 || x === 26) ? HATS : HAT);   // red hat
+      else if (y === 10) col = HATD;                                                    // hat brim line
+      else if (x >= DW - 9) col = CREAMD;                                               // back shade
+      else if (x < 26) col = WHITE;                                                     // face and belly
+      else if (y >= DH - 5 && x > DW - 16) col = CREAMD;
+      g.fillStyle = col; g.fillRect(x, y, 1, 1);
+    }
+    // wing
+    g.fillStyle = BROWN;
+    g.fillRect(28, 22, 1, 10); g.fillRect(28, 31, 9, 1); g.fillRect(36, 27, 1, 5);
+    g.fillStyle = CREAML; g.fillRect(29, 23, 7, 8);
+    g.fillStyle = CREAMD; g.fillRect(29, 28, 7, 3);
+    return c;
+  })();
+
+  // tail: pointed feather flicking up and out of the back
+  const TAIL_X0 = 38, TAIL_Y0 = 11;
+  const tailSprite = (() => {
+    const c = document.createElement('canvas'); c.width = 13; c.height = 21;
+    const g = c.getContext('2d');
+    const inside = (x, y) => {                    // rounded tail tuft, body-local coordinates
+      const dx = (x + 0.5 - 44) / 6.5, dy = (y + 0.5 - 22) / 5.5;
+      return dx * dx + dy * dy <= 1;
+    };
+    for (let y = 11; y <= 30; y++) for (let x = TAIL_X0; x <= 50; x++) {
+      if (!inside(x, y)) continue;
+      const edge = !inside(x - 1, y) || !inside(x + 1, y) || !inside(x, y - 1) || !inside(x, y + 1);
+      let col = CREAMD;
+      if (edge) col = BROWN;
+      else if (y === 20 && x >= 43 && x <= 47) col = CREAML;  // soft feather highlight
+      g.fillStyle = col; g.fillRect(x - TAIL_X0, y - TAIL_Y0, 1, 1);
+    }
+    return c;
+  })();
+
+  const canSprite = (() => {
+    const c = document.createElement('canvas'); c.width = 32; c.height = 16;
+    const g = c.getContext('2d');
+    const r = (x, y, w, h, col) => { g.fillStyle = col; g.fillRect(x, y, w, h); };
+    r(8, 5, 16, 10, CAND);
+    r(9, 6, 14, 8, CAN);
+    r(11, 7, 3, 2, CANL); r(20, 6, 2, 2, WHITE);
+    for (let i = 0; i < 7; i++) r(7 - i, 9 - i, 2, 2, CAND);
+    r(0, 1, 2, 3, CANL);
+    r(24, 6, 4, 1, CAND); r(27, 6, 1, 7, CAND); r(24, 12, 4, 1, CAND);
+    return c;
+  })();
+  const CAN_PIVOT = { x: 27, y: 9 }, CAN_TIP = { x: 0, y: 2 };
+  // can is rotated at 1x on its own canvas so tilted pixels stay on the pixel grid
+  const canRot = document.createElement('canvas'); canRot.width = 64; canRot.height = 64;
+  const canRotCtx = canRot.getContext('2d'); canRotCtx.imageSmoothingEnabled = false;
+
+  // ---------- state ----------
+  const keys = { left: false, right: false, pour: false };
+  const ptr = { active: false, x: 0 };
+  const duck = { x: 121, dir: -1, walk: 0, tilt: 0, quack: 0, blinkT: 120 };
+  const st = { drown: 0, dying: false, dyT: 0, wither: 0, fell: [false, false], leafGone: [], bt: 0, can: 100, moist: 30, growth: 12, bloomed: false };
+  const drops = [], bits = [], sparkles = [], fallen = [], leafBits = [];
+  const POT = { x0: 22, x1: 54, rim: 80, cx: 38 };
+  let t = 0;
+  let SC = 4;
+
+  function sparkle(x, y, n = 6, spread = 12) {
+    for (let i = 0; i < n; i++) sparkles.push({ x: x + (Math.random() - 0.5) * spread * 2, y: y + (Math.random() - 0.5) * spread, life: 30 + Math.random() * 25 });
+  }
+  function splash(x, y, n = 3) {
+    for (let i = 0; i < n; i++) bits.push({ x, y, vx: (Math.random() - 0.5) * 1.2, vy: -0.6 - Math.random() * 0.8, life: 14 });
+  }
+  function addGrowth(v) {
+    const old = st.growth;
+    st.growth = Math.min(100, st.growth + v);
+    for (const th of [8, 30, 60]) if (old < th && st.growth >= th) { chime(2); sparkle(POT.cx, 80 - (3 + st.growth * 0.3), 7, 12); }
+    if (!st.bloomed && st.growth >= 100) { st.bloomed = true; st.bt = 0; chime(4); sparkle(POT.cx, 44, 16, 20); }
+  }
+  function startDying() {
+    st.dying = true; st.dyT = 0;
+    tone('sawtooth', 330, 110, 0.5, 0.12, 0, 600);
+  }
+  function replant() {
+    st.growth = 6; st.moist = 20; st.bloomed = false; st.bt = 0;
+    st.drown = 0; st.dying = false; st.dyT = 0; st.wither = 0; st.fell = [false, false]; st.leafGone = [];
+    fallen.length = 0; leafBits.length = 0;
+    splash(POT.cx, 79, 5); tone('triangle', 300, 200, 0.12, 0.15);
+  }
+  function quack() {
+    if (duck.quack > 0) return;
+    duck.quack = 40; quackSound();
+  }
+
+  // ---------- update ----------
+  function canTip() {
+    const a = duck.tilt * 0.55;
+    const lift = duck.tilt * 14;
+    const hop = Math.abs(Math.sin(Math.min(1, (40 - duck.quack) / 14) * Math.PI)) * (duck.quack > 26 ? 4 : 0);
+    const pvx = -8, pvy = DT + 27 - lift - hop;
+    const ox = CAN_TIP.x - CAN_PIVOT.x, oy = CAN_TIP.y - CAN_PIVOT.y;
+    return {
+      a, hop, pivotY: pvy,
+      lx: pvx + ox * Math.cos(a) + oy * Math.sin(a),
+      ly: pvy - ox * Math.sin(a) + oy * Math.cos(a)
+    };
+  }
+  const toWorld = lx => duck.dir < 0 ? duck.x - 21 + lx : duck.x + 21 - lx;
+
+  function update() {
+    t++;
+    let kl = keys.left, kr = keys.right, kp = keys.pour;
+    if (ptr.active) {
+      const over = ptr.x < POT.x1 + 8;
+      const target = over ? 94 : Math.min(123, ptr.x);
+      const d = target - duck.x;
+      kl = d < -1.5; kr = d > 1.5; kp = over && Math.abs(d) <= 3;
+      if (kp) duck.dir = -1;
+    }
+    const dx = (kr ? 1 : 0) - (kl ? 1 : 0);
+    if (dx) { duck.dir = dx; duck.x += dx * 0.7 * (1 - duck.tilt * 0.6); duck.walk++; } else duck.walk = 0;
+    duck.x = Math.max(66, Math.min(123, duck.x));
+    duck.tilt += ((kp ? 1 : 0) - duck.tilt) * 0.14;
+    if (duck.quack > 0) duck.quack--;
+    if (--duck.blinkT < -8) duck.blinkT = 100 + Math.random() * 140;
+
+    // refill at the barrel
+    if (duck.x >= 119 && duck.tilt < 0.3 && st.can < 100) {
+      st.can = Math.min(100, st.can + 0.6);
+      if (t % 8 === 0) splash(146 + Math.random() * 6, 80, 1);
+    }
+
+    // pour
+    if (duck.tilt > 0.6 && st.can > 0) {
+      st.can = Math.max(0, st.can - 0.4);
+      if (t % 2 === 0) {
+        const c = canTip();
+        drops.push({ x: toWorld(c.lx), y: c.ly, vx: (duck.dir < 0 ? -1 : 1) * 0.5, vy: 0.3 });
+      }
+    }
+
+    for (let i = drops.length - 1; i >= 0; i--) {
+      const d = drops[i];
+      d.vy += 0.12; d.x += d.vx; d.y += d.vy;
+      if (d.y >= POT.rim - 1 && d.x >= POT.x0 + 3 && d.x <= POT.x1 - 3) {
+        if (st.moist < 100) { st.moist = Math.min(100, st.moist + 1.5); if (!st.bloomed && !st.dying) addGrowth(0.55); splash(d.x, POT.rim - 1, 1); }
+        else {
+          splash(Math.random() < 0.5 ? POT.x0 : POT.x1, POT.rim + 4, 1);
+          if (!st.dying) { st.drown = Math.min(100, st.drown + 1.6); if (st.drown >= 100) startDying(); }
+        }
+        drops.splice(i, 1);
+      } else if (d.y >= GROUND) { splash(d.x, GROUND - 1, 1); drops.splice(i, 1); }
+    }
+    for (let i = bits.length - 1; i >= 0; i--) {
+      const b = bits[i]; b.vy += 0.1; b.x += b.vx; b.y += b.vy;
+      if (--b.life <= 0) bits.splice(i, 1);
+    }
+    for (let i = sparkles.length - 1; i >= 0; i--) if (--sparkles[i].life <= 0) sparkles.splice(i, 1);
+
+    st.moist = Math.max(0, st.moist - 0.035);
+    if (!st.dying) st.drown = Math.max(0, st.drown - 0.06);
+
+    // drowned plant: fruit drops, then it withers, then it resets
+    if (st.dying) {
+      st.dyT++;
+      [[0, 30], [1, 55]].forEach(([i, at]) => {
+        if (st.dyT >= at && !st.fell[i]) {
+          st.fell[i] = true;
+          const f = fruitInfo(i);
+          if (f.on) { fallen.push({ x: f.x, y: f.y, r: f.r, ripe: f.ripe, vx: 0, vy: 0, rest: false }); tone('sine', 320, 140, 0.12, 0.15); }
+        }
+      });
+      st.wither = Math.max(0, Math.min(1, (st.dyT - 70) / 220));
+      if (st.dyT > 400) replant();
+    }
+    for (const f of fallen) {
+      if (f.rest) continue;
+      f.vy += 0.15; f.y += f.vy; f.x += f.vx;
+      const over = f.x > POT.x0 + 1 && f.x < POT.x1 - 1;
+      const gy = (over ? POT.rim : GROUND) - f.r - 1;
+      if (f.y >= gy) {
+        f.y = gy;
+        if (f.vx === 0) f.vx = (f.x < POT.cx ? -1 : 1) * 0.45;
+        f.vy = Math.abs(f.vy) > 0.9 ? -f.vy * 0.4 : 0;
+        if (!over) { f.vx *= 0.95; if (Math.abs(f.vx) < 0.04) { f.vx = 0; f.rest = true; f.vy = 0; } }
+      }
+      f.x = Math.max(6, Math.min(150, f.x));
+    }
+    for (const b of leafBits) {
+      if (b.landed) continue;
+      b.y += 0.3; b.x += Math.sin(t / 9 + b.ph) * 0.35;
+      if (b.y >= GROUND - 1) { b.y = GROUND - 1; b.landed = true; }
+    }
+    if (st.moist > 25 && !st.bloomed && !st.dying) addGrowth(0.012);
+    
+  }
+
+  // ---------- drawing helpers ----------
+  function ell(cx, cy, a, b, c) {
+    for (let y = Math.floor(cy - b); y <= Math.ceil(cy + b); y++)
+      for (let x = Math.floor(cx - a); x <= Math.ceil(cx + a); x++) {
+        const dx = (x + 0.5 - cx) / a, dy = (y + 0.5 - cy) / b;
+        if (dx * dx + dy * dy <= 1) px(x, y, c);
+      }
+  }
+  function leaf(cx, cy, a, b, fill) {
+    ell(cx, cy, a + 1, b + 1, STEM); ell(cx, cy, a, b, fill);
+    px(cx - a * 0.4, cy - b * 0.4, LEAFL);
+  }
+  function bubble(x, y, w, h) {
+    px(x, y, BROWN, w, h); px(x + 1, y + 1, WHITE, w - 2, h - 2);
+    px(x + w / 2 - 1, y + h, BROWN, 3, 1); px(x + w / 2, y + h + 1, BROWN, 1, 1);
+    px(x + w / 2, y + h, WHITE, 1, 1);
+  }
+
+  function drawPlatform() {
+    px(2, GROUND, GRASSD, 156, 1);
+    px(2, GROUND + 1, GRASS, 156, 2);
+    px(2, GROUND + 3, BROWN, 156, 9);
+    px(2, GROUND + 3, GRASSD, 156, 1);
+    px(3, GROUND + 4, STONE, 154, 7);
+    px(3, GROUND + 8, STONES, 154, 3);
+    for (let x = 9; x < 150; x += 14) px(x, GROUND + 5, STONEM, 5, 1);
+    for (let x = 16; x < 150; x += 14) px(x, GROUND + 8, STONEM, 5, 1);
+    // grass drips and tufts
+    for (let x = 8; x < 156; x += 11) px(x, GROUND + 3, GRASS, 2, 1);
+    for (const gx of [7, 13, 59, 66, 138]) { px(gx, GROUND - 1, GRASSD); px(gx + 1, GROUND - 2, GRASSD); }
+  }
+
+  function drawBarrel() {
+    const x = 144, y = 78;
+    px(x, y, WOODD, 12, 20);
+    px(x + 1, y + 1, WOOD, 10, 18);
+    px(x + 1, y + 1, WOODL, 2, 18);
+    px(x, y + 4, HOOP, 12, 1); px(x, y + 14, HOOP, 12, 1);
+    px(x + 1, y + 1, WATER, 10, 2);
+    if (duck.x >= 119 && st.can < 100 && duck.tilt < 0.3 && (t >> 2) & 1) px(x - 3, y + 6, WATER, 1, 2);
+  }
+
+  function drawPot() {
+    for (let y = 87; y <= 97; y++) {
+      const i = 4 + Math.floor((y - 87) * 0.45);
+      px(POT.x0 + i, y, POTD, POT.x1 - POT.x0 - 2 * i, 1);
+      px(POT.x0 + i + 1, y, y === 97 ? POTD : POTM, POT.x1 - POT.x0 - 2 * i - 2, 1);
+      if (y < 97) px(POT.x1 - i - 7, y, POTS, 6, 1);
+    }
+    px(POT.x0, POT.rim, POTD, 32, 7);
+    px(POT.x0 + 1, POT.rim + 1, POTR, 30, 5);
+    px(POT.x0 + 1, POT.rim + 1, '#f2bf9a', 4, 5);
+    px(POT.x1 - 5, POT.rim + 1, POTS, 4, 5);
+    px(POT.x0 + 2, POT.rim + 1, st.moist > 40 ? SOILW : (st.moist > 15 ? SOILM : SOILD), 28, 2);
+  }
+
+  function drawPlant() {
+    const g = st.growth, bx = POT.cx, by = POT.rim + 1;
+    const thirsty = st.moist < 15;
+    const h = Math.round(3 + g * 0.30);
+    const bob = Math.round(Math.sin(t / 30));
+    const droop = thirsty ? 3 : 0;
+    const topY = by - h + (thirsty ? 3 : 0);
+
+    px(bx, topY, STEM, 1, by - topY);
+    if (g >= 60) px(bx - 1, topY + 2, STEM, 1, by - topY - 2);
+
+    const pairs = [
+      { min: 4, pos: 0.55, a: 2.5, b: 1.8, grow: 14 },
+      { min: 30, pos: 0.7, a: 4.5, b: 3, grow: 24 },
+      { min: 60, pos: 0.92, a: 4, b: 2.8, grow: 24 }
+    ];
+    for (const p of pairs) {
+      if (g < p.min) continue;
+      const k = Math.min(1, 0.45 + (g - p.min) / p.grow);
+      const a = Math.max(2, p.a * k), b = Math.max(1.5, p.b * k);
+      const cy = by - h * p.pos + droop + (p.pos > 0.8 ? bob * 0.5 : 0) + (thirsty ? 1 : 0);
+      const fill = thirsty ? LEAFDRY : LEAF;
+      leaf(bx - a - 1, cy, a, b, fill);
+      leaf(bx + a + 1, cy, a, b, fill);
+    }
+
+    if (g < 4) { px(bx - 2, topY - 1, LEAF, 2, 1); px(bx + 1, topY - 1, LEAF, 2, 1); }
+    else if (g < 8) { ell(bx - 3, topY, 2.5, 1.5, STEM); ell(bx + 3, topY, 2.5, 1.5, STEM); ell(bx - 3, topY, 1.5, 0.8, LEAF); ell(bx + 3, topY, 1.5, 0.8, LEAF); }
+    else if (g < 100 && g >= 60) { ell(bx, topY - 2 + droop * 0.3, 2.5, 3, '#8a2f50'); ell(bx, topY - 2 + droop * 0.3, 1.5, 2, '#e98aa8'); }
+
+    if (st.bloomed) {
+      const fy = topY - 4;
+      const offs = [[-4, 0], [4, 0], [0, -4], [0, 4]];
+      for (const [ox, oy] of offs) ell(bx + ox, fy + oy, 3.4, 3.4, '#b24d73');
+      for (const [ox, oy] of offs) ell(bx + ox, fy + oy, 2.4, 2.4, '#f9c6d4');
+      ell(bx, fy, 2.6, 2.6, '#a86b12'); ell(bx, fy, 1.6, 1.6, GOLD);
+      const bxp = bx + Math.cos(t / 45) * 16, byp = fy - 6 + Math.sin(t / 28) * 6;
+      const up = ((t >> 3) & 1) === 0;
+      px(bxp, byp, '#5a2e12', 1, 2);
+      px(bxp - 2, byp - (up ? 1 : 0), '#f09a4a', 2, 2); px(bxp + 1, byp - (up ? 1 : 0), '#f09a4a', 2, 2);
+      px(bxp - 2, byp - (up ? 1 : 0), '#7a3b1a'); px(bxp + 2, byp - (up ? 1 : 0), '#7a3b1a');
+    }
+
+    if (thirsty && !st.bloomed && ((t >> 5) & 1)) {
+      const bx2 = bx - 6, by2 = topY - 20;
+      bubble(bx2, by2, 13, 11);
+      const drop = ['..#..', '.###.', '#####', '#####', '.###.'];
+      drop.forEach((row, ry) => [...row].forEach((ch, rx) => { if (ch === '#') px(bx2 + 4 + rx, by2 + 3 + ry, WATER); }));
+    }
+  }
+
+  function tomato(cx, cy, r, ripe) {
+    const base = ripe ? '#e63946' : '#6cc24a', shade = ripe ? '#a3262e' : '#4a9a36';
+    ell(cx, cy, r + 1, r + 1, '#4a1f22');
+    ell(cx, cy, r, r, shade);
+    ell(cx - 0.5, cy - 0.5, r - 1, r - 1, base);
+    px(cx - r * 0.55, cy - r * 0.55, ripe ? '#f5a03a' : '#f2e24a', r > 3 ? 2 : 1, 1);
+    px(cx - 1, cy - r, STEM, 3, 1); px(cx, cy - r - 1, STEM);
+  }
+
+  function drawTomato() {
+    const g = st.growth, bx = POT.cx, by = POT.rim + 1;
+    const thirsty = st.moist < 15;
+    const h = Math.round(3 + g * 0.30);
+    const droop = thirsty ? 3 : 0;
+    const topY = by - h + (thirsty ? 3 : 0);
+    const STAKE = '#b8693f', TIE = '#4a1f22', VEIN = '#5fa84a';
+
+    // stake and stem
+    if (g >= 20) {
+      px(bx + 2, topY - 3, STAKE, 1, by - topY + 3);
+      px(bx - 1, by - h * 0.35, TIE, 4, 1);
+      if (g >= 34) px(bx - 1, by - h * 0.7, TIE, 4, 1);
+    }
+    px(bx, topY, STEM, 1, by - topY);
+    if (g >= 40) px(bx - 1, topY + 3, STEM, 1, by - topY - 3);
+
+    // tomatoes hang from short stalks
+    const hang = (cx, cy, r, ripe) => {
+      const ty = Math.round(cy - r - 3);
+      px(Math.min(bx, cx), ty, STEM, Math.abs(cx - bx) + 1, 1);
+      px(cx, ty, STEM, 1, 3);
+      tomato(cx, cy, r, ripe);
+    };
+    if (g >= 70) hang(bx + 8, by - h * 0.28 + (thirsty ? 1 : 0), Math.min(3, 2 + (g - 70) / 30), false);
+    if (g >= 45) {
+      const r = st.bloomed ? 4 : Math.min(3.5, 1.5 + (g - 45) / 20);
+      hang(bx - 8, by - h * 0.47 + (thirsty ? 1 : 0), r, st.bloomed);
+    }
+
+    // jagged-ish leaves, alternating sides up the stem
+    const L = [
+      { min: 8, side: -1, pos: 0.30, a: 3.5, b: 2, grow: 14 },
+      { min: 20, side: 1, pos: 0.48, a: 4.5, b: 2.6, grow: 18 },
+      { min: 34, side: -1, pos: 0.64, a: 5, b: 3, grow: 18 },
+      { min: 48, side: 1, pos: 0.80, a: 5, b: 2.8, grow: 18 },
+      { min: 62, side: -1, pos: 0.96, a: 4, b: 2.4, grow: 16 }
+    ];
+    for (const p of L) {
+      if (g < p.min) continue;
+      const k = Math.min(1, 0.45 + (g - p.min) / p.grow);
+      const a = Math.max(2, p.a * k), b = Math.max(1.5, p.b * k);
+      const cx = bx + p.side * (a + 1), cy = by - h * p.pos + droop + (thirsty ? 1 : 0);
+      leaf(cx, cy, a, b, thirsty ? LEAFDRY : LEAF);
+      px(cx - a * 0.5, cy, thirsty ? '#a89a55' : VEIN, Math.max(2, Math.round(a)), 1);
+    }
+
+    // top
+    if (g < 4) { px(bx - 2, topY - 1, LEAF, 2, 1); px(bx + 1, topY - 1, LEAF, 2, 1); }
+    else if (g < 8) { ell(bx - 3, topY, 2.5, 1.5, STEM); ell(bx + 3, topY, 2.5, 1.5, STEM); ell(bx - 3, topY, 1.5, 0.8, LEAF); ell(bx + 3, topY, 1.5, 0.8, LEAF); }
+    else { px(bx - 1, topY - 1, LEAF, 3, 1); px(bx, topY - 2, LEAF); }
+
+    if (thirsty && !st.bloomed && ((t >> 5) & 1)) {
+      const bx2 = bx - 6, by2 = topY - 20;
+      bubble(bx2, by2, 13, 11);
+      const drop = ['..#..', '.###.', '#####', '#####', '.###.'];
+      drop.forEach((row, ry) => [...row].forEach((ch, rx) => { if (ch === '#') px(bx2 + 4 + rx, by2 + 3 + ry, WATER); }));
+    }
+  }
+
+  function line(x0, y0, x1, y1, c) {
+    x0 = Math.round(x0); y0 = Math.round(y0); x1 = Math.round(x1); y1 = Math.round(y1);
+    const dx = Math.abs(x1 - x0), dy = -Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
+    let err = dx + dy;
+    for (;;) {
+      px(x0, y0, c);
+      if (x0 === x1 && y0 === y1) break;
+      const e2 = 2 * err;
+      if (e2 >= dy) { err += dy; x0 += sx; }
+      if (e2 <= dx) { err += dx; y0 += sy; }
+    }
+  }
+
+  // textured, slightly jagged leaf: dark outline with a two-tone checker fill
+  function leafJ(cx, cy, a, b, seed, dry) {
+    const D = dry ? '#7a6b34' : '#2d6e3c', M = dry ? '#b5a45a' : '#4fa844', Lc = dry ? '#c9b96b' : '#79cc55';
+    const inside = (x, y) => {
+      const dx = (x + 0.5 - cx) / a, dy = (y + 0.5 - cy) / b;
+      return dx * dx + dy * dy <= 1 + 0.28 * Math.cos(5 * Math.atan2(dy, dx) + seed);
+    };
+    for (let y = Math.floor(cy - b - 2); y <= Math.ceil(cy + b + 2); y++)
+      for (let x = Math.floor(cx - a - 2); x <= Math.ceil(cx + a + 2); x++) {
+        if (!inside(x, y)) continue;
+        const edge = !inside(x - 1, y) || !inside(x + 1, y) || !inside(x, y - 1) || !inside(x, y + 1);
+        px(x, y, edge ? D : (((x + y) & 1) ? M : Lc));
+      }
+  }
+
+  function drawTomato2() {
+    const g = st.growth, bx = POT.cx, by = POT.rim + 1;
+    const thirsty = st.moist < 15;
+    const h = Math.round(3 + g * 0.30), s = h / 33;
+    const droop = thirsty ? 3 : 0;
+    const topY = by - h + (thirsty ? 3 : 0);
+    const TEAL = '#1d4a3c', TEAL2 = '#26604a', STAKE = '#b5693f', STAKED = '#8a4b2d', TIE = '#4a2a2a';
+
+    // stake, stem, ties
+    if (g >= 20) { px(bx + 1, topY + 3, STAKE, 2, by - topY - 3); px(bx + 2, topY + 3, STAKED, 1, by - topY - 3); }
+    px(bx - 1, topY, TEAL, 1, by - topY); px(bx, topY, TEAL2, 1, by - topY);
+    if (g >= 20) for (const [up, min] of [[5, 20], [18, 34], [26, 48]]) if (g >= min) px(bx - 2, by - up * s, TIE, 6, 1);
+
+    // leaves on thin stalks
+    const L = [
+      { min: 8, dx: 5, up: 9.5, a: 3.5, b: 1.8, grow: 14, seed: 0.4 },
+      { min: 20, dx: -7, up: 13, a: 5, b: 4, grow: 18, seed: 1.7 },
+      { min: 34, dx: 9, up: 24, a: 6.5, b: 3.5, grow: 18, seed: 2.9 },
+      { min: 48, dx: -12, up: 30, a: 6, b: 3.5, grow: 18, seed: 0.9 },
+      { min: 62, dx: -4, up: 36, a: 3.3, b: 1.6, grow: 14, seed: 2.2 },
+      { min: 72, dx: 5, up: 34, a: 3.8, b: 1.6, grow: 14, seed: 3.6 }
+    ];
+    for (const p of L) {
+      if (g < p.min) continue;
+      const k = Math.min(1, 0.45 + (g - p.min) / p.grow);
+      const a = Math.max(2, p.a * k), b = Math.max(1.5, p.b * k);
+      const cx = bx + p.dx * (0.6 + 0.4 * s), cy = by - p.up * s + droop;
+      const side = p.dx < 0 ? -1 : 1;
+      line(bx, cy + b * 0.8 + 1, cx - side * a * 0.7, cy, TEAL);
+      leafJ(cx, cy, a, b, p.seed, thirsty);
+    }
+
+    // tomatoes hang from stalks and sit in front of the leaves
+    const hang = (cx, cy, r, ripe) => {
+      const ty = Math.round(cy - r - 3);
+      line(bx, ty, cx, ty, TEAL);
+      px(cx, ty, TEAL, 1, 3);
+      tomato(cx, cy, r, ripe);
+    };
+    if (g >= 70) hang(bx + 7, by - 17 * s + (thirsty ? 1 : 0), Math.min(3, 1.5 + (g - 70) / 20), false);
+    if (g >= 45) {
+      const r = st.bloomed ? 4 : Math.min(4, 1.5 + (g - 45) / 14);
+      hang(bx - 7, by - 24 * s + (thirsty ? 1 : 0), r, st.bloomed);
+    }
+
+    // top
+    if (g < 4) { px(bx - 2, topY - 1, LEAF, 2, 1); px(bx + 1, topY - 1, LEAF, 2, 1); }
+    else if (g < 8) { ell(bx - 3, topY, 2.5, 1.5, STEM); ell(bx + 3, topY, 2.5, 1.5, STEM); ell(bx - 3, topY, 1.5, 0.8, LEAF); ell(bx + 3, topY, 1.5, 0.8, LEAF); }
+    else if (g < 62) { px(bx - 1, topY - 1, LEAF, 2, 1); }
+
+    if (thirsty && !st.bloomed && ((t >> 5) & 1)) {
+      const bx2 = bx - 6, by2 = topY - 20;
+      bubble(bx2, by2, 13, 11);
+      const drop = ['..#..', '.###.', '#####', '#####', '.###.'];
+      drop.forEach((row, ry) => [...row].forEach((ch, rx) => { if (ch === '#') px(bx2 + 4 + rx, by2 + 3 + ry, WATER); }));
+    }
+  }
+
+  function mixc(a, b, k) {
+    const pa = parseInt(a.slice(1), 16), pb = parseInt(b.slice(1), 16);
+    const ch = sh => Math.round(((pa >> sh) & 255) * (1 - k) + ((pb >> sh) & 255) * k);
+    return '#' + ((1 << 24) | (ch(16) << 16) | (ch(8) << 8) | ch(0)).toString(16).slice(1);
+  }
+
+  function leafJ2(cx, cy, a, b, seed, amt) {
+    const D = mixc('#2d6e3c', '#7a6b34', amt), M = mixc('#4fa844', '#b5a45a', amt), Lc = mixc('#79cc55', '#c9b96b', amt);
+    const inside = (x, y) => {
+      const dx = (x + 0.5 - cx) / a, dy = (y + 0.5 - cy) / b;
+      return dx * dx + dy * dy <= 1 + 0.28 * Math.cos(5 * Math.atan2(dy, dx) + seed);
+    };
+    for (let y = Math.floor(cy - b - 2); y <= Math.ceil(cy + b + 2); y++)
+      for (let x = Math.floor(cx - a - 2); x <= Math.ceil(cx + a + 2); x++) {
+        if (!inside(x, y)) continue;
+        const edge = !inside(x - 1, y) || !inside(x + 1, y) || !inside(x, y - 1) || !inside(x, y + 1);
+        px(x, y, edge ? D : (((x + y) & 1) ? M : Lc));
+      }
+  }
+
+  function fruitInfo(i) {
+    const g = st.growth, s = Math.round(3 + g * 0.3) / 33;
+    if (i === 0) return { on: g >= 45, x: POT.cx - 7, y: POT.rim + 1 - 24 * s, r: st.bloomed ? 4 : Math.min(4, 1.5 + (g - 45) / 14), ripe: st.bloomed };
+    return { on: g >= 70, x: POT.cx + 7, y: POT.rim + 1 - 17 * s, r: Math.min(3, 1.5 + (g - 70) / 20), ripe: false };
+  }
+
+  function drawFallen() {
+    for (const f of fallen) tomato(Math.round(f.x), Math.round(f.y), f.r, f.ripe);
+    for (const b of leafBits) px(b.x, b.y, b.c, 2, 1);
+  }
+
+  function drawTomato3() {
+    const g = st.growth, bx = POT.cx, by = POT.rim + 1;
+    const w = st.wither, dr = st.drown;
+    const amt = Math.max(st.moist < 15 ? 0.8 : 0, dr > 25 ? (dr - 25) / 75 * 0.9 : 0, w);
+    const hFull = Math.round(3 + g * 0.30);
+    const h = Math.max(3, Math.round(hFull * (1 - 0.4 * w))), s = h / 33, sFull = hFull / 33;
+    const droop = Math.round(amt * 4 + w * 3);
+    const topY = by - h + Math.round(amt * 3);
+    const lean = -w * 6;
+    const off = y => Math.round(lean * Math.pow(Math.max(0, by - y) / Math.max(1, h), 2));
+    const TEAL = mixc('#1d4a3c', '#6b5a2f', w), TEAL2 = mixc('#26604a', '#8a7440', w);
+    const STAKE = '#b5693f', STAKED = '#8a4b2d', TIE = '#4a2a2a';
+
+    // overwatering signs: water pooling and running down the pot
+    if (dr > 10) {
+      const pw = Math.round(8 + dr * 0.3);
+      px(bx - pw / 2, GROUND, WATERL, pw, 1);
+      const dy = (t >> 2) % 6;
+      px(POT.x0, POT.rim + 7 + dy, WATER); px(POT.x1 - 1, POT.rim + 7 + ((dy + 3) % 6), WATER);
+    }
+
+    // stake, stem, ties
+    if (g >= 20) { const st0 = by - hFull + 3; px(bx + 1, st0, STAKE, 2, by - st0); px(bx + 2, st0, STAKED, 1, by - st0); }
+    for (let y = topY; y < by; y++) { const o = off(y); px(bx - 1 + o, y, TEAL, 1, 1); px(bx + o, y, TEAL2, 1, 1); }
+    if (g >= 20 && w < 0.3) for (const [up, min] of [[5, 20], [18, 34], [26, 48]]) if (g >= min) px(bx - 2, by - up * sFull, TIE, 6, 1);
+
+    // leaves
+    const L = [
+      { min: 8, dx: 5, up: 9.5, a: 3.5, b: 1.8, grow: 14, seed: 0.4 },
+      { min: 20, dx: -7, up: 13, a: 5, b: 4, grow: 18, seed: 1.7 },
+      { min: 34, dx: 9, up: 24, a: 6.5, b: 3.5, grow: 18, seed: 2.9 },
+      { min: 48, dx: -12, up: 30, a: 6, b: 3.5, grow: 18, seed: 0.9 },
+      { min: 62, dx: -4, up: 36, a: 3.3, b: 1.6, grow: 14, seed: 2.2 },
+      { min: 72, dx: 5, up: 34, a: 3.8, b: 1.6, grow: 14, seed: 3.6 }
+    ];
+    L.forEach((p, i) => {
+      if (g < p.min || st.leafGone[i]) return;
+      const k = Math.min(1, 0.45 + (g - p.min) / p.grow);
+      const a = Math.max(2, p.a * k), b = Math.max(1.5, p.b * k);
+      const yy = by - p.up * s;
+      const cx = bx + p.dx * (0.6 + 0.4 * s) + off(yy), cy = yy + droop;
+      if (st.dying && w > 0.15 + i * 0.12) {
+        st.leafGone[i] = true;
+        for (let n = 0; n < 4; n++) leafBits.push({ x: cx + (Math.random() - 0.5) * a * 1.4, y: cy + (Math.random() - 0.5) * b, ph: Math.random() * 6, landed: false, c: mixc('#79cc55', '#c9b96b', 0.6 + Math.random() * 0.4) });
+        return;
+      }
+      const side = p.dx < 0 ? -1 : 1;
+      line(bx + off(cy), cy + b * 0.8 + 1, cx - side * a * 0.7, cy, TEAL);
+      leafJ2(cx, cy, a, b, p.seed, amt);
+    });
+
+    // hanging fruit (it drops off when the plant drowns)
+    const drawFruit = i => {
+      const f = fruitInfo(i);
+      if (!f.on || st.fell[i]) return;
+      const fy = f.y + (amt > 0.5 ? 1 : 0), fx = f.x + off(fy);
+      const ty = Math.round(fy - f.r - 3);
+      line(bx + off(ty), ty, fx, ty, TEAL);
+      px(fx, ty, TEAL, 1, 3);
+      tomato(fx, fy, f.r, f.ripe);
+    };
+    drawFruit(1); drawFruit(0);
+
+    // top
+    if (g < 4) { px(bx - 2, topY - 1, LEAF, 2, 1); px(bx + 1, topY - 1, LEAF, 2, 1); }
+    else if (g < 8) { ell(bx - 3, topY, 2.5, 1.5, STEM); ell(bx + 3, topY, 2.5, 1.5, STEM); ell(bx - 3, topY, 1.5, 0.8, LEAF); ell(bx + 3, topY, 1.5, 0.8, LEAF); }
+    else if (g < 62 && w < 0.3) { px(bx - 1, topY - 1, LEAF, 2, 1); }
+
+    // warning bubbles
+    if (!st.dying && ((t >> 4) & 1) && dr > 25) {
+      const bx2 = bx - 6, by2 = topY - 20;
+      bubble(bx2, by2, 13, 11);
+      px(bx2 + 6, by2 + 2, WATER, 1, 5); px(bx2 + 6, by2 + 8, WATER);
+    } else if (!st.dying && dr <= 25 && st.moist < 15 && !st.bloomed && ((t >> 5) & 1)) {
+      const bx2 = bx - 6, by2 = topY - 20;
+      bubble(bx2, by2, 13, 11);
+      const drop = ['..#..', '.###.', '#####', '#####', '.###.'];
+      drop.forEach((row, ry) => [...row].forEach((ch, rx) => { if (ch === '#') px(bx2 + 4 + rx, by2 + 3 + ry, WATER); }));
+    }
+  }
+
+  function drawDuck() {
+    const walking = duck.walk > 0;
+    const bob = walking && ((duck.walk >> 3) & 1) ? 1 : 0;
+    const c = canTip();
+    const top = Math.round(DT + bob - c.hop);
+    const happy = duck.tilt > 0.5 || duck.quack > 0;
+    const wagging = walking || happy;
+    const wag = wagging && ((t >> 3) & 1) ? -1 : 0;
+
+    ctx.save();
+    const dxr = Math.round(duck.x);
+    if (duck.dir < 0) ctx.translate(dxr - 21, 0); else { ctx.translate(dxr + 21, 0); ctx.scale(-1, 1); }
+
+    // feet (behind everything)
+    const step = walking ? ((duck.walk >> 3) & 1) : -1;
+    [[12, 0], [27, 1]].forEach(([fx, idx]) => {
+      const lift = step === idx ? 1 : 0;
+      px(fx + 1, top + DH, ORANGE, 2, GROUND - 2 - (top + DH) - lift);
+      const fy = GROUND - 2 - lift;
+      px(fx - 4, fy, ORANGE, 8, 2);
+      px(fx - 3, fy, YEL, 4, 1);
+      px(fx - 4, fy + 1, ORDK, 8, 1);
+    });
+
+    // (no tail)
+
+    // arm and watering can, layered behind the body
+    const pivotY = c.pivotY + bob;
+    px(-8, pivotY - 3, BROWN, 11, 7); px(-9, pivotY - 2, BROWN, 1, 5);
+    px(-8, pivotY - 2, CREAM, 10, 5); px(-8, pivotY + 1, CREAMD, 10, 2);
+    canRotCtx.clearRect(0, 0, 64, 64);
+    canRotCtx.save();
+    canRotCtx.translate(32, 32);
+    canRotCtx.rotate(-c.a);
+    canRotCtx.drawImage(canSprite, -CAN_PIVOT.x, -CAN_PIVOT.y);
+    canRotCtx.restore();
+    ctx.drawImage(canRot, -8 - 32, Math.round(pivotY) - 32);
+
+    // body on top
+    ctx.drawImage(bodySprite, 0, top);
+
+    // beak
+    px(-1, top + 20, ORANGE, 22, 5);
+    px(0, top + 21, YEL, 13, 2);
+    px(-2, top + 20, BROWN, 1, 5);
+    px(-1, top + 25, ORDK, 22, 1);
+
+    // eyes
+    for (const ex of [7, 23]) {
+      const ey = top + 15;
+      if (happy) { px(ex, ey, EYE); px(ex - 1, ey + 1, EYE); px(ex + 1, ey + 1, EYE); px(ex - 2, ey + 2, EYE); px(ex + 2, ey + 2, EYE); }
+      else if (duck.blinkT < 0) px(ex - 2, ey + 2, EYE, 4, 1);
+      else px(ex - 1, ey, EYE, 2, 4);
+    }
+
+    ctx.restore();
+
+    if (duck.quack > 0) {
+      const bxp = duck.x - 4, byp = top - 14;
+      bubble(bxp, byp, 9, 9);
+      px(bxp + 4, byp + 2, '#d9552b', 1, 3); px(bxp + 4, byp + 6, '#d9552b', 1, 1);
+    }
+  }
+
+  function render() {
+    ctx.setTransform(SC, 0, 0, SC, 0, 0);
+    ctx.imageSmoothingEnabled = false;
+    ctx.clearRect(0, 0, W, H);
+    ctx.save(); ctx.translate(0, -OFFY);
+    drawPlatform();
+    drawBarrel();
+    drawPot();
+    drawTomato3();
+    drawFallen();
+    drawDuck();
+    for (const d of drops) { px(d.x, d.y, WATER, 1, 2); px(d.x + 1, d.y, WATERL, 1, 1); }
+    for (const b of bits) px(b.x, b.y, SPLASH, 1, 1);
+    for (const s of sparkles) {
+      if (((s.life >> 2) & 1) === 0) continue;
+      px(s.x, s.y, GOLDL); px(s.x - 1, s.y, GOLD); px(s.x + 1, s.y, GOLD); px(s.x, s.y - 1, GOLD); px(s.x, s.y + 1, GOLD);
+    }
+    ctx.restore();
+
+    // reset button, only once the tomato is ripe: round button with a circular arrow
+    if (st.bloomed) {
+      const pulse = (t >> 5) & 1;
+      ell(11, 11, 8, 8, BROWN); ell(11, 11, 7, 7, pulse ? CREAML : WHITE);
+      for (let y = 0; y < 11; y++) for (let x = 0; x < 11; x++) {
+        const dx = x - 5, dy = y - 5, d = Math.hypot(dx, dy);
+        if (d < 3.3 || d > 4.6) continue;
+        const ang = Math.atan2(dy, dx) * 180 / Math.PI;
+        if (ang > -75 && ang < -5) continue;
+        px(6 + x, 6 + y, BROWN);
+      }
+      [[6, 0], [6, 1], [6, 2], [7, 1]].forEach(([x, y]) => px(6 + x, 6 + y, BROWN));
+    }
+
+    // small can level, only while it is not full
+    if (st.can < 99.5 && (st.can > 0 || ((t >> 4) & 1))) {
+      px(134, 4, BROWN, 22, 6); px(135, 5, WHITE, 20, 4);
+      px(135, 5, WATER, Math.round(20 * st.can / 100), 4);
+    }
+  }
+
+  // ---------- input ----------
+  const keyMap = { ArrowLeft: 'left', a: 'left', A: 'left', ArrowRight: 'right', d: 'right', D: 'right', ' ': 'pour', ArrowDown: 'pour', s: 'pour', S: 'pour' };
+  addEventListener('keydown', e => {
+    audio();
+    const k = keyMap[e.key];
+    if (k) { keys[k] = true; e.preventDefault(); return; }
+    if (e.key === 'q' || e.key === 'Q') quack();
+    else if (e.key === 'r' || e.key === 'R') replant();
+    else if (e.key === 'm' || e.key === 'M') muted = !muted;
+  });
+  addEventListener('keyup', e => { const k = keyMap[e.key]; if (k) { keys[k] = false; e.preventDefault(); } });
+  addEventListener('blur', () => { keys.left = keys.right = keys.pour = false; ptr.active = false; });
+
+  const ptrX = e => { const r = cv.getBoundingClientRect(); return (e.clientX - r.left) * W / r.width; };
+  cv.addEventListener('pointerdown', e => {
+    audio(); window.focus(); cv.focus({ preventScroll: true });
+    const x = ptrX(e);
+    const rr = cv.getBoundingClientRect();
+    const y = (e.clientY - rr.top) * H / rr.height;
+    if (st.bloomed && x >= 2 && x <= 20 && y >= 2 && y <= 20) { replant(); return; }
+    if (Math.abs(x - duck.x) < 22) { quack(); return; }
+    ptr.active = true; ptr.x = x;
+    try { cv.setPointerCapture(e.pointerId); } catch (_) {}
+  });
+  cv.addEventListener('pointermove', e => { if (ptr.active) ptr.x = ptrX(e); });
+  const ptrOff = () => { ptr.active = false; };
+  cv.addEventListener('pointerup', ptrOff); cv.addEventListener('pointercancel', ptrOff); cv.addEventListener('lostpointercapture', ptrOff);
+
+  // ---------- loop ----------
+  // size the canvas to a whole number of device pixels per art pixel so nothing is resampled
+  function fit() {
+    const dpr = window.devicePixelRatio || 1;
+    const avail = Math.max(W, (cv.parentElement && cv.parentElement.clientWidth) || document.documentElement.clientWidth || W);
+    SC = Math.max(1, Math.min(12, Math.floor(avail * dpr / W)));
+    cv.width = W * SC; cv.height = H * SC;
+    cv.style.width = '100%';
+    cv.style.height = 'auto';
+    ctx.imageSmoothingEnabled = false;
+  }
+  addEventListener('resize', fit);
+  fit();
+
+  let last = performance.now(), acc = 0;
+  const STEP = 1000 / 60;
+  function frame(now) {
+    acc += Math.min(now - last, 100); last = now;
+    while (acc >= STEP) { update(); acc -= STEP; }
+    render();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

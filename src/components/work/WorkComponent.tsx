@@ -23,7 +23,8 @@ const ProjectCard = ({ title, description, tag, imageUrl, link }: Project) => {
   return (
     <a
       href={link}
-      className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer"
+      data-cursor="case-study"
+      className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer overflow-hidden rounded-[10px] border border-[rgb(229,229,229)]"
     >
       {/* Main Content Area - Sharp Rectangle */}
       <div className="relative w-full aspect-[16/9] overflow-hidden bg-gray-100">
@@ -72,7 +73,7 @@ const SchoolProjectCard = ({
       href={docLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer"
+      className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer overflow-hidden rounded-[10px] border border-[rgb(229,229,229)]"
     >
       {/* Main Content Area - Image, Lottie Animation, or Animated Gradient */}
       <div
@@ -109,13 +110,6 @@ const SchoolProjectCard = ({
 
 const caseStudies: Project[] = [
   {
-    title: 'Enhancing Solace Documentation Navigation',
-    description: 'Developer Documentation Navigation',
-    tag: 'SOLACE • CONCEPT 2024',
-    imageUrl: '/images/Solace/Solace-docs 1.png',
-    link: '/solace',
-  },
-  {
     title: 'Refreshing the Hackathon Application Experience',
     description: 'Hacker Application Portal',
     tag: 'UOTTAHACK • SHIPPED 2025',
@@ -123,17 +117,10 @@ const caseStudies: Project[] = [
     link: '/uotta-app',
   },
   {
-    title: 'Creating the One-Stop-Shop for Sponsorship Needs',
-    description: 'Sponsorship Management Portal',
-    tag: 'UOTTAHACK • SHIPPED 2024',
-    imageUrl: '/images/uottashop/uOttaShop.svg',
-    link: '/uottashop',
-  },
-  {
     title: 'Making Life More Accessible Through Software-Hardware Interaction',
-    description: 'Accessibility Indepdence',
+    description: 'Accessibility Independence',
     tag: 'UBIONICS • SHIPPED 2025',
-    imageUrl: '/images/Bionics/bionics.png',
+    imageUrl: '/images/Bionics/bionics.svg',
     link: '/bionics',
   },
 ];
