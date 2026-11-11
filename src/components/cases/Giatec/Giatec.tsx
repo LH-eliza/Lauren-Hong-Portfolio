@@ -64,7 +64,7 @@ const ProtoShot: React.FC<{ src: string; alt: string; caption?: string }> = ({
 
 const SectionTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <h2
-    className="font-castoro scroll-mt-28 leading-tight"
+    className="font-castoro normal-case scroll-mt-28 leading-tight"
     style={{ color: GREEN, fontSize: '36px' }}
   >
     {children}

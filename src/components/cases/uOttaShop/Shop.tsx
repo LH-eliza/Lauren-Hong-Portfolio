@@ -26,11 +26,11 @@ const UOttaShopSite = () => {
         />
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Problem Statement</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Problem Statement</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       Sponsors who support uOttaHack rely on emails for updates, leading to
                       potential delays and a less engaging experience. Our goal is to enhance
                       communication by introducing more immediate and interactive methods, improving
@@ -42,11 +42,11 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Context</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Context</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       uOttaHack is a student organization that supports students all around Canada
                       in sparking their creative spirit, connecting them with company resources, and
                       exploring their limits. Sponsors are the main source of financial support to
@@ -56,7 +56,7 @@ const UOttaShopSite = () => {
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       As the new co-director of the hackathon, I led redesigning of the sponsor
                       experience. Over 3 months, I worked alongside the other co-directors and the
                       development team to develop a new experience, with guidance from previous
@@ -68,13 +68,13 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 id="solution" className="text-4xl text-[#1A4FAC] font-chewie scroll-mt-28">
+                  <h2 id="solution" className="text-4xl text-[#1A4FAC] font-castoro scroll-mt-28">
                     Result
                   </h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre mb-6">
+                    <p className="text-gray-700 font-vietnam mb-6">
                       Our solution addressed key pain points identified in the research phase.
                       Here's how the uOttaShop portal transformed the sponsorship experience:
                     </p>
@@ -83,48 +83,48 @@ const UOttaShopSite = () => {
                     <table className="w-full border-collapse border border-gray-300 mb-6">
                       <thead>
                         <tr className="bg-gray-100">
-                          <th className="border border-gray-300 px-4 py-3 text-left font-chewie text-[#1A4FAC]">
+                          <th className="border border-gray-300 px-4 py-3 text-left font-castoro text-[#1A4FAC]">
                             The Problem (Legacy Email)
                           </th>
-                          <th className="border border-gray-300 px-4 py-3 text-left font-chewie text-[#1A4FAC]">
+                          <th className="border border-gray-300 px-4 py-3 text-left font-castoro text-[#1A4FAC]">
                             The UX Solution (uOttaShop)
                           </th>
-                          <th className="border border-gray-300 px-4 py-3 text-left font-chewie text-[#1A4FAC]">
+                          <th className="border border-gray-300 px-4 py-3 text-left font-castoro text-[#1A4FAC]">
                             Result
                           </th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre">
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
                             Hasty/Manual Scheduling
                           </td>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre">
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
                             Automated Dashboard Scheduling
                           </td>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre font-semibold">
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam font-semibold">
                             45% prefer the new speed.
                           </td>
                         </tr>
                         <tr className="bg-gray-50">
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre">
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
                             Information Silos
                           </td>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre">
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
                             Centralized Information Board
                           </td>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre font-semibold">
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam font-semibold">
                             70% feel more comfortable.
                           </td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre">
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
                             Tracking Issues
                           </td>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre">
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
                             Portal + Legacy Integration
                           </td>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-libre font-semibold">
+                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam font-semibold">
                             100% utility across platforms.
                           </td>
                         </tr>
@@ -132,7 +132,7 @@ const UOttaShopSite = () => {
                     </table>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       Within one month, we designed an interactive design showcasing the uOttaShop
                       to the development team and other directors.
                     </p>
@@ -150,11 +150,11 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Current State</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Current State</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       This is the current state of what sponsors receive, a simple email and a very
                       long conversation thread between our sponsorship team and the sponsors.
                     </p>
@@ -172,11 +172,11 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Research</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Research</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       I surveyed 42 people who are part of various companies and organizations
                       across Ontario, Canada. I conducted a survey with uOttaHack Sponsor
                       representatives and the Sponsorship team to hear their thoughts and this is
@@ -197,11 +197,11 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">User Journey</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">User Journey</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       Based on our research findings, I mapped out the user journey to visualize how
                       sponsors interact with the sponsorship process, from initial contact through
                       event participation. This journey map helped identify pain points and
@@ -220,29 +220,29 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Goals</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Goals</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <h3 className="text-xl mb-4 font-libre">
+                    <h3 className="text-xl mb-4 font-vietnam">
                       How might we enhance the UX of the sponsorship experience?
                     </h3>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       <span className="font-bold">Goal 1: </span>
                       Improve the communication and time efficiency of the sponsorship experience.
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       <span className="font-bold">Goal 2: </span>
                       Make it easier for sponsor representatives to connect and be able to regulate
                       their options.
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       <span className="font-bold">Goal 3: </span>
                       Update/Optimize the experience, feel, and look in order to create a
                       professional atmosphere.
@@ -261,19 +261,19 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-2xl md:text-4xl text-[#1A4FAC] font-chewie break-words">
+                  <h2 className="text-2xl md:text-4xl text-[#1A4FAC] font-castoro break-words">
                     Ideation for Sponsorship Communication
                   </h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       My first goal of improving communication and time efficiency, is that we came
                       up with these three options for how we can display the users needs:
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       <span className="font-bold">Option 1: Dashboard. </span>
                       Option 1 laid out all the information on one screen, which was different than
                       our previous methods. It allowed for the user to have control of what they
@@ -281,14 +281,14 @@ const UOttaShopSite = () => {
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       <span className="font-bold">Option 2: Stripe. </span>
                       Option 2 was a Stripe only portal, allowing for communication for purchase
                       which allowed a single way transaction ensuring safety of their purchase.
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       <span className="font-bold">Option 3: Quick Response Time. </span>
                       Option 3 offered no independence; however, it offers a traditional alternative
                       for people who are not looking for a long term communication.
@@ -307,20 +307,20 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-2xl md:text-4xl text-[#1A4FAC] font-chewie break-words">
+                  <h2 className="text-2xl md:text-4xl text-[#1A4FAC] font-castoro break-words">
                     Ideation for Sponsorship Regulation
                   </h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       The second goal was to make it easier for sponsorship representatives to
                       connect and be able to regulate their options. For this, we ideated the types
                       of ways we could present the information rather than navigation.
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       From user and research, people mentioned that they would like to know about
                       their deadlines, where all the information is located, for their coworkers to
                       be informed, and simply just more information in general about the
@@ -328,17 +328,17 @@ const UOttaShopSite = () => {
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       <span className="font-bold">Idea 1: Widgets</span>
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       <span className="font-bold">Idea 2: Information Board</span>
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       <span className="font-bold">Idea 3: Project Management Flow</span>
                     </p>
                   </div>
@@ -355,11 +355,11 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Options</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Options</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       After deliberation, eliminating Option 3 seemed to be the best option, as we
                       found that it was harder to be able to track various email threads amongst
                       sponsors as well as organizers. Since there was human error revolved in this
@@ -380,20 +380,20 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Review</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Review</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       When presented with the options, 100% of participants said they would rather
                       Option 1 which housed more personalization and information.
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">When asked why, they said this:</p>
+                    <p className="text-gray-700 font-vietnam">When asked why, they said this:</p>
                   </div>
                   <div>
-                    <ul className="list-disc pl-5 text-gray-700 font-libre space-y-2">
+                    <ul className="list-disc pl-5 text-gray-700 font-vietnam space-y-2">
                       <li>
                         Option 2 offers an isolating option with no variety, whereas Option 1 is
                         very autonomous.
@@ -415,36 +415,36 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">
                     Stakeholder Feedback & Iteration
                   </h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <h3 className="text-xl mb-4 font-libre font-semibold">
+                    <h3 className="text-xl mb-4 font-vietnam font-semibold">
                       Bridging the Gap Between Director Vision and Developer Feasibility
                     </h3>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       As a co-director, I held weekly "sync-and-critique" sessions with the
                       development team and other directors to ensure our three ideation options were
                       realistic.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-xl mb-4 font-libre font-semibold">
+                    <h3 className="text-xl mb-4 font-vietnam font-semibold">
                       The Pivot on Option 3:
                     </h3>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       While "Quick Response Time" felt traditional, we collectively decided to
                       eliminate it. Our developers noted that it was the least scalable and most
                       prone to "human error," requiring too many manual hours to regulate.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-xl mb-4 font-libre font-semibold">
+                    <h3 className="text-xl mb-4 font-vietnam font-semibold">
                       The Dashboard Refinement:
                     </h3>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       Based on director feedback, we realized the dashboard needed to be more than
                       just a data view; it needed to be autonomous. We added "Widgets" (Idea 1)
                       specifically because our research showed sponsors wanted their coworkers to
@@ -458,37 +458,37 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Usability Testing Process</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Usability Testing Process</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <h3 className="text-xl mb-4 font-libre font-semibold">
+                    <h3 className="text-xl mb-4 font-vietnam font-semibold">
                       Validating the uOttaShop Experience
                     </h3>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       We didn't just look at the results; we looked at the behavior. I conducted
                       moderated usability tests with 42 representatives across Ontario to validate
                       the "Professional Atmosphere" goal.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-xl mb-4 font-libre font-semibold">The Task:</h3>
-                    <p className="text-gray-700 font-libre italic mb-4">
+                    <h3 className="text-xl mb-4 font-vietnam font-semibold">The Task:</h3>
+                    <p className="text-gray-700 font-vietnam italic mb-4">
                       "Find your booth assignment and upload your company logo for the event
                       program."
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-xl mb-4 font-libre font-semibold">The Finding:</h3>
-                    <p className="text-gray-700 font-libre">
+                    <h3 className="text-xl mb-4 font-vietnam font-semibold">The Finding:</h3>
+                    <p className="text-gray-700 font-vietnam">
                       100% of users successfully used the uOttaShop portal alongside legacy methods,
                       proving that the portal didn't replace the relationship—it enhanced the
                       logistics.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-xl mb-4 font-libre font-semibold">The "Comfort" Metric:</h3>
-                    <p className="text-gray-700 font-libre">
+                    <h3 className="text-xl mb-4 font-vietnam font-semibold">The "Comfort" Metric:</h3>
+                    <p className="text-gray-700 font-vietnam">
                       The 70% preference for the website over email was driven by the Information
                       Board (Idea 2), which reduced the "unknown info" fear that sponsors reported
                       in our early surveys.
@@ -501,37 +501,37 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Handoff & Monitoring</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Handoff & Monitoring</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <h3 className="text-xl mb-4 font-libre font-semibold">
+                    <h3 className="text-xl mb-4 font-vietnam font-semibold">
                       Ensuring a Seamless Build for the Hackathon Season
                     </h3>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       A design is only as good as its implementation. Within one month, I finalized
                       the interactive prototype for the uOttaShop Portal and led the handoff to the
                       engineering team.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-xl mb-4 font-libre font-semibold">Documentation:</h3>
-                    <p className="text-gray-700 font-libre">
+                    <h3 className="text-xl mb-4 font-vietnam font-semibold">Documentation:</h3>
+                    <p className="text-gray-700 font-vietnam">
                       Provided a full design system in Figma, including "Empty States" (what the
                       dashboard looks like before a sponsor signs up) and "Success States."
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-xl mb-4 font-libre font-semibold">KPI Tracking:</h3>
-                    <p className="text-gray-700 font-libre">
+                    <h3 className="text-xl mb-4 font-vietnam font-semibold">KPI Tracking:</h3>
+                    <p className="text-gray-700 font-vietnam">
                       We are monitoring Time-to-Completion for sponsor requests. Our goal is to
                       reduce the "Sponsorship Team" manual intervention by 50% during the peak
                       hackathon month.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-xl mb-4 font-libre font-semibold">Iterative Loops:</h3>
-                    <p className="text-gray-700 font-libre">
+                    <h3 className="text-xl mb-4 font-vietnam font-semibold">Iterative Loops:</h3>
+                    <p className="text-gray-700 font-vietnam">
                       As we move into the next hackathon season, we will gather live feedback to
                       refine the "Project Management Flow" (Idea 3) for more complex sponsor tiers.
                     </p>
@@ -541,11 +541,11 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Final Design</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Final Design</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       In terms of making it easier for sponsors to connect with organizers we
                       created a prototype for what we might be able to see when the user logs into
                       the dashboard. Comparing to the other ideas from Goal 2, Option 1 included
@@ -566,11 +566,11 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Reflection</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Reflection</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       By improving the sponsorship experience, it makes it easier for organizers and
                       sponsorship representatives to connect with each other, and updating the
                       process, we will have an enhanced user experience. This project allowed us to
@@ -579,7 +579,7 @@ const UOttaShopSite = () => {
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       We started off with an open ended problem. We can't work with broad concepts.
                       By synthesizing feedback and research, it told us what we needed to improve
                       and enhance the sponsorship process. The result is a more streamlined,
@@ -592,11 +592,11 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Next Steps...</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Next Steps...</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       The next steps will be to implement the dashboard with the development team
                       and test it with real sponsors for the upcoming hackathon season. We plan to
                       gather feedback throughout the implementation process and make iterative
@@ -610,12 +610,12 @@ const UOttaShopSite = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Try it out!</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Try it out!</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <a
                     href="https://shop.uottahack.ca/"
-                    className="text-2xl text-gray-700 font-libre underline"
+                    className="text-2xl text-gray-700 font-vietnam underline"
                   >
                     Visit uOttaShop Portal →
                   </a>

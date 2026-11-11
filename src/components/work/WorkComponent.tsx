@@ -24,7 +24,7 @@ const ProjectCard = ({ title, description, tag, imageUrl, link }: Project) => {
     <a
       href={link}
       data-cursor="case-study"
-      className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer border border-[rgb(229,229,229)]"
+      className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer overflow-hidden rounded-[10px] border border-[rgb(229,229,229)]"
     >
       {/* Main Content Area - Sharp Rectangle */}
       <div className="relative w-full aspect-[16/9] overflow-hidden bg-gray-100">
@@ -73,7 +73,7 @@ const SchoolProjectCard = ({
       href={docLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer"
+      className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-pointer overflow-hidden rounded-[10px] border border-[rgb(229,229,229)]"
     >
       {/* Main Content Area - Image, Lottie Animation, or Animated Gradient */}
       <div
@@ -115,6 +115,13 @@ const caseStudies: Project[] = [
     tag: 'UOTTAHACK • SHIPPED 2025',
     imageUrl: '/images/Application/app.png',
     link: '/uotta-app',
+  },
+  {
+    title: 'Making Life More Accessible Through Software-Hardware Interaction',
+    description: 'Accessibility Independence',
+    tag: 'UBIONICS • SHIPPED 2025',
+    imageUrl: '/images/Bionics/bionics.svg',
+    link: '/bionics',
   },
 ];
 

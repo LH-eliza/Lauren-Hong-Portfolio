@@ -5,55 +5,108 @@ interface ExperienceItem {
   org: string;
   dates: string;
   role: string;
-  wide?: boolean;
+  description: string;
 }
 
 const technicalExperience: ExperienceItem[] = [
-  { org: 'Solace', dates: 'May 2026 - Aug 2026', role: 'Junior UX Designer Intern' },
+  {
+    org: 'Solace',
+    dates: 'MAY 2026 — AUG 2026',
+    role: 'Junior UX Designer Intern',
+    description: 'Designing developer-facing experiences and helping shape clearer product workflows.',
+  },
   {
     org: 'Giatec Scientific Inc.',
-    dates: 'May 2025 - Aug 2025',
+    dates: 'MAY 2025 — AUG 2025',
     role: 'Software Developer in Test Intern',
+    description: 'Building quality into concrete sensor products — check out my case study under Work!',
   },
-  { org: 'Motorola Solutions', dates: 'Sept 2024 - Dec 2024', role: 'DevOps Engineer Intern' },
-  { org: 'Solace', dates: 'Jan 2024 - April 2024', role: 'Backend Developer Intern' },
+  {
+    org: 'Motorola Solutions',
+    dates: 'SEPT 2024 — DEC 2024',
+    role: 'DevOps Engineer Intern',
+    description: 'Supporting infrastructure and delivery pipelines for production systems.',
+  },
+  {
+    org: 'Solace',
+    dates: 'JAN 2024 — APRIL 2024',
+    role: 'Backend Developer Intern',
+    description: 'Building backend services and tooling for event-driven platforms.',
+  },
   {
     org: 'Shared Services Canada',
-    dates: 'May 2023 - Aug 2023',
+    dates: 'MAY 2023 — AUG 2023',
     role: 'Project Manager Intern',
+    description: 'Coordinating project delivery and helping keep cross-team work on track.',
   },
-  { org: 'Mozilla', dates: 'Jan 2021 - April 2022', role: 'IT User Support Volunteer' },
+  {
+    org: 'Mozilla',
+    dates: 'JAN 2021 — APRIL 2022',
+    role: 'IT User Support Volunteer',
+    description: 'Helping users get unstuck and supporting community-facing tech needs.',
+  },
 ];
 
 const leadership: ExperienceItem[] = [
-  { org: 'Asian Passion Project', dates: '2021-2022', role: 'TOEFL Tutor' },
-  { org: 'Felt Initiative', dates: '2022-2023', role: 'English Second Language Tutor' },
   {
     org: 'uOttaHack',
-    dates: '2022-2026',
-    role: 'Marketing Coordinator (2022-2023), Marketing & Design Lead (2023-2024), Co-Director (2024-2025), Senior Advisor & Event Coordinator (2025-2026)',
-    wide: true,
+    dates: '2022 — 2026',
+    role: 'Co-Director & Design Lead',
+    description:
+      'Led branding, marketing, and event coordination across multiple hackathon years.',
   },
-  { org: 'uOBionics', dates: '2024-Present', role: 'UI/UX Designer, Software Team Lead' },
+  {
+    org: 'uOBionics',
+    dates: '2024 — PRESENT',
+    role: 'UI/UX Designer, Software Team Lead',
+    description: 'Designing and leading software for accessibility-focused hardware-software work.',
+  },
   {
     org: 'Women in Science and Engineering (WISE)',
-    dates: '2022-Present',
-    role: 'Outreach Coordinator (2022-2023), VP Development & Design (2025-Present)',
+    dates: '2022 — PRESENT',
+    role: 'VP Development & Design',
+    description: 'Growing outreach and design for community programs that support women in STEM.',
+  },
+  {
+    org: 'Asian Passion Project',
+    dates: '2021 — 2022',
+    role: 'TOEFL Tutor',
+    description: 'Supporting students preparing for English proficiency exams.',
+  },
+  {
+    org: 'Felt Initiative',
+    dates: '2022 — 2023',
+    role: 'English Second Language Tutor',
+    description: 'Tutoring ESL learners with a focus on confidence and clarity.',
   },
 ];
 
-const ExperienceRow = ({ item, isLast }: { item: ExperienceItem; isLast: boolean }) => (
-  <div
-    className={`flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 pb-5 ${
-      isLast ? '' : 'border-b border-[rgb(229,229,229)]'
-    }`}
-  >
-    <div className="flex-1">
-      <h4 className="font-vietnam font-medium text-black mb-1">{item.org}</h4>
-      <p className="text-sm text-black/50 font-vietnam">{item.dates}</p>
+const ExperienceTimelineItem = ({ item }: { item: ExperienceItem }) => (
+  <div className="grid grid-cols-1 md:grid-cols-[150px_1fr] gap-4 md:gap-0 items-start">
+    <div className="md:pt-1 md:pr-8">
+      <p className="font-vietnam text-[11px] sm:text-xs uppercase tracking-[0.12em] text-black/45">
+        {item.dates}
+      </p>
     </div>
-    <div className={`sm:text-right ${item.wide ? 'sm:w-1/2' : 'sm:w-1/3'}`}>
-      <p className="text-black/70 font-vietnam text-sm sm:text-base">{item.role}</p>
+
+    <div className="min-w-0 md:pl-10">
+      <h3 className="font-vietnam font-semibold text-black text-sm sm:text-base leading-snug">
+        {item.role} <span className="text-black/40 font-normal">•</span> {item.org}
+      </h3>
+      <p className="mt-2 font-vietnam text-sm text-black/55 leading-relaxed max-w-xl">
+        {item.description}
+      </p>
+    </div>
+  </div>
+);
+
+const ExperienceTimeline = ({ items }: { items: ExperienceItem[] }) => (
+  <div className="relative">
+    <div className="hidden md:block absolute top-0 bottom-0 left-[150px] w-px bg-[rgb(220,220,220)]" />
+    <div className="space-y-12 md:space-y-14">
+      {items.map(item => (
+        <ExperienceTimelineItem key={`${item.org}-${item.dates}-${item.role}`} item={item} />
+      ))}
     </div>
   </div>
 );
@@ -86,36 +139,18 @@ const AboutMe: React.FC = () => {
       </section>
 
       <section className="pb-20 md:pb-28 border-t border-[rgb(229,229,229)] pt-14 md:pt-16">
-        <h2 className="font-castoro text-2xl sm:text-3xl text-black mb-10">Experience</h2>
+        <div className="w-full max-w-[920px] mx-auto">
+          <h2 className="font-castoro text-[36px] leading-[1.2] text-black tracking-tight text-center mb-12 md:mb-16">
+            Where I&apos;ve <em className="italic">been</em>
+          </h2>
 
-        <div className="mb-14">
-          <h3 className="font-vietnam text-xs uppercase tracking-[0.14em] text-black/45 mb-6">
-            Technical
-          </h3>
-          <div className="space-y-5">
-            {technicalExperience.map((item, index) => (
-              <ExperienceRow
-                key={`${item.org}-${item.dates}`}
-                item={item}
-                isLast={index === technicalExperience.length - 1}
-              />
-            ))}
-          </div>
-        </div>
+          <ExperienceTimeline items={technicalExperience} />
 
-        <div>
-          <h3 className="font-vietnam text-xs uppercase tracking-[0.14em] text-black/45 mb-6">
-            Leadership & Activities
+          <h3 className="font-castoro text-2xl sm:text-3xl text-black mt-20 md:mt-24 mb-10 md:mb-12">
+            Leadership &amp; community
           </h3>
-          <div className="space-y-5">
-            {leadership.map((item, index) => (
-              <ExperienceRow
-                key={`${item.org}-${item.dates}`}
-                item={item}
-                isLast={index === leadership.length - 1}
-              />
-            ))}
-          </div>
+
+          <ExperienceTimeline items={leadership} />
         </div>
       </section>
     </div>

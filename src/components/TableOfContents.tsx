@@ -116,10 +116,10 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
       {/* Desktop left rail */}
       <aside
         className={`hidden lg:flex flex-col shrink-0 sticky top-20 h-[calc(100vh-5rem)] border-r border-[rgb(229,229,229)] bg-white transition-[width] duration-300 z-30 ${
-          isCollapsed ? 'w-14' : 'w-64'
+          isCollapsed ? 'w-14' : 'w-60'
         } ${className}`}
       >
-        <div className="flex items-center justify-between gap-2 px-3 py-4 border-b border-[rgb(229,229,229)]">
+        <div className="flex items-center justify-between gap-2 py-4 pr-3 border-b border-[rgb(229,229,229)]">
           {!isCollapsed && (
             <p className="text-[11px] font-vietnam font-semibold uppercase tracking-[0.14em] text-black/45">
               Contents
@@ -141,7 +141,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
         </div>
 
         {!isCollapsed && (
-          <div className="flex-1 overflow-y-auto px-3 py-4">
+          <div className="flex-1 overflow-y-auto pr-3 py-4">
             {hasSolution && (
               <button
                 type="button"

@@ -2,7 +2,19 @@
 
 import React, { useEffect, useState } from 'react';
 
-type CursorMode = 'default' | 'hover' | 'case-study' | 'sticker' | 'sticker-drag';
+type CursorMode = 'default' | 'hover' | 'case-study' | 'sticker' | 'sticker-drag' | 'duck';
+
+const DuckCursor = () => (
+  <img
+    src="/images/cursors/tomato-cursor.png"
+    alt=""
+    aria-hidden
+    width={40}
+    height={40}
+    draggable={false}
+    style={{ transform: 'translate(-16px, -16px)', imageRendering: 'pixelated' }}
+  />
+);
 
 const HandCursor = ({ grabbing }: { grabbing?: boolean }) => (
   <svg
@@ -63,6 +75,11 @@ const CustomCursor: React.FC = () => {
         return;
       }
 
+      if (target?.closest('[data-cursor="duck"]')) {
+        setMode('duck');
+        return;
+      }
+
       const interactive = target?.closest('a, button, [role="button"], input, textarea, select');
       setMode(interactive ? 'hover' : 'default');
     };
@@ -90,6 +107,8 @@ const CustomCursor: React.FC = () => {
         </div>
       ) : mode === 'sticker' || mode === 'sticker-drag' ? (
         <HandCursor grabbing={mode === 'sticker-drag'} />
+      ) : mode === 'duck' ? (
+        <DuckCursor />
       ) : (
         <div
           className="rounded-full bg-accent transition-[width,height,margin,opacity] duration-200 ease-in"

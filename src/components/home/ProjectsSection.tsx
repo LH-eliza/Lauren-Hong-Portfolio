@@ -15,7 +15,7 @@ const ProjectCard = ({ title, description, tag, imageUrl, link }: Project) => {
     <a
       href={link}
       data-cursor="case-study"
-      className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-none relative border border-[rgb(229,229,229)]"
+      className="group flex flex-col bg-white hover:shadow-xl transition-shadow duration-200 cursor-none relative overflow-hidden rounded-[10px] border border-[rgb(229,229,229)]"
     >
       {/* Main Content Area - Sharp Rectangle */}
       <div className="relative w-full aspect-[16/9] overflow-hidden bg-gray-100">

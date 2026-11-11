@@ -95,7 +95,7 @@ const SolaceStudy = () => {
           heroImage="/images/Solace/SolaceDocs.svg"
         />
               <div className="bg-gray-100 rounded-3xl p-8 mb-16">
-                <h2 className="text-2xl text-gray-800 font-libre">
+                <h2 className="text-2xl text-gray-800 font-vietnam">
                   "How do we make understanding documentation and onboarding easier?"
                 </h2>
               </div>
@@ -104,35 +104,35 @@ const SolaceStudy = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
-                <h2 className="text-3xl text-[#EA6C3A] font-chewie">Project Overview</h2>
+                <h2 className="text-3xl text-[#EA6C3A] font-castoro">Project Overview</h2>
               </div>
               <div className="md:col-span-3 space-y-8">
                 <div>
-                  <h3 className="text-xl mb-4 font-libre">Background:</h3>
-                  <p className="text-gray-700 font-libre">
+                  <h3 className="text-xl mb-4 font-vietnam">Background:</h3>
+                  <p className="text-gray-700 font-vietnam">
                     Solace PubSub+ offers comprehensive technical documentation, serving a diverse
                     user base from students to enterprise developers.
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-xl mb-4 font-libre">Problem:</h3>
-                  <p className="text-gray-700 font-libre">
+                  <h3 className="text-xl mb-4 font-vietnam">Problem:</h3>
+                  <p className="text-gray-700 font-vietnam">
                     Users struggle to quickly find and understand specific technical information
                     within the extensive documentation, creating friction in the learning and
                     implementation process.
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-xl mb-4 font-libre">Solution:</h3>
-                  <p className="text-gray-700 font-libre">
+                  <h3 className="text-xl mb-4 font-vietnam">Solution:</h3>
+                  <p className="text-gray-700 font-vietnam">
                     An AI-powered documentation chatbot that provides instant, conversational access
                     to Solace's technical knowledge base, making information discovery intuitive and
                     efficient.
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-xl mb-4 font-libre">My Role:</h3>
-                  <p className="text-gray-700 font-libre">
+                  <h3 className="text-xl mb-4 font-vietnam">My Role:</h3>
+                  <p className="text-gray-700 font-vietnam">
                     I designed the AI chat bot's conversational interface, user onboarding
                     work-flows
                   </p>
@@ -152,7 +152,7 @@ const SolaceStudy = () => {
                       className="w-full h-auto"
                     />
                   </div>
-                  <p className="text-center text-gray-700 font-libre">Solace Documentation with Chatbot</p>
+                  <p className="text-center text-gray-700 font-vietnam">Solace Documentation with Chatbot</p>
                 </div>
 
                 <div>
@@ -163,7 +163,7 @@ const SolaceStudy = () => {
                       className="w-full h-auto"
                     />
                   </div>
-                  <p className="text-center text-gray-700 font-libre">Current Solace Documentation</p>
+                  <p className="text-center text-gray-700 font-vietnam">Current Solace Documentation</p>
                 </div>
               </div>
             </div>
@@ -172,29 +172,29 @@ const SolaceStudy = () => {
 
             <div id="solution" className="grid grid-cols-1 md:grid-cols-4 gap-8 scroll-mt-28">
               <div className="md:col-span-1">
-                <h2 className="text-3xl text-[#EA6C3A] font-chewie">Results</h2>
+                <h2 className="text-3xl text-[#EA6C3A] font-castoro">Results</h2>
               </div>
 
               <div className="md:col-span-3 space-y-8">
                 <div>
-                  <h3 className="text-4xl font-medium text-gray-800 mb-2 font-libre">84%</h3>
-                  <p className="text-lg text-gray-600 font-libre">
+                  <h3 className="text-4xl font-medium text-gray-800 mb-2 font-vietnam">84%</h3>
+                  <p className="text-lg text-gray-600 font-vietnam">
                     of users found answers faster using the chatbot compared to traditional
                     documentation navigation
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-4xl font-medium text-gray-800 mb-2 font-libre">92%</h3>
-                  <p className="text-lg text-gray-600 font-libre">
+                  <h3 className="text-4xl font-medium text-gray-800 mb-2 font-vietnam">92%</h3>
+                  <p className="text-lg text-gray-600 font-vietnam">
                     of users said they would use the chatbot as their primary method for accessing
                     Solace documentation
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-4xl font-medium text-gray-800 mb-2 font-libre">98%</h3>
-                  <p className="text-lg text-gray-600 font-libre">
+                  <h3 className="text-4xl font-medium text-gray-800 mb-2 font-vietnam">98%</h3>
+                  <p className="text-lg text-gray-600 font-vietnam">
                     of users reported feeling more confident in implementing Solace solutions with
                     the chatbot's assistance
                   </p>
@@ -206,12 +206,12 @@ const SolaceStudy = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32 mt-32">
               <div className="md:col-span-1">
-                <h2 className="text-3xl text-[#EA6C3A] font-chewie">Research & Development</h2>
+                <h2 className="text-3xl text-[#EA6C3A] font-castoro">Research & Development</h2>
               </div>
               <div className="md:col-span-3 space-y-8">
                 <div>
-                  <h3 className="text-xl mb-4 font-libre">01 — Brainstorm</h3>
-                  <p className="text-gray-700 font-libre">
+                  <h3 className="text-xl mb-4 font-vietnam">01 — Brainstorm</h3>
+                  <p className="text-gray-700 font-vietnam">
                     Given the task to "create a project with AI that improves daily workflow" our
                     team focused on transforming how users interact with Solace PubSub+
                     documentation. The challenge: How might we help users find and understand
@@ -220,8 +220,8 @@ const SolaceStudy = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-xl mb-4 font-libre">02 — Research</h3>
-                  <p className="text-gray-700 font-libre">
+                  <h3 className="text-xl mb-4 font-vietnam">02 — Research</h3>
+                  <p className="text-gray-700 font-vietnam">
                     We conducted 7 user interviews with Solace users across different roles
                     (developers, students, system architects) to identify pain points and insights
                     for improving documentation accessibility. I also researched chatbot
@@ -230,33 +230,33 @@ const SolaceStudy = () => {
                 </div>
 
                 <div className="mt-12">
-                  <h3 className="text-2xl mb-8 font-libre">Areas of Research</h3>
+                  <h3 className="text-2xl mb-8 font-vietnam">Areas of Research</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="bg-white p-6 rounded-xl shadow-md">
-                      <h4 className="text-lg font-medium mb-4 font-libre">
+                      <h4 className="text-lg font-medium mb-4 font-vietnam">
                         Understanding Technical Documentation Needs
                       </h4>
-                      <p className="text-gray-600 font-libre">
+                      <p className="text-gray-600 font-vietnam">
                         To understand how different users (developers, students, architects)
                         navigate technical documentation and what challenges they face in finding
                         specific information.
                       </p>
                     </div>
                     <div className="bg-white p-6 rounded-xl shadow-md">
-                      <h4 className="text-lg font-medium mb-4 font-libre">
+                      <h4 className="text-lg font-medium mb-4 font-vietnam">
                         Analyzing User Learning Patterns
                       </h4>
-                      <p className="text-gray-600 font-libre">
+                      <p className="text-gray-600 font-vietnam">
                         To understand how users prefer to learn technical concepts, their preferred
                         methods of consuming documentation, and what makes information more
                         digestible for them.
                       </p>
                     </div>
                     <div className="bg-white p-6 rounded-xl shadow-md">
-                      <h4 className="text-lg font-medium mb-4 font-libre">
+                      <h4 className="text-lg font-medium mb-4 font-vietnam">
                         Exploring Current Documentation Tools
                       </h4>
-                      <p className="text-gray-600 font-libre">
+                      <p className="text-gray-600 font-vietnam">
                         To understand how existing documentation platforms and chatbots perform,
                         where they excel, and most importantly, where they fall short in meeting
                         user needs.
@@ -271,12 +271,12 @@ const SolaceStudy = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
-                <h2 className="text-3xl text-[#EA6C3A] font-chewie">Findings</h2>
+                <h2 className="text-3xl text-[#EA6C3A] font-castoro">Findings</h2>
               </div>
               <div className="md:col-span-3 space-y-8">
                 <div>
-                  <h3 className="text-2xl mb-6 font-libre">Interview Findings:</h3>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700 font-libre">
+                  <h3 className="text-2xl mb-6 font-vietnam">Interview Findings:</h3>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-700 font-vietnam">
                     <li>Users found the technical depth valuable but struggled with navigation</li>
                     <li>Most users preferred interactive learning over static documentation</li>
                     <li>
@@ -288,8 +288,8 @@ const SolaceStudy = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-2xl mb-6 font-libre">Research Findings:</h3>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700 font-libre">
+                  <h3 className="text-2xl mb-6 font-vietnam">Research Findings:</h3>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-700 font-vietnam">
                     <li>Technical documentation chatbots can reduce search time by up to 60%</li>
                     <li>Interactive documentation increases user engagement by 40-50%</li>
                   </ul>
@@ -301,22 +301,22 @@ const SolaceStudy = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
-                <h2 className="text-3xl text-[#EA6C3A] font-chewie">Bringing our Ideas to Life</h2>
+                <h2 className="text-3xl text-[#EA6C3A] font-castoro">Bringing our Ideas to Life</h2>
               </div>
               <div className="md:col-span-3 space-y-8">
                 <div>
-                  <p className="text-gray-700 mb-4 font-libre">
+                  <p className="text-gray-700 mb-4 font-vietnam">
                     We built the Solace Documentation Chatbot with a focus on intuitive interaction
                     and quick access to information.
                   </p>
-                  <p className="text-gray-700 mb-8 font-libre">
+                  <p className="text-gray-700 mb-8 font-vietnam">
                     Before we started, I focused on creating a flow chart to express user's
                     interactions with insights and conclusions gathered from our findings.
                   </p>
 
                   <Flowchart />
 
-                  <p className="text-gray-700 font-libre">
+                  <p className="text-gray-700 font-vietnam">
                     The user flow diagram illustrates how users interact with our AI documentation
                     assistant - from their first visit through to finding answers. It maps out key
                     interactions like natural language queries, code help, and troubleshooting
@@ -331,18 +331,18 @@ const SolaceStudy = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
               <div className="md:col-span-1">
-                <h2 className="text-3xl text-[#EA6C3A] font-chewie">Design & Features</h2>
+                <h2 className="text-3xl text-[#EA6C3A] font-castoro">Design & Features</h2>
               </div>
               <div className="md:col-span-3 space-y-8">
                 <div>
-                  <h3 className="text-xl mb-4 font-libre">03 — Design Process</h3>
-                  <p className="text-gray-700 mb-6 font-libre">
+                  <h3 className="text-xl mb-4 font-vietnam">03 — Design Process</h3>
+                  <p className="text-gray-700 mb-6 font-vietnam">
                     Our solution: An AI-powered documentation chatbot that provides conversational
                     access to technical information.
                   </p>
 
-                  <h3 className="text-xl mb-4 font-libre">Key Features:</h3>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700 font-libre">
+                  <h3 className="text-xl mb-4 font-vietnam">Key Features:</h3>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-700 font-vietnam">
                     <li>Natural language search capabilities</li>
                     <li>Context-aware responses</li>
                     <li>Interactive code examples</li>
@@ -374,11 +374,11 @@ const SolaceStudy = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-32">
               <div className="lg:col-span-1">
-                <h2 className="text-2xl sm:text-3xl text-[#EA6C3A] font-chewie">Next Steps</h2>
+                <h2 className="text-2xl sm:text-3xl text-[#EA6C3A] font-castoro">Next Steps</h2>
               </div>
 
               <div className="lg:col-span-3">
-                <p className="text-lg text-gray-500 font-libre leading-relaxed">
+                <p className="text-lg text-gray-500 font-vietnam leading-relaxed">
                   Our roadmap focuses on continuous improvement and expansion of the Solace
                   Documentation Chatbot. Starting with a beta launch to gather initial feedback,
                   we'll progressively roll out enhanced features like multi-language support and

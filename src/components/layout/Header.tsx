@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white z-50">
-      <div className="w-full max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
+      <div className="w-full mx-auto px-6 md:px-10 lg:px-[140px]">
         <nav className="flex justify-between items-center h-20">
           <a href="/" className="block w-10 h-10 rounded-full overflow-hidden shrink-0">
             <img src="/logo.png" alt="Lauren Hong" className="w-full h-full object-cover" />

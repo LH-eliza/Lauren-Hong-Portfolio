@@ -16,6 +16,19 @@
     font-family: 'Be Vietnam Pro', Helvetica, Arial, sans-serif;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: Castoro, Georgia, serif;
+  }
+
+  p {
+    font-family: 'Be Vietnam Pro', Helvetica, Arial, sans-serif;
+  }
+
   @media (pointer: fine) {
     body,
     a,
@@ -155,4 +168,39 @@
       background-position: 0% 50%;
     }
   }
+}
+
+/*
+  Site typography defaults win over older font-* utilities on headings/paragraphs.
+  Intentional exceptions: font-vietnam, font-bruskest (headings); font-castoro (paragraphs).
+*/
+:is(h1, h2, h3, h4, h5, h6) {
+  font-family: Castoro, Georgia, serif;
+}
+
+p {
+  font-family: 'Be Vietnam Pro', Helvetica, Arial, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6).font-vietnam {
+  font-family: 'Be Vietnam Pro', Helvetica, Arial, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6).font-bruskest {
+  font-family: BruskestDEMO, sans-serif;
+}
+
+p.font-castoro {
+  font-family: Castoro, Georgia, serif;
+}
+
+/* Case study title sizing */
+.case-study h1 {
+  font-size: 3rem;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.case-study h2 {
+  text-transform: none;
 }

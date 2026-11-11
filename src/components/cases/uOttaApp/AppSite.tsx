@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import CaseStudy from '../../../assets/Header';
 
 import QuoteBlock from '../../../assets/Quote';
@@ -7,9 +8,16 @@ import GifDisplay from '../../../assets/GifDisplay';
 import CaseStudyShell from '../../CaseStudyShell';
 import ScrollProgressBar from '../../ScrollProgressBar';
 
+const easeIn = [0.42, 0, 1, 1] as const;
+
 const AppSite = () => {
   return (
-    <div className="relative w-full">
+    <motion.div
+      className="relative w-full"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9, ease: easeIn }}
+    >
       <ScrollProgressBar color="#1A4FAC" />
       <CaseStudyShell accentColor="#1A4FAC" solutionId="solution">
         <CaseStudy
@@ -27,18 +35,18 @@ const AppSite = () => {
         />
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Context</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Context</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <h3 className="text-xl mb-4 font-libre">What is uOttaHack?</h3>
-                    <p className="text-gray-700 font-libre">
+                    <h3 className="text-xl mb-4 font-vietnam">What is uOttaHack?</h3>
+                    <p className="text-gray-700 font-vietnam">
                       uOttaHack is a student run hackathon that allows students of all backgrounds
                       and experience to turn their ideas into a reality.
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       In order for the event to run, students have to apply to get in. uOttaHack has
                       been trying to make their hacker application more interesting and not just a
                       form. For 2024, I was tasked to work as the illustrator and designer to bring
@@ -49,11 +57,11 @@ const AppSite = () => {
               </div>
               <div id="solution" className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32 scroll-mt-28">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Result</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Result</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       Within a couple months, I researched, designed, and interviewed an interactive
                       application portal. This was released and over 2700+ students from across
                       Canada would use the portal to apply to Ottawa’s largest hackathon.
@@ -70,11 +78,11 @@ const AppSite = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Primary User</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Primary User</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       The primary user of this project, the applicant are high school, undergrad,
                       and master’s students in tech/interested in that field. To see a broader
                       spectrum of the applicant profile we focused on the primary feedback from the
@@ -86,12 +94,12 @@ const AppSite = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32 mt-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Research & Development</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Research & Development</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <h3 className="text-xl mb-4 font-libre">01 — Brainstorm</h3>
-                    <p className="text-gray-700 font-libre">
+                    <h3 className="text-xl mb-4 font-vietnam">01 — Brainstorm</h3>
+                    <p className="text-gray-700 font-vietnam">
                       After 6 annual hackathons, there has been various editions of the application
                       portal. While they got the job done, there was various feedback in terms of
                       feeling very repetitive and non-memorable. The challenge: How to make an
@@ -99,8 +107,8 @@ const AppSite = () => {
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-xl mb-4 font-libre">02 — Research</h3>
-                    <p className="text-gray-700 font-libre">
+                    <h3 className="text-xl mb-4 font-vietnam">02 — Research</h3>
+                    <p className="text-gray-700 font-vietnam">
                       After uOttaHack 6 - the 2024 edition of the hackathon, our team sent out
                       surveys to conduct research of how our hackathon can improve from start to
                       end. From that survey we received 326 responses from various students
@@ -120,14 +128,14 @@ const AppSite = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 <div className="md:col-span-1">
-                  <h2 className="text-2xl md:text-4xl text-[#1A4FAC] font-chewie break-words">
+                  <h2 className="text-2xl md:text-4xl text-[#1A4FAC] font-castoro break-words">
                     User’s Characteristics
                   </h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
                     <QuoteBlock text="“Within the process, there were three key characteristics that were vital.”" />
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       First, students are busy- they are multitaskers and tend to have heavy
                       schedules. A lot of students don’t have the time nor the interest to fill and
                       complete a lengthy application. Since our main demographic is engineering and
@@ -136,14 +144,14 @@ const AppSite = () => {
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       Second, students who apply are typically interested in the creative aspect of
                       growing and discovering within the tech space, They want to collaborate, and
                       have the end-goal of creating by participating in the event.
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       Finally, students are interested in engaging. This application was designed
                       with the idea of branching out of the typical resume format. Students apply to
                       tens to hundreds of various applications. Thus, allowing people to remain
@@ -157,30 +165,30 @@ const AppSite = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Objectives Translated</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Objectives Translated</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       Utilizing the need from the characteristics, it's valuable due to helping us
                       define objectives of how we can design for user success
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       <span className="font-bold"> Quick and Easy-to-fill </span> - Applications
                       should be quick and easily accessible by all applicants. It should take an
                       appropriate amount of time to complete.
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       <span className="font-bold">Informed</span> - Applicants should be able to
                       make decisions quickly and also recover from errors swiftly
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       <span className="font-bold">Engagement</span> - Applicants shouldn't be
                       leaving any negative emotions while filling out their application process.
                       Since many applicants leave their applications to the last minute or even wait
@@ -194,11 +202,11 @@ const AppSite = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Application</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Application</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       There were 4 fundamental sections to the application. Each part has its
                       functions for various reasons. Below, I’ve elaborated each section and its
                       relations with our project objectives.
@@ -215,7 +223,7 @@ const AppSite = () => {
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       The applicant has to create an account through uOttaHack before they proceed.
                       This allows them to save all their information/work, allowing them to move
                       forward to be able to store general and personal data. This is a vital part of
@@ -234,7 +242,7 @@ const AppSite = () => {
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       Applicants then proceeds by answering short questions which include their full
                       name, level of study, pronouns, program, school, and more. As the fields are
                       filled, the left of the page is updated to tailor to fit their unique
@@ -254,7 +262,7 @@ const AppSite = () => {
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       The most vital part of the application lies in the long answer portion. We
                       created it so it benefits the user through easy-to-fill since it’s where most
                       students will focus the majority of their time in this portion. The user can
@@ -262,7 +270,7 @@ const AppSite = () => {
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       Within this section, there is not a usage of visual illustration since it may
                       distract an applicant from their application. The focus was mainly on the word
                       count requirements as well as different input states. This was to ensure that
@@ -284,7 +292,7 @@ const AppSite = () => {
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       The final step of the application is the review page. This is where the
                       applicant can review their application and make any changes if needed. The
                       applicant can also see the word count for each section and the total word
@@ -292,7 +300,7 @@ const AppSite = () => {
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       This is also where the applicant can see their character and the character’s
                       description. This is a fun way to end the application and makes the user feel
                       accomplished.
@@ -305,11 +313,11 @@ const AppSite = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Confirmation</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Confirmation</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       And that's all! The confirmation step of the application is the confirmation
                       page. Once the application is submitted the applicant can see a confirmation
                       message. This is where the student can view their status and recieve a
@@ -327,11 +335,11 @@ const AppSite = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Reflection</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Reflection</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       The design of the application was just one portion of the project. The
                       development team had to work on the backend and frontend of the application.
                       The application was built using Angular, MongoDB, Express, and Node.js. The
@@ -340,7 +348,7 @@ const AppSite = () => {
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       After countless nights alone designing, studying student interests, and diving
                       into discord messages, my app was finally ready. Through design reviews, dev
                       reviews, and last minute syncs, I poured myself into every prototype and
@@ -355,11 +363,11 @@ const AppSite = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Next Steps...</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Next Steps...</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <div>
-                    <p className="text-gray-700 font-libre">
+                    <p className="text-gray-700 font-vietnam">
                       The application was released in December 2024 and over 2700+ students applied
                       to uOttaHack. The feedback was positive and the application was a success. The
                       next steps would be to continue to improve the application and make it more
@@ -373,12 +381,12 @@ const AppSite = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">Try it out yourself!</h2>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">Try it out yourself!</h2>
                 </div>
                 <div className="md:col-span-3 space-y-8">
                   <a
                     href="https://apply.uottahack.ca/"
-                    className="text-2xl text-gray-700 font-libre underline"
+                    className="text-2xl text-gray-700 font-vietnam underline"
                   >
                     Apply to uOttaHack 2025 →
                   </a>
@@ -386,8 +394,8 @@ const AppSite = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div className="md:col-span-1">
-                  <h2 className="text-4xl text-[#1A4FAC] font-chewie">View Style Guide</h2>
-                  <p className="mt-2 font-libre text-[#7A7A7A]">Illustrated by Lauren Hong</p>
+                  <h2 className="text-4xl text-[#1A4FAC] font-castoro">View Design System</h2>
+                  <p className="mt-2 font-vietnam text-[#7A7A7A]">Illustrated by Lauren Hong</p>
                 </div>
               </div>
               <div className="mb-32">
@@ -398,7 +406,7 @@ const AppSite = () => {
                 />
               </div>
       </CaseStudyShell>
-    </div>
+    </motion.div>
   );
 };
 

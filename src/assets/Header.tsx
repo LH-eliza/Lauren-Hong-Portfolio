@@ -32,7 +32,7 @@ const defaultProps: CaseStudyProps = {
 
 const SectionHeader: React.FC<{ title: string }> = ({ title }) => (
   <div className="md:col-span-1">
-    <h2 className="text-3xl text-[#EA6C3A] font-chewie">{title}</h2>
+    <h2 className="text-3xl text-[#EA6C3A] font-castoro normal-case">{title}</h2>
   </div>
 );
 
@@ -67,25 +67,25 @@ const Header: React.FC<CaseStudyProps> = props => {
 
   const metaCols =
     metaItems.length <= 2
-      ? 'grid-cols-1 sm:grid-cols-2'
+      ? 'grid-cols-2'
       : metaItems.length === 3
-        ? 'grid-cols-1 sm:grid-cols-3'
-        : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
+        ? 'grid-cols-2 lg:grid-cols-3'
+        : 'grid-cols-2 lg:grid-cols-4';
 
   return (
     <div className="w-full pb-10 md:pb-14">
-      <h1 className="text-4xl md:text-5xl mb-4 font-castoro text-[#5F5F5F] leading-tight">
+      <h1 className="mb-4 font-castoro text-[3rem] font-medium text-[#5F5F5F] leading-tight normal-case">
         {title}
       </h1>
       {subtitle && (
-        <p className="text-lg text-gray-600 mb-8 font-vietnam max-w-3xl">{subtitle}</p>
+        <p className="text-lg text-gray-600 mb-8 font-vietnam whitespace-nowrap">{subtitle}</p>
       )}
 
       {metaItems.length > 0 && (
-        <div className={`grid ${metaCols} gap-x-8 gap-y-6 mb-8`}>
+        <div className={`grid ${metaCols} gap-x-8 gap-y-6`}>
           {metaItems.map(item => (
             <div key={item.label}>
-              <h3 className="text-sm text-[#5F5F5F] mb-2 font-castoro">{item.label}</h3>
+              <h3 className="text-sm text-[#5F5F5F] font-vietnam uppercase tracking-wide">{item.label}</h3>
               <p className="font-vietnam text-[#5F5F5F] text-sm leading-relaxed">{item.value}</p>
             </div>
           ))}
@@ -97,7 +97,7 @@ const Header: React.FC<CaseStudyProps> = props => {
           href={githubLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-[#EA6C3A] text-white px-6 py-3 rounded-lg hover:bg-[#d55c2d] transition-colors mb-16 font-chewie inline-flex items-center gap-2"
+          className="bg-[#EA6C3A] text-white px-6 py-3 rounded-lg hover:bg-[#d55c2d] transition-colors mb-16 font-vietnam inline-flex items-center gap-2"
         >
           View Repo
           <Github className="w-5 h-5" />
@@ -109,7 +109,7 @@ const Header: React.FC<CaseStudyProps> = props => {
           href={projectLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-[#EA6C3A] text-white px-6 py-3 rounded-lg hover:bg-[#d55c2d] transition-colors ml-6 mb-16 font-chewie inline-flex items-center gap-2"
+          className="bg-[#EA6C3A] text-white px-6 py-3 rounded-lg hover:bg-[#d55c2d] transition-colors ml-6 mb-16 font-vietnam inline-flex items-center gap-2"
         >
           View Website
         </a>
