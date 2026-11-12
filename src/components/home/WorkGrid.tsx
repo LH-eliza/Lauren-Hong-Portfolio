@@ -29,7 +29,7 @@ const categoryOrder: Record<Exclude<Category, 'All'>, number> = {
 
 const works: WorkItem[] = [
   {
-    title: 'Giatec Ecosystem Portal — From three products to one operational story',
+    title: 'Giatec Ecosystem Portal — A connected view of all main products',
     videoUrl: '/images/Giatec/thumb.mp4',
     imageUrl: '/images/Giatec/thumb.jpg',
     link: '/giatec',
@@ -42,7 +42,7 @@ const works: WorkItem[] = [
     videoUrl: '/images/Application/thumb.mp4',
     imageUrl: '/images/Application/app.png',
     link: '/uotta-app',
-    tags: ['Product Design', 'Hackathon'],
+    tags: ['Product Design', 'Hackathon', 'E2E CX'],
     category: 'Product Design',
     status: 'Shipped',
   },
@@ -51,7 +51,7 @@ const works: WorkItem[] = [
     videoUrl: '/images/Bionics/thumb.mp4',
     imageUrl: '/images/Bionics/bionics.svg',
     link: '/bionics',
-    tags: ['Product Design', 'Accessibility', 'Healthcare'],
+    tags: ['Product Design', 'Accessibility', 'Healthcare', 'Mobile'],
     category: 'Product Design',
     status: 'Shipped',
   },

@@ -10,7 +10,7 @@ const UOttaShopSite = () => {
   return (
     <div className="relative w-full">
       <ScrollProgressBar color="#1A4FAC" />
-      <CaseStudyShell accentColor="#1A4FAC" solutionId="solution">
+      <CaseStudyShell accentColor="#1A4FAC">
         <CaseStudy
           title="Enhancing the Sponsorship Experience"
           subtitle="Creating an interactive portal for sponsors of Canada's 2nd largest hackathon"

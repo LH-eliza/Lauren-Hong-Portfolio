@@ -67,10 +67,8 @@ const Header: React.FC<CaseStudyProps> = props => {
 
   const metaCols =
     metaItems.length <= 2
-      ? 'grid-cols-2'
-      : metaItems.length === 3
-        ? 'grid-cols-2 lg:grid-cols-3'
-        : 'grid-cols-2 lg:grid-cols-4';
+      ? 'grid-cols-1 sm:grid-cols-2'
+      : 'grid-cols-1 sm:grid-cols-2 wide:grid-cols-4';
 
   return (
     <div className="w-full pb-10 md:pb-14">
@@ -78,15 +76,15 @@ const Header: React.FC<CaseStudyProps> = props => {
         {title}
       </h1>
       {subtitle && (
-        <p className="text-lg text-gray-600 mb-8 font-vietnam whitespace-nowrap">{subtitle}</p>
+        <p className="text-base sm:text-lg text-gray-600 mb-8 font-vietnam max-w-3xl">{subtitle}</p>
       )}
 
       {metaItems.length > 0 && (
         <div className={`grid ${metaCols} gap-x-8 gap-y-6`}>
           {metaItems.map(item => (
-            <div key={item.label}>
+            <div key={item.label} className="min-w-0">
               <h3 className="text-sm text-[#5F5F5F] font-vietnam uppercase tracking-wide">{item.label}</h3>
-              <p className="font-vietnam text-[#5F5F5F] text-sm leading-relaxed">{item.value}</p>
+              <p className="font-vietnam text-[#5F5F5F] text-sm leading-relaxed break-words">{item.value}</p>
             </div>
           ))}
         </div>

@@ -75,7 +75,7 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
       transition={{ duration: 0.9, ease: easeIn }}
     >
       <ScrollProgressBar color="#EA6C3A" />
-      <CaseStudyShell accentColor="#EA6C3A" solutionId="solution">
+      <CaseStudyShell accentColor="#EA6C3A">
         <CaseStudy
           title="Making Life More Accessible Through Software-Hardware Interaction"
           subtitle="Case study for an innovative mobile application connecting users with an external exoarm device for accurate health monitoring"

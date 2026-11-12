@@ -19,7 +19,7 @@ const AppSite = () => {
       transition={{ duration: 0.9, ease: easeIn }}
     >
       <ScrollProgressBar color="#1A4FAC" />
-      <CaseStudyShell accentColor="#1A4FAC" solutionId="solution">
+      <CaseStudyShell accentColor="#1A4FAC">
         <CaseStudy
           title="Refreshing the Hackathon Application Experience"
           subtitle="Creating a unique design experience for students to apply to Canada's 2nd largest hackathon"
