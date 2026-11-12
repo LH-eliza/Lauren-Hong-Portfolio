@@ -6,6 +6,9 @@ module.exports = {
       colors: {
         accent: '#DE4343',
       },
+      screens: {
+        wide: '1440px',
+      },
       fontFamily: {
         castoro: ['Castoro', 'Georgia', 'serif'],
         vietnam: ['"Be Vietnam Pro"', 'Helvetica', 'Arial', 'sans-serif'],

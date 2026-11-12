@@ -1531,3 +1531,328 @@
     margin-left: 0;
   }
 }
+
+/* Pour timeline and insight flags, aligned to the Ecosystem overview design */
+.giatec-portal .source-chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 20px;
+  background: #eef3f0;
+  padding: 3px 8px;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: #5d6c65;
+  white-space: nowrap;
+}
+.giatec-portal .source-chip i{
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.giatec-portal .insight-list{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+}
+.giatec-portal .insight-card{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #f7faf8;
+  border: 1px solid #dfe6e1;
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.giatec-portal .insight-card .flag-header,
+.giatec-portal .insight-card .flag-footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.giatec-portal .insight-card .flag-header b{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #182c25;
+}
+.giatec-portal .insight-card p{
+  margin: 0;
+  font-size: 12px;
+  color: #5d6c65;
+}
+.giatec-portal .insight-card .sources{
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.giatec-portal .insight-card .link{
+  font-size: 11px;
+  white-space: nowrap;
+}
+.giatec-portal .link:hover:not(:disabled){
+  text-decoration: underline;
+}
+.giatec-portal .pour-nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.giatec-portal .pour-switch{
+  display: inline-flex;
+  gap: 6px;
+}
+.giatec-portal .pour-switch button{
+  border: 1px solid #dfe6e1;
+  background: white;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 11px;
+  color: #5d6c65;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .pour-switch button.active{
+  background: #f2f9f1;
+  border-color: #32863f;
+  color: #32863f;
+}
+.giatec-portal .verdict{
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(220px, 1fr);
+  gap: 32px;
+  border-left: 4px solid #c35b20;
+}
+.giatec-portal .verdict.green{
+  border-left-color: #32863f;
+}
+.giatec-portal .verdict .eyebrow{
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #78857e;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .verdict-head{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.giatec-portal .verdict-head h2{
+  font-size: 22px;
+  color: #182c25;
+}
+.giatec-portal .verdict-main > p{
+  margin: 12px 0;
+  font-size: 13px;
+}
+.giatec-portal .verdict-sources{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: #5d6c65;
+}
+.giatec-portal .verdict-sources > span:first-child{
+  margin-right: 4px;
+}
+.giatec-portal .verdict .verdict-rules{
+  align-self: end;
+  margin: 0;
+  background: #f4f6f5;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 11px;
+}
+.giatec-portal .evidence-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.giatec-portal .evidence-card .eyebrow{
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #78857e;
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.giatec-portal .evidence-card h3{
+  margin-top: 14px;
+  font-size: 16px;
+  color: #182c25;
+}
+.giatec-portal .evidence-card p{
+  margin: 6px 0 0;
+  font-size: 11px;
+}
+.giatec-portal .evidence-foot{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.giatec-portal .evidence-foot .link{
+  font-size: 11px;
+  text-align: right;
+}
+.giatec-portal .strength-chart{
+  width: 100%;
+  height: auto;
+  margin-top: 12px;
+}
+.giatec-portal .chart-legend{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 8px;
+  font-size: 11px;
+  color: #5d6c65;
+}
+.giatec-portal .chart-legend > span{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.giatec-portal .legend-line{
+  display: inline-block;
+  width: 22px;
+  border-top: 2.5px solid;
+}
+.giatec-portal .legend-line.dashed{
+  border-top-style: dashed;
+  border-top-width: 2px;
+}
+.giatec-portal .conflict-list{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
+}
+.giatec-portal .conflict{
+  border: 1px solid #dfe6e1;
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: #f7faf8;
+}
+.giatec-portal .conflict b{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: #182c25;
+}
+.giatec-portal .conflict p{
+  margin: 6px 0 10px;
+  font-size: 11px;
+}
+.giatec-portal .conflict-sources{
+  display: flex;
+  gap: 6px;
+}
+.giatec-portal .timeline{
+  display: flex;
+  flex-direction: column;
+  margin-top: 18px;
+}
+.giatec-portal .timeline-row{
+  display: grid;
+  grid-template-columns: 170px 12px minmax(0, 1fr);
+  gap: 16px;
+  position: relative;
+  padding-bottom: 20px;
+}
+.giatec-portal .timeline-row:not(:last-child)::before{
+  content: "";
+  position: absolute;
+  left: 185px;
+  top: 14px;
+  bottom: -2px;
+  width: 2px;
+  background: #dfe6e1;
+}
+.giatec-portal .timeline-when b,
+.giatec-portal .timeline-when small{
+  display: block;
+}
+.giatec-portal .timeline-when b{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  color: #182c25;
+}
+.giatec-portal .timeline-when small{
+  margin-top: 3px;
+  font-size: 10px;
+  color: #78857e;
+}
+.giatec-portal .timeline-dot{
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: 2px;
+  box-shadow: 0 0 0 3px white;
+  position: relative;
+  z-index: 1;
+}
+.giatec-portal .timeline-row.warn .timeline-dot{
+  box-shadow: 0 0 0 3px white, 0 0 0 5px #fff5e3;
+}
+.giatec-portal .timeline-title{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.giatec-portal .timeline-title b{
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #182c25;
+}
+.giatec-portal .timeline-row.warn .timeline-title b{
+  color: #c35b20;
+}
+.giatec-portal .timeline-body p{
+  margin: 6px 0 0;
+  font-size: 12px;
+}
+.giatec-portal .status.green{
+  background: #e9f5ed;
+  color: #32863f;
+}
+.giatec-portal .search-modal > .search-group{
+  display: block;
+  padding: 10px 18px 4px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #78857e;
+  border-bottom: 0;
+}
+.giatec-portal .search-modal > button .pour-mark{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 25px;
+  border-radius: 6px;
+  background: #f2f9f1;
+  color: #32863f;
+  font-size: 11px;
+}
+@media (max-width: 1000px) {
+  .giatec-portal .verdict,
+  .giatec-portal .evidence-grid{
+    grid-template-columns: 1fr;
+  }
+  .giatec-portal .timeline-row{
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .giatec-portal .timeline-row::before,
+  .giatec-portal .timeline-dot{
+    display: none;
+  }
+}

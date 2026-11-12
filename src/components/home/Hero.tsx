@@ -28,8 +28,38 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, ease: easeIn, delay: 0.15 }}
             className="mt-8 md:mt-10 space-y-1 font-vietnam text-sm sm:text-base text-black/80 leading-relaxed"
           >
-            <p>AI Technical Advisor @Shared Services Canada.</p>
-            <p>Previously developed @Motorola Solutions, designed @Solace</p>
+            <p>
+              AI Technical Advisor{' '}
+              <a
+                href="https://www.canada.ca/en/shared-services/services/tools-to-equip-gc-workers/canchat.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-black/30 underline-offset-2 hover:text-accent hover:decoration-accent transition-colors"
+              >
+                @Shared Services Canada
+              </a>
+              .
+            </p>
+            <p>
+              Previously developed{' '}
+              <a
+                href="https://www.motorolasolutions.com/en_us/products/command-center-software/public-safety-software/ng9-1-1-call-management/vesta.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-black/30 underline-offset-2 hover:text-accent hover:decoration-accent transition-colors"
+              >
+                @Motorola Solutions
+              </a>
+              , designed{' '}
+              <a
+                href="https://solace.com/products/platform/cloud/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-black/30 underline-offset-2 hover:text-accent hover:decoration-accent transition-colors"
+              >
+                @Solace
+              </a>
+            </p>
           </motion.div>
         </motion.div>
 

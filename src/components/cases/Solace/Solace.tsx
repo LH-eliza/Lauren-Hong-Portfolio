@@ -81,7 +81,7 @@ const SolaceStudy = () => {
   return (
     <div className="relative w-full">
       <ScrollProgressBar color="#EA6C3A" />
-      <CaseStudyShell accentColor="#EA6C3A" solutionId="solution">
+      <CaseStudyShell accentColor="#EA6C3A">
         <CaseStudy
           title="Enhancing Solace Documentation Navigation"
           subtitle="Project for the company's internal hackathon where our intern team won people's choice"

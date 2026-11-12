@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./portal.css";
+import PourTimeline, { SourceChip } from "./PourTimeline";
+import { POURS, findPours } from "./pours";
 
 const A = "/images/Giatec/portal/";
 const icons = {
@@ -32,7 +34,8 @@ type Page =
   | "smartrock"
   | "impact"
   | "team"
-  | "integrations";
+  | "integrations"
+  | "pour";
 
 const pages: Page[] = [
   "welcome",
@@ -47,6 +50,7 @@ const pages: Page[] = [
   "impact",
   "team",
   "integrations",
+  "pour",
 ];
 
 function pageFromLocation(): Page {
@@ -55,6 +59,12 @@ function pageFromLocation(): Page {
   const hashPage = window.location.hash.replace(/^#\/?/, "");
   const candidate = (queryPage || hashPage) as Page;
   return pages.includes(candidate) ? candidate : "overview";
+}
+
+function pourFromLocation(): string {
+  if (typeof window === "undefined") return "P-04";
+  const id = new URLSearchParams(window.location.search).get("pour");
+  return POURS.some((x) => x.id === id) ? (id as string) : "P-04";
 }
 
 type Metric = { label: string; value: string; note: string; featured?: boolean };
@@ -75,18 +85,18 @@ const nav: {
   { label: "Alerts", page: "alerts", icon: icons.alerts, group: "WORKSPACE", count: 3 },
   { label: "Impact & reports", page: "impact", icon: icons.impact, group: "WORKSPACE" },
   {
-    label: "MixPilot",
-    page: "mixpilot",
-    icon: icons.mixpilot,
-    group: "PRODUCT ANALYTICS",
-    productIcon: "MixPilot",
-  },
-  {
     label: "SmartMix",
     page: "smartmix",
     icon: icons.smartmix,
     group: "PRODUCT ANALYTICS",
     productIcon: "SmartMix",
+  },
+  {
+    label: "MixPilot",
+    page: "mixpilot",
+    icon: icons.mixpilot,
+    group: "PRODUCT ANALYTICS",
+    productIcon: "MixPilot",
   },
   {
     label: "SmartRock",
@@ -117,6 +127,7 @@ const titles: Record<Page, string> = {
   impact: "Impact & reports",
   team: "Team & access",
   integrations: "Integrations",
+  pour: "Pour timeline",
 };
 
 function ProductAnalyticsIcon({
@@ -222,7 +233,7 @@ function MetricCards({ items }: { items: Metric[] }) {
 
 function Filters() {
   const [project, setProject] = useState("All 12 projects");
-  const [month, setMonth] = useState("1–30 Jun 2025");
+  const [month, setMonth] = useState("1–30 Jun 2026");
   return (
     <div className="filters">
       <select value={project} onChange={(e) => setProject(e.target.value)}>
@@ -232,9 +243,9 @@ function Filters() {
         <option>Westline Residences</option>
       </select>
       <select value={month} onChange={(e) => setMonth(e.target.value)}>
-        <option>1–30 Jun 2025</option>
-        <option>1–31 May 2025</option>
-        <option>1–30 Apr 2025</option>
+        <option>1–30 Jun 2026</option>
+        <option>1–31 May 2026</option>
+        <option>1–30 Apr 2026</option>
       </select>
       <span className="sync">● Last sync: 2 min ago</span>
     </div>
@@ -451,7 +462,15 @@ function Welcome({ go }: { go: (p: Page) => void }) {
   );
 }
 
-function Overview({ go, toast }: { go: (p: Page) => void; toast: (s: string) => void }) {
+function Overview({
+  go,
+  openPour,
+  toast,
+}: {
+  go: (p: Page) => void;
+  openPour: (id: string) => void;
+  toast: (s: string) => void;
+}) {
   return (
     <>
       <PageHeading
@@ -464,8 +483,8 @@ function Overview({ go, toast }: { go: (p: Page) => void; toast: (s: string) => 
       <div className="overview-banner">
         <div>
           <h2>Three products. One connected perspective.</h2>
-          <small>NORTHSTAR CONCRETE / JUNE 2025</small>
-          <p>12 projects monitored · 1 connection needs attention</p>
+          <small>NORTHSTAR CONCRETE / JUNE 2026</small>
+          <p>12 projects · 38 pours monitored · 3 insight flags · 1 connection needs attention</p>
         </div>
         <div>
           <Status tone="orange">2 healthy · 1 degraded</Status>
@@ -476,39 +495,52 @@ function Overview({ go, toast }: { go: (p: Page) => void; toast: (s: string) => 
       <MetricCards
         items={[
           {
-            label: "Estimated CO₂e avoided",
-            value: "502 t",
-            note: "MixPilot only · June baseline",
+            label: "Pours on target",
+            value: "34 of 38",
+            note: "Design vs delivered vs achieved",
             featured: true,
           },
-          {
-            label: "Estimated material savings",
-            value: "$4,300",
-            note: "CAD · MixPilot only · June",
-          },
-          { label: "Projects monitored", value: "12", note: "Across connected products" },
+          { label: "Active insight flags", value: "3", note: "Each links two or more products" },
+          { label: "Optimization candidates", value: "4 mixes", note: "Steady strength margin in June" },
           { label: "Active SmartRock sensors", value: "43", note: "42 syncing · 1 delayed" },
         ]}
       />
       <div className="content-grid">
         <Card>
           <div className="card-head">
-            <h3>Estimated CO₂e avoided</h3>
-            <span>MixPilot · monthly</span>
+            <h3>Insight flags</h3>
+            <span>Open a flag for the pour timeline</span>
           </div>
-          <LineChart labels={["Jan", "Feb", "Mar", "Apr", "May", "Jun"]} />
-          <p className="tiny muted">
-            Not added to SmartMix or SmartRock impacts; product coverage overlaps.
-          </p>
+          <div className="insight-list">
+            {POURS.map((pour) => (
+              <div className="insight-card" key={pour.id}>
+                <div className="flag-header">
+                  <b>{pour.flag.title}</b>
+                  <Status tone={pour.flag.tone}>{pour.flag.badge}</Status>
+                </div>
+                <p>{pour.flag.message}</p>
+                <div className="flag-footer">
+                  <div className="sources">
+                    {pour.flag.sources.map((src) => (
+                      <SourceChip key={src} product={src} />
+                    ))}
+                  </div>
+                  <button className="link" onClick={() => openPour(pour.id)}>
+                    Open pour timeline →
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </Card>
         <Card>
           <div className="card-head">
-            <h3>Product health</h3>
+            <h3>Connection health</h3>
             <span>3 connected</span>
           </div>
           {[
-            ["MixPilot", "43 active users"],
-            ["SmartMix", "17 of 18 devices online"],
+            ["SmartMix", "43 active users"],
+            ["MixPilot", "17 of 18 trucks reporting"],
             ["SmartRock", "42 of 43 sensors syncing"],
           ].map((x, i) => (
             <div className="health" key={x[0]}>
@@ -522,7 +554,7 @@ function Overview({ go, toast }: { go: (p: Page) => void; toast: (s: string) => 
             </div>
           ))}
           <WarningNotice mini title="Riverside gateway offline.">
-            Review the alert before using stale readings.
+            SmartRock readings may be stale for 2 pours.
           </WarningNotice>
         </Card>
       </div>
@@ -532,7 +564,7 @@ function Overview({ go, toast }: { go: (p: Page) => void; toast: (s: string) => 
           <span>Showing 3 of 12 projects</span>
         </div>
         <DataTable
-          headers={["Project", "Products", "June volume", "Sensors", "Latest activity", "Status"]}
+          headers={["Project", "Products", "June volume", "Pours on target", "Latest insight", "Status"]}
           rows={[
             [
               <button className="link" onClick={() => go("projects")}>
@@ -540,25 +572,29 @@ function Overview({ go, toast }: { go: (p: Page) => void; toast: (s: string) => 
               </button>,
               "All 3 products",
               "3,150 m³",
-              "8",
-              "SR-218 delayed · 47 min",
+              "11 of 13",
+              <button className="link" onClick={() => openPour("P-04")}>
+                Shortfall + drift · P-04
+              </button>,
               <span className="orange-text">Needs review</span>,
             ],
             [
               "Harbour Bridge",
               "MixPilot · SmartRock",
               "2,400 m³",
-              "6",
-              "Strength updated · 2 min",
-              <span className="green-text">Active</span>,
+              "8 of 8",
+              "Strength on forecast",
+              <span className="green-text">On target</span>,
             ],
             [
               "Westline Residences",
               "All 3 products",
               "1,800 m³",
-              "5",
-              "Batch synced · 2 min",
-              <span className="green-text">Active</span>,
+              "6 of 6",
+              <button className="link" onClick={() => openPour("NS-30")}>
+                Healthy margin · 4 pours
+              </button>,
+              <span className="green-text">Optimize</span>,
             ],
           ]}
         />
@@ -590,7 +626,7 @@ function Products({ go }: { go: (p: Page) => void }) {
             "SmartMix",
             "Device and production intelligence for consistent concrete.",
             "12,600 m³ mixed",
-            "18 devices · 17 online · June 2025",
+            "18 devices · 17 online · June 2026",
             "Connected",
           ],
           [
@@ -630,7 +666,7 @@ function Products({ go }: { go: (p: Page) => void }) {
       <Card>
         <div className="card-head">
           <h3>Coverage across your operations</h3>
-          <span>June 2025</span>
+          <span>June 2026</span>
         </div>
         <DataTable
           headers={["Product", "Workspace connection", "Coverage", "Latest sync", "Owner"]}
@@ -800,10 +836,10 @@ function Analytics({
     MixPilot: {
       sub: "Track batch production, mix performance and modeled material impact.",
       metrics: [
-        ["Monthly active users", "43", "Unique users · June 2025"],
+        ["Monthly active users", "43", "Unique users · June 2026"],
         ["Average batches / day", "56", "1,680 batches ÷ 30 calendar days"],
         ["Estimated CO₂e avoided", "502 t", "Versus mix-specific baseline"],
-        ["Estimated material savings", "$4,300", "CAD · modeled · June 2025"],
+        ["Estimated material savings", "$4,300", "CAD · modeled · June 2026"],
       ],
       tabs: ["Production overview", "Mix performance", "Impact methodology"],
     },
@@ -812,7 +848,7 @@ function Analytics({
       metrics: [
         ["Registered devices", "18", "17 online · 1 delayed"],
         ["Concrete volume mixed", "12,600 m³", "Same June production as MixPilot"],
-        ["Mix consistency score", "94 / 100", "Volume-weighted · June 2025"],
+        ["Mix consistency score", "94 / 100", "Volume-weighted · June 2026"],
         ["Equipment uptime", "98.6%", "7,099.2 available / 7,200 scheduled h"],
       ],
       tabs: ["Production quality", "Device performance", "Cost context"],
@@ -821,7 +857,7 @@ function Analytics({
       sub: "Monitor in-place strength, sensor health and planned curing milestones.",
       metrics: [
         ["Active sensors deployed", "43", "42 syncing · 1 delayed"],
-        ["Strength tests recorded", "56", "June 2025 · linked test records"],
+        ["Strength tests recorded", "56", "June 2026 · linked test records"],
         ["Estimated time gain", "1.8 days", "Mean vs planned milestone · 12 projects"],
         ["Projects monitored", "12", "8 sensors at Riverside Tower"],
       ],
@@ -894,7 +930,7 @@ function Analytics({
             <>
               <div className="card-head">
                 <h3>Plant performance</h3>
-                <span>June 2025</span>
+                <span>June 2026</span>
               </div>
               <DataTable
                 headers={["Plant", "Volume", "Score"]}
@@ -964,7 +1000,7 @@ function Analytics({
                     "SR-218 · Riverside",
                     "P-04",
                     "119.2 h*",
-                    "24.6 MPa*",
+                    "27.4 MPa*",
                     "26.2 °C*",
                     <span className="orange-text">Delayed</span>,
                   ],
@@ -1044,12 +1080,18 @@ function Analytics({
   );
 }
 
-function Project({ go, toast }: { go: (p: Page) => void; toast: (s: string) => void }) {
+function Project({
+  go,
+  toast,
+}: {
+  go: (p: Page, pour?: string) => void;
+  toast: (s: string) => void;
+}) {
   return (
     <>
       <PageHeading
         title="Riverside Tower"
-        subtitle="PRJ-001 · Ottawa, ON · Project lead: Daniel Lee · June 2025"
+        subtitle="PRJ-001 · Ottawa, ON · Project lead: Daniel Lee · June 2026"
         action="Export report"
         actionIcon={`${A}30829.png`}
         onAction={() => toast("Riverside report exported")}
@@ -1087,6 +1129,9 @@ function Project({ go, toast }: { go: (p: Page) => void; toast: (s: string) => v
             <span>SR-217 / NS-35</span>
           </div>
           <LineChart />
+          <button className="link" onClick={() => go("pour", "P-04")}>
+            Open pour timeline →
+          </button>
         </Card>
         <Card>
           <div className="card-head">
@@ -1097,7 +1142,7 @@ function Project({ go, toast }: { go: (p: Page) => void; toast: (s: string) => v
           <div className="sensor-values">
             <div>
               <span>Last strength</span>
-              <b>24.6 MPa</b>
+              <b>27.4 MPa</b>
             </div>
             <div>
               <span>Temperature</span>
@@ -1126,7 +1171,9 @@ function Project({ go, toast }: { go: (p: Page) => void; toast: (s: string) => v
           ]}
           rows={[
             [
-              "P-04 · Level 03",
+              <button className="link" onClick={() => go("pour", "P-04")}>
+                P-04 · Level 03
+              </button>,
               "MP-1241–1280",
               "SM-101 / NS-35",
               "SR-217 · SR-218",
@@ -1184,7 +1231,7 @@ function Integrations({ go, toast }: { go: (p: Page) => void; toast: (s: string)
           {
             label: "Latest workspace sync",
             value: "16:40 UTC",
-            note: "30 Jun 2025 · source exceptions below",
+            note: "30 Jun 2026 · source exceptions below",
           },
         ]}
       />
@@ -1351,7 +1398,7 @@ function Alerts({ go, toast }: { go: (p: Page) => void; toast: (s: string) => vo
             headers={["Context", "Details"]}
             rows={[
               [`Product / project`, "SmartRock / Riverside Tower"],
-              ["Affected reading", "SR-218 · P-04 · 24.6 MPa at 15:55"],
+              ["Affected reading", "SR-218 · P-04 · 27.4 MPa at 15:55"],
               ["Owner / escalation", "Daniel Lee / Workspace admin"],
             ]}
           />
@@ -1406,7 +1453,7 @@ function TeamAccess({ toast }: { toast: (s: string) => void }) {
       <MetricCards
         items={[
           { label: "Workspace members", value: "8", note: "2 admins · 3 managers · 3 viewers" },
-          { label: "Pending invitations", value: "1", note: "Invitation expires 7 Jul 2025" },
+          { label: "Pending invitations", value: "1", note: "Invitation expires 7 Jul 2026" },
           { label: "Project access", value: "12", note: "Project-scoped roles available" },
         ]}
       />
@@ -1491,7 +1538,7 @@ function TeamAccess({ toast }: { toast: (s: string) => void }) {
         <DataTable
           headers={["Email", "Role", "Project scope", "Invited by", "Expires"]}
           rows={[
-            ["taylor.reed@example.com", "Viewer", "Harbour Bridge", "Alex Morgan", "7 Jul 2025"],
+            ["taylor.reed@example.com", "Viewer", "Harbour Bridge", "Alex Morgan", "7 Jul 2026"],
           ]}
         />
       </Card>
@@ -1532,8 +1579,8 @@ function ImpactReports({ toast }: { toast: (s: string) => void }) {
             <label>
               Reporting period
               <select>
-                <option>1–30 Jun 2025</option>
-                <option>1–31 May 2025</option>
+                <option>1–30 Jun 2026</option>
+                <option>1–31 May 2026</option>
               </select>
             </label>
             <fieldset>
@@ -1575,7 +1622,7 @@ function ImpactReports({ toast }: { toast: (s: string) => void }) {
               <span>NORTHSTAR CONCRETE</span>
             </div>
             <h2>{reportTitle || "Untitled report"}</h2>
-            <p>1–30 June 2025 · All 12 projects · Prepared 30 June 2025</p>
+            <p>1–30 June 2026 · All 12 projects · Prepared 30 June 2026</p>
             <hr />
             <div className="report-totals">
               <div>
@@ -1660,6 +1707,7 @@ function PortalApp() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [pourId, setPourId] = useState<string>(pourFromLocation);
   const [notice, setNotice] = useState("");
   const toast = (message: string) => {
     setNotice(message);
@@ -1679,6 +1727,7 @@ function PortalApp() {
   useEffect(() => {
     const handleRouteChange = () => {
       setPage(pageFromLocation());
+      setPourId(pourFromLocation());
       setMenuOpen(false);
       document.querySelector('.giatec-portal .workspace')?.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -1689,11 +1738,15 @@ function PortalApp() {
     () => nav.filter((n) => n.label.toLowerCase().includes(query.toLowerCase())).slice(0, 6),
     [query],
   );
-  const go = (p: Page) => {
+  const pourResults = useMemo(() => findPours(query), [query]);
+  const go = (p: Page, pour?: string) => {
     setPage(p);
+    if (pour) setPourId(pour);
     setMenuOpen(false);
     const url = new URL(window.location.href);
     url.searchParams.set("page", p);
+    if (pour) url.searchParams.set("pour", pour);
+    else if (p !== "pour") url.searchParams.delete("pour");
     url.hash = "";
     window.history.pushState({ page: p }, "", url);
     document.querySelector('.giatec-portal .workspace')?.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1733,7 +1786,11 @@ function PortalApp() {
                 <a
                   href={`?page=${item.page}`}
                   key={item.label}
-                  className={titles[page] === item.label ? "active" : ""}
+                  className={
+                    titles[page] === item.label || (page === "pour" && item.page === "overview")
+                      ? "active"
+                      : ""
+                  }
                   onClick={(event) => {
                     event.preventDefault();
                     go(item.page);
@@ -1761,11 +1818,18 @@ function PortalApp() {
       <div className="workspace">
         <header>
           <div className="breadcrumb">
-            Workspace <span>/</span> <b>{titles[page]}</b>
+            Workspace <span>/</span>{" "}
+            {page === "pour" ? (
+              <>
+                Overview <span>/</span> <b>Pour {pourId}</b>
+              </>
+            ) : (
+              <b>{titles[page]}</b>
+            )}
           </div>
           <div className="account-tools">
             <button className="search" onClick={() => setSearchOpen(true)}>
-              <img src={icons.search} alt="" /> Search workspace… <kbd>⌘ K</kbd>
+              <img src={icons.search} alt="" /> Search ticket or pour ID… <kbd>⌘ K</kbd>
             </button>
             <button className="icon-button" onClick={() => toast("No new messages")}>
               <img src={icons.mail} alt="Messages" />
@@ -1785,7 +1849,15 @@ function PortalApp() {
         </header>
         <main>
           {page === "welcome" && <Welcome go={go} />}
-          {page === "overview" && <Overview go={go} toast={toast} />}
+          {page === "overview" && <Overview go={go} openPour={(id) => go("pour", id)} toast={toast} />}
+          {page === "pour" && (
+            <PourTimeline
+              pourId={pourId}
+              openPour={(id) => go("pour", id)}
+              go={go}
+              toast={toast}
+            />
+          )}
           {page === "products" && <Products go={go} />}
           {page === "connect" && <Connect go={go} toast={toast} />}
           {page === "projects" && <Project go={go} toast={toast} />}
@@ -1798,7 +1870,7 @@ function PortalApp() {
           {page === "integrations" && <Integrations go={go} toast={toast} />}
           <footer>
             <span>Demo data · Hackathon concept</span>
-            <span>Snapshot · 30 Jun 2025, 16:42 UTC · Currency: CAD</span>
+            <span>Snapshot · 30 Jun 2026, 16:42 UTC</span>
           </footer>
         </main>
       </div>
@@ -1811,10 +1883,31 @@ function PortalApp() {
                 autoFocus
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search pages and products…"
+                placeholder="Search ticket or pour ID…"
               />
               <kbd>ESC</kbd>
             </div>
+            {pourResults.length > 0 && <div className="search-group">POURS AND TICKETS</div>}
+            {pourResults.map((r) => (
+              <button
+                key={r.id}
+                onClick={() => {
+                  go("pour", r.id);
+                  setSearchOpen(false);
+                  setQuery("");
+                }}
+              >
+                <span className="pour-mark">⏱</span>
+                <span>
+                  {r.id} · {r.project}
+                  <small>
+                    {r.idKind} · Ticket {r.ticket} · {r.flag.badge}
+                  </small>
+                </span>
+                <b>↵</b>
+              </button>
+            ))}
+            {results.length > 0 && <div className="search-group">PAGES</div>}
             {results.map((r) => (
               <button
                 key={r.label}
