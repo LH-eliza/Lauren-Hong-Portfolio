@@ -7,7 +7,7 @@ interface StepTitleProps {
 
 const StepTitle: React.FC<StepTitleProps> = ({ step, title }) => {
   return (
-    <h2 className="text-4xl text-blue-700 font-serif flex flex-col">
+    <h2 className="text-2xl sm:text-4xl text-blue-700 font-serif flex flex-col">
       <span className="text-lg mb-1">Step {step} -</span>
       <span>{title}</span>
     </h2>

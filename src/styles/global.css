@@ -194,14 +194,161 @@ p.font-castoro {
   font-family: Castoro, Georgia, serif;
 }
 
-/* Case study title sizing. Clamp so a split window does not keep a full-bleed 3rem title. */
+/* Case study title sizing. Clamp so a phone or split window does not keep a full-bleed 3rem title. */
 .case-study h1 {
-  font-size: clamp(2.125rem, 4vw, 3rem);
+  font-size: clamp(1.85rem, 6.4vw, 3rem);
   font-weight: 500;
   text-transform: none;
   line-height: 1.15;
+  overflow-wrap: break-word;
 }
 
 .case-study h2 {
   text-transform: none;
+  overflow-wrap: break-word;
+}
+
+.case-study :is(h3, h4, p, li, a, figcaption) {
+  overflow-wrap: break-word;
+}
+
+.case-lightbox img {
+  width: max(100%, 1120px);
+  max-width: none;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .case-study h2.text-4xl,
+  .case-study h2.text-3xl {
+    font-size: 1.625rem;
+    line-height: 1.25;
+  }
+
+  .case-study h3.text-4xl {
+    font-size: 1.875rem;
+    line-height: 1.2;
+  }
+
+  .case-study h3.text-2xl,
+  .case-study a.text-2xl {
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+
+  .case-study .mb-32 {
+    margin-bottom: 3.5rem;
+  }
+
+  .case-study .mt-32 {
+    margin-top: 3.5rem;
+  }
+
+  .case-study .mb-24 {
+    margin-bottom: 2.75rem;
+  }
+
+  .case-study .mb-16 {
+    margin-bottom: 2.5rem;
+  }
+
+  .case-study .p-8 {
+    padding: 1.15rem;
+  }
+
+  .case-study .gap-8 {
+    gap: 1.15rem;
+  }
+
+  .case-study .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1.15rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1.15rem * var(--tw-space-y-reverse));
+  }
+}
+
+/* Side titles need a wide window. Until then, stack the section so the copy uses the full width. */
+@media (max-width: 1439px) {
+  .case-study .md\:grid-cols-4,
+  .case-study .lg\:grid-cols-4 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case-study .md\:col-span-1,
+  .case-study .md\:col-span-3,
+  .case-study .lg\:col-span-1,
+  .case-study .lg\:col-span-3 {
+    grid-column: auto;
+  }
+
+  .case-study [data-case-content] h2 {
+    scroll-margin-top: 9.25rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .case-study .md\:grid-cols-3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .case-table {
+    overflow: visible;
+  }
+
+  .case-table table,
+  .case-table tbody,
+  .case-table tr,
+  .case-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .case-table table {
+    border: 0;
+  }
+
+  .case-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .case-table tr {
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    background: #fff;
+  }
+
+  .case-table td {
+    border: 0;
+    border-bottom: 1px solid #eee;
+    background: transparent;
+    padding: 0.75rem 1rem;
+  }
+
+  .case-table td:last-child {
+    border-bottom: 0;
+  }
+
+  .case-table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 0.2rem;
+    font-family: 'Be Vietnam Pro', Helvetica, Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #6b7280;
+  }
 }

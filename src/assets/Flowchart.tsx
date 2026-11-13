@@ -18,7 +18,7 @@ const FlowchartSection = () => {
   return (
     <div className="max-w-4xl mx-auto mb-16">
       <h3 className="text-xl sm:text-2xl mb-4 font-castoro">User Flow Visualization</h3>
-      <div className="bg-white p-4 rounded-xl shadow-lg overflow-auto">
+      <div className="bg-white p-3 sm:p-4 rounded-xl shadow-lg overflow-auto">
         <div className="mermaid">
           {`
           graph TD

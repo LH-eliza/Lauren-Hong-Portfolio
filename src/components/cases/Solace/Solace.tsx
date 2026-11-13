@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Github, X } from 'lucide-react';
+import React, { useEffect } from 'react';
 import mermaid from 'mermaid';
 import CaseStudy from '../../../assets/Header';
 import Flowchart from '../../../assets/Flowchart';
@@ -7,68 +6,10 @@ import Sketches from './Sketches';
 import Wireframe from './Wireframe';
 import CaseStudyShell from '../../CaseStudyShell';
 import ScrollProgressBar from '../../ScrollProgressBar';
-
-interface ImageModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  imageSrc: string;
-  altText: string;
-}
-
-const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imageSrc, altText }) => {
-  if (!isOpen) return null;
-
-  return (
-    <div 
-      className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
-      onClick={onClose}
-    >
-      <div 
-        className="relative max-w-6xl w-full"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 bg-black bg-opacity-70 hover:bg-opacity-90 text-white rounded-full p-2 transition-all z-10"
-          aria-label="Close image"
-        >
-          <X className="w-6 h-6" />
-        </button>
-        <img src={imageSrc} alt={altText} className="w-full h-auto rounded-lg" />
-      </div>
-    </div>
-  );
-};
-
-interface MagnifiableImageProps {
-  src: string;
-  alt: string;
-  className?: string;
-}
-
-const MagnifiableImage: React.FC<MagnifiableImageProps> = ({ src, alt, className }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  return (
-    <>
-      <img
-        src={src}
-        alt={alt}
-        className={`cursor-zoom-in ${className}`}
-        onClick={() => setIsModalOpen(true)}
-      />
-      <ImageModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        imageSrc={src}
-        altText={alt}
-      />
-    </>
-  );
-};
+import ZoomImage from '../../ZoomImage';
 
 const SolaceStudy = () => {
-  React.useEffect(() => {
+  useEffect(() => {
     mermaid.initialize({
       startOnLoad: true,
       theme: 'neutral',
@@ -94,7 +35,7 @@ const SolaceStudy = () => {
           githubLink="https://github.com/Patrick-Bonini/SuperChargedChatBot"
           heroImage="/images/Solace/SolaceDocs.svg"
         />
-              <div className="bg-gray-100 rounded-3xl p-8 mb-16">
+              <div data-toc-exclude className="bg-gray-100 rounded-3xl p-8 mb-16">
                 <h2 className="text-2xl text-gray-800 font-vietnam">
                   "How do we make understanding documentation and onboarding easier?"
                 </h2>
@@ -146,7 +87,7 @@ const SolaceStudy = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <div className="mb-4">
-                    <MagnifiableImage
+                    <ZoomImage
                       src="/images/Solace/New.png"
                       alt="Solace redesigned interface"
                       className="w-full h-auto"
@@ -157,7 +98,7 @@ const SolaceStudy = () => {
 
                 <div>
                   <div className="mb-4">
-                    <MagnifiableImage
+                    <ZoomImage
                       src="/images/Solace/Legacy.png"
                       alt="Solace legacy interface"
                       className="w-full h-auto"
@@ -358,13 +299,13 @@ const SolaceStudy = () => {
             <Wireframe />
 
             <div className="mb-24">
-              <div className="relative w-full bg-gray-100 rounded-xl p-4 sm:p-8">
-                {/* 16:9 aspect ratio container */}
-                <div className="relative w-full pb-[56.25%]">
+              <div className="relative w-full rounded-xl bg-gray-100 p-3 sm:p-8">
+                <div className="relative h-[70vh] min-h-[440px] w-full lg:h-0 lg:min-h-0 lg:pb-[56.25%]">
                   <iframe
-                    className="absolute top-0 left-0 w-full h-full rounded-lg"
+                    className="absolute inset-0 h-full w-full rounded-lg"
                     src="https://embed.figma.com/proto/7x3EmI7SUsjNjCavqwrURh/Solace-Hackathon?page-id=0%3A1&node-id=88-696&starting-point-node-id=12%3A8&embed-host=share"
                     allowFullScreen
+                    title="Solace documentation chatbot prototype"
                     style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}
                   />
                 </div>
@@ -390,10 +331,10 @@ const SolaceStudy = () => {
             </div>
 
             <div>
-              <img
+              <ZoomImage
                 src="/images/Solace/SolaceStyling.svg"
                 alt="Solace Documentation"
-                className="w-full rounded-3xl"
+                className="rounded-3xl"
               />
             </div>
       </CaseStudyShell>

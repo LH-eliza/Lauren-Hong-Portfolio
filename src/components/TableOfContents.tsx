@@ -21,7 +21,10 @@ const caseStudyHeadings = () =>
 const scrollToId = (id: string) => {
   const element = document.getElementById(id);
   if (!element) return;
-  const offset = 100;
+  const toc = document.querySelector('[data-mobile-toc]');
+  const tocVisible = toc instanceof HTMLElement && getComputedStyle(toc).display !== 'none';
+  const tocHeight = tocVisible ? toc.getBoundingClientRect().height : 0;
+  const offset = 88 + tocHeight;
   const top = element.getBoundingClientRect().top + window.pageYOffset - offset;
   window.scrollTo({ top, behavior: 'smooth' });
 };
@@ -34,6 +37,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
   const [activeId, setActiveId] = useState('');
   const [isCollapsed, setIsCollapsed] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const findAndProcessHeadings = () => {
@@ -102,8 +106,57 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
     };
   }, []);
 
+  useEffect(() => {
+    const root = mobileScrollRef.current;
+    if (!root || !activeId) return;
+    const chip = root.querySelector<HTMLElement>(`[data-toc-id="${CSS.escape(activeId)}"]`);
+    if (!chip) return;
+    const left = chip.offsetLeft - root.clientWidth / 2 + chip.clientWidth / 2;
+    root.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+  }, [activeId]);
+
   return (
     <>
+      {headings.length > 0 && (
+        <nav
+          data-mobile-toc
+          aria-label="Contents"
+          className="sticky top-20 z-40 -mx-4 border-b border-[rgb(229,229,229)] bg-white/95 backdrop-blur-sm wide:hidden sm:-mx-6 md:-mx-10 lg:-mx-[140px]"
+        >
+          <div
+            ref={mobileScrollRef}
+            className="flex gap-2 overflow-x-auto px-4 py-2.5 sm:px-6 md:px-10 lg:px-[140px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {headings.map(heading => {
+              const active = activeId === heading.id;
+              return (
+                <button
+                  key={heading.id}
+                  type="button"
+                  data-toc-id={heading.id}
+                  onClick={() => scrollToId(heading.id)}
+                  title={heading.text}
+                  className={`max-w-[11.5rem] shrink-0 truncate rounded-full border px-3 py-2 text-sm font-vietnam ${
+                    active ? 'font-medium' : 'border-[rgb(229,229,229)] text-black/70'
+                  }`}
+                  style={
+                    active
+                      ? {
+                          backgroundColor: `${accentColor}18`,
+                          color: accentColor,
+                          borderColor: `${accentColor}55`,
+                        }
+                      : undefined
+                  }
+                >
+                  {heading.text}
+                </button>
+              );
+            })}
+          </div>
+        </nav>
+      )}
+
       {/* Desktop left rail */}
       <aside
         className={`hidden wide:flex flex-col shrink-0 sticky top-20 h-[calc(100vh-5rem)] border-r border-[rgb(229,229,229)] bg-white transition-[width] duration-300 z-30 ${

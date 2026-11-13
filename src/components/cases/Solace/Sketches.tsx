@@ -1,28 +1,18 @@
 import React from 'react';
+import ZoomImage from '../../ZoomImage';
 
 const Sketches: React.FC = () => {
   return (
-    <div className="mb-8 sm:mb-16">
-      {/* Title */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-8">
-        <h2 className="text-2xl sm:text-3xl text-[#EA6C3A] font-castoro">
-          Prototyping & Wire framing
-        </h2>
-      </div>
-
-      {/* Sketches Container - Full Width */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
-        <div className="space-y-4">
-          <div className="w-full">
-            <img
-              src="/images/Solace/Sketches.svg"
-              alt="Preliminary sketches"
-              className="w-full h-auto rounded-lg border border-gray-200 shadow-sm"
-            />
-          </div>
-          <p className="text-sm text-gray-500 italic">Preliminary Sketches</p>
-        </div>
-      </div>
+    <div className="mb-10 sm:mb-16">
+      <h2 className="mb-6 text-2xl text-[#EA6C3A] font-castoro sm:text-3xl">
+        Prototyping & Wire framing
+      </h2>
+      <ZoomImage
+        src="/images/Solace/Sketches.svg"
+        alt="Preliminary sketches"
+        className="rounded-lg border border-gray-200 shadow-sm"
+      />
+      <p className="mt-3 text-sm italic text-gray-500">Preliminary Sketches</p>
     </div>
   );
 };

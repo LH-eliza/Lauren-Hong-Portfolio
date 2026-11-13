@@ -7,6 +7,7 @@ import StepTitle from '../../../assets/StepTitle';
 import GifDisplay from '../../../assets/GifDisplay';
 import CaseStudyShell from '../../CaseStudyShell';
 import ScrollProgressBar from '../../ScrollProgressBar';
+import ZoomImage from '../../ZoomImage';
 
 const easeIn = [0.42, 0, 1, 1] as const;
 
@@ -70,11 +71,7 @@ const AppSite = () => {
                 </div>
               </div>
               <div className="mb-32">
-                <img
-                  src="/images/Application/ApplicantsNeeds.svg"
-                  alt=""
-                  className="w-full h-auto"
-                />
+                <ZoomImage src="/images/Application/ApplicantsNeeds.svg" alt="Applicant needs" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
@@ -120,11 +117,7 @@ const AppSite = () => {
                 </div>
               </div>
               <div className="mb-32">
-                <img
-                  src="/images/Application/Characteristics.svg"
-                  alt=""
-                  className="w-full h-auto"
-                />
+                <ZoomImage src="/images/Application/Characteristics.svg" alt="User characteristics" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 <div className="md:col-span-1">
@@ -161,7 +154,7 @@ const AppSite = () => {
                 </div>
               </div>
               <div className="mb-24">
-                <img src="/images/Application/Objectives.svg" alt="" className="w-full h-auto" />
+                <ZoomImage src="/images/Application/Objectives.svg" alt="Design objectives" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 <div className="md:col-span-1">
@@ -215,7 +208,7 @@ const AppSite = () => {
                 </div>
               </div>
               <div className="mb-32">
-                <img src="/images/Application/Flow.svg" alt="" className="w-full h-auto" />
+                <ZoomImage src="/images/Application/Flow.svg" alt="Application flow" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
@@ -234,7 +227,7 @@ const AppSite = () => {
                 </div>
               </div>
               <div className="mb-32">
-                <img src="/images/Application/CreateAccount.svg" alt="" className="w-full h-auto" />
+                <ZoomImage src="/images/Application/CreateAccount.svg" alt="Account creation screens" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
@@ -280,11 +273,7 @@ const AppSite = () => {
                 </div>
               </div>
               <div className="mb-32">
-                <img
-                  src="/images/Application/LongAnswer.svg"
-                  alt="Application demo"
-                  className="w-full h-auto"
-                />
+                <ZoomImage src="/images/Application/LongAnswer.svg" alt="Long answer screens" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
@@ -327,11 +316,7 @@ const AppSite = () => {
                 </div>
               </div>
               <div className="mb-32">
-                <img
-                  src="/images/Application/Step5.svg"
-                  alt="Application demo"
-                  className="w-full h-auto"
-                />
+                <ZoomImage src="/images/Application/Step5.svg" alt="Review screens" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
                 <div className="md:col-span-1">
@@ -386,7 +371,7 @@ const AppSite = () => {
                 <div className="md:col-span-3 space-y-8">
                   <a
                     href="https://apply.uottahack.ca/"
-                    className="text-2xl text-gray-700 font-vietnam underline"
+                    className="inline-block text-lg text-gray-700 font-vietnam underline sm:text-2xl"
                   >
                     Apply to uOttaHack 2025 →
                   </a>
@@ -399,11 +384,7 @@ const AppSite = () => {
                 </div>
               </div>
               <div className="mb-32">
-                <img
-                  src="/images/Application/p.svg"
-                  alt="Style Guide"
-                  className="w-full h-auto rounded-lg"
-                />
+                <ZoomImage src="/images/Application/p.svg" alt="Style Guide" className="rounded-lg" />
               </div>
       </CaseStudyShell>
     </motion.div>

@@ -1,70 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { X } from 'lucide-react';
 import CaseStudy from '../../../assets/Header';
 import CaseStudyShell from '../../CaseStudyShell';
 import ScrollProgressBar from '../../ScrollProgressBar';
+import ZoomImage from '../../ZoomImage';
 
 const easeIn = [0.42, 0, 1, 1] as const;
-
-interface ImageModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  imageSrc: string;
-  altText: string;
-}
-
-const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imageSrc, altText }) => {
-  if (!isOpen) return null;
-
-  return (
-    <div 
-      className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
-      onClick={onClose}
-    >
-      <div 
-        className="relative max-w-6xl w-full"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 bg-black bg-opacity-70 hover:bg-opacity-90 text-white rounded-full p-2 transition-all z-10"
-          aria-label="Close image"
-        >
-          <X className="w-6 h-6" />
-        </button>
-        <img src={imageSrc} alt={altText} className="w-full h-auto rounded-lg" />
-      </div>
-    </div>
-  );
-};
-
-interface MagnifiableImageProps {
-  src: string;
-  alt: string;
-  className?: string;
-}
-
-const MagnifiableImage: React.FC<MagnifiableImageProps> = ({ src, alt, className }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  return (
-    <>
-      <img
-        src={src}
-        alt={alt}
-        className={`cursor-zoom-in ${className}`}
-        onClick={() => setIsModalOpen(true)}
-      />
-      <ImageModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        imageSrc={src}
-        altText={alt}
-      />
-    </>
-  );
-};
 
 const SmartKneeSleeveCaseStudy: React.FC = () => {
   return (
@@ -88,7 +29,7 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
           githubLink="https://github.com/exoarm-health/mobile-app"
           heroImage="/images/Bionics/bionics.svg"
         />
-              <div className="bg-gray-100 rounded-3xl p-8 mb-16">
+              <div data-toc-exclude className="bg-gray-100 rounded-3xl p-8 mb-16">
                 <h2 className="text-2xl text-gray-800 font-castoro">
                   "How do we make medical-grade health monitoring accessible to everyone?"
                 </h2>
@@ -154,7 +95,7 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
                   <h2 className="text-2xl text-[#EA6C3A] mb-6 font-castoro">ExoArm Solution</h2>
                   <div className="bg-white rounded-xl shadow-lg p-4">
                     <div className="aspect-video">
-                      <MagnifiableImage
+                      <ZoomImage
                         src="/images/Bionics/New-Approach.svg"
                         alt="ExoArm intuitive interface"
                         className="w-full h-full object-cover rounded-lg"
@@ -169,7 +110,7 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
                   </h2>
                   <div className="bg-white rounded-xl shadow-lg p-4">
                     <div className="aspect-video">
-                      <MagnifiableImage
+                      <ZoomImage
                         src="/images/Bionics/Traditional.svg"
                         alt="Traditional complex medical interface"
                         className="w-full h-full object-cover rounded-lg"
@@ -229,7 +170,7 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
                     landscape and identify opportunities for differentiation.
                   </p>
                   <div className="bg-white rounded-xl shadow-md p-4">
-                    <MagnifiableImage
+                    <ZoomImage
                       src="/images/Bionics/Competitve-Analysis.svg"
                       alt="Competitive Analysis of Health Monitoring Solutions"
                       className="w-full rounded-lg"
@@ -329,7 +270,7 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
 
                   <div className="mb-8">
                     <div className="bg-white rounded-xl shadow-md p-4">
-                      <MagnifiableImage
+                      <ZoomImage
                         src="/images/Bionics/User-Journey.svg"
                         alt="User Journey Map for ExoArm Health Monitoring Application"
                         className="w-full rounded-lg"
@@ -491,7 +432,7 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
                   Created a digital basic layout wireframe based on the final informational architecture as a baseline.
                 </p>
                 <div className="bg-white rounded-xl shadow-md p-4">
-                  <MagnifiableImage
+                  <ZoomImage
                     src="/images/Bionics/Low-Fidelity Wireframe.svg"
                     alt="Low-Fidelity Wireframe for ExoArm Health Monitoring Application"
                     className="w-full rounded-lg"
@@ -514,7 +455,7 @@ const SmartKneeSleeveCaseStudy: React.FC = () => {
                   The visuals feel clinical but welcoming, utilizing high-contrast typography and thoughtful color-coding to help users instantly interpret their vitals. The platform is fully responsive and optimized for React Native, ensuring that whether a user is syncing their exoarm device on a smartphone or reviewing trends on a tablet, the experience remains smooth, reliable, and intuitive.
                 </p>
                 <div className="bg-white rounded-xl shadow-md p-4">
-                  <MagnifiableImage
+                  <ZoomImage
                     src="/images/Bionics/Final Version.svg"
                     alt="Final Design Version of ExoArm Health Monitoring Application"
                     className="w-full rounded-lg"

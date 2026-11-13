@@ -109,7 +109,15 @@ const works: WorkItem[] = [
 
 const easeIn = [0.42, 0, 1, 1] as const;
 
-const LottieThumb = ({ url, title, gradientClass }: { url: string; title: string; gradientClass?: string }) => {
+const LottieThumb = ({
+  url,
+  title,
+  gradientClass,
+}: {
+  url: string;
+  title: string;
+  gradientClass?: string;
+}) => {
   const [data, setData] = useState<object | null>(null);
 
   useEffect(() => {
@@ -140,15 +148,7 @@ const LottieThumb = ({ url, title, gradientClass }: { url: string; title: string
   );
 };
 
-const VideoThumb = ({
-  src,
-  poster,
-  title,
-}: {
-  src: string;
-  poster?: string;
-  title: string;
-}) => {
+const VideoThumb = ({ src, poster, title }: { src: string; poster?: string; title: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -224,11 +224,7 @@ const WorkCard = ({ item, index }: { item: WorkItem; index: number }) => {
             loading="lazy"
           />
         ) : item.lottieUrl ? (
-          <LottieThumb
-            url={item.lottieUrl}
-            title={item.title}
-            gradientClass={item.gradientClass}
-          />
+          <LottieThumb url={item.lottieUrl} title={item.title} gradientClass={item.gradientClass} />
         ) : null}
 
         {isCaseStudy && item.status && (
@@ -306,10 +302,7 @@ const WorkGrid: React.FC = () => {
 
       <div className="space-y-5 md:space-y-6">
         {caseStudies.length > 0 && (
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6"
-          >
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
             <AnimatePresence mode="popLayout">
               {caseStudies.map((item, index) => (
                 <WorkCard key={item.title} item={item} index={index} />

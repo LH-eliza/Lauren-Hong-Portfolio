@@ -5,6 +5,7 @@ import StepTitle from '../../../assets/StepTitle';
 import GifDisplay from '../../../assets/GifDisplay';
 import CaseStudyShell from '../../CaseStudyShell';
 import ScrollProgressBar from '../../ScrollProgressBar';
+import ZoomImage from '../../ZoomImage';
 
 const UOttaShopSite = () => {
   return (
@@ -79,8 +80,8 @@ const UOttaShopSite = () => {
                       Here's how the uOttaShop portal transformed the sponsorship experience:
                     </p>
                   </div>
-                  <div className="overflow-x-auto">
-                    <table className="w-full border-collapse border border-gray-300 mb-6">
+                  <div className="case-table overflow-x-auto">
+                    <table className="mb-6 w-full border-collapse border border-gray-300">
                       <thead>
                         <tr className="bg-gray-100">
                           <th className="border border-gray-300 px-4 py-3 text-left font-castoro text-[#1A4FAC]">
@@ -96,35 +97,35 @@ const UOttaShopSite = () => {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
+                          <td data-label="The Problem (Legacy Email)" className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
                             Hasty/Manual Scheduling
                           </td>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
+                          <td data-label="The UX Solution (uOttaShop)" className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
                             Automated Dashboard Scheduling
                           </td>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam font-semibold">
+                          <td data-label="Result" className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam font-semibold">
                             45% prefer the new speed.
                           </td>
                         </tr>
                         <tr className="bg-gray-50">
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
+                          <td data-label="The Problem (Legacy Email)" className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
                             Information Silos
                           </td>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
+                          <td data-label="The UX Solution (uOttaShop)" className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
                             Centralized Information Board
                           </td>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam font-semibold">
+                          <td data-label="Result" className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam font-semibold">
                             70% feel more comfortable.
                           </td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
+                          <td data-label="The Problem (Legacy Email)" className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
                             Tracking Issues
                           </td>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
+                          <td data-label="The UX Solution (uOttaShop)" className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam">
                             Portal + Legacy Integration
                           </td>
-                          <td className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam font-semibold">
+                          <td data-label="Result" className="border border-gray-300 px-4 py-3 text-gray-700 font-vietnam font-semibold">
                             100% utility across platforms.
                           </td>
                         </tr>
@@ -141,11 +142,7 @@ const UOttaShopSite = () => {
               </div>
 
               <div className="mb-32">
-                <img
-                  src="/images/uottashop/Context.svg"
-                  alt="Current state diagram"
-                  className="w-full h-auto"
-                />
+                <ZoomImage src="/images/uottashop/Context.svg" alt="Current state diagram" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
@@ -163,11 +160,7 @@ const UOttaShopSite = () => {
               </div>
 
               <div className="mb-32">
-                <img
-                  src="/images/uottashop/Current.svg"
-                  alt="Research findings"
-                  className="w-full h-auto"
-                />
+                <ZoomImage src="/images/uottashop/Current.svg" alt="Research findings" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
@@ -209,10 +202,10 @@ const UOttaShopSite = () => {
                     </p>
                   </div>
                   <div className="bg-white rounded-xl shadow-md p-4">
-                    <img
+                    <ZoomImage
                       src="/images/uottashop/UserJourney_UOS.svg"
                       alt="User Journey Map for uOttaShop Sponsorship Experience"
-                      className="w-full h-auto rounded-lg"
+                      className="rounded-lg"
                     />
                   </div>
                 </div>
@@ -252,11 +245,7 @@ const UOttaShopSite = () => {
               </div>
 
               <div className="mb-32">
-                <img
-                  src="/images/uottashop/Goals.svg"
-                  alt="Sponsorship communication options"
-                  className="w-full h-auto"
-                />
+                <ZoomImage src="/images/uottashop/Goals.svg" alt="Sponsorship communication options" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
@@ -298,11 +287,7 @@ const UOttaShopSite = () => {
               </div>
 
               <div className="mb-32">
-                <img
-                  src="/images/uottashop/Goal1.svg"
-                  alt="Sponsorship regulation options"
-                  className="w-full h-auto"
-                />
+                <ZoomImage src="/images/uottashop/Goal1.svg" alt="Sponsorship regulation options" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
@@ -346,11 +331,7 @@ const UOttaShopSite = () => {
               </div>
 
               <div className="mb-32">
-                <img
-                  src="/images/uottashop/Goal2.svg"
-                  alt="Final options comparison"
-                  className="w-full h-auto"
-                />
+                <ZoomImage src="/images/uottashop/Goal2.svg" alt="Final options comparison" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
@@ -371,11 +352,7 @@ const UOttaShopSite = () => {
               </div>
 
               <div className="mb-32">
-                <img
-                  src="/images/uottashop/Goal3.svg"
-                  alt="User feedback review"
-                  className="w-full h-auto"
-                />
+                <ZoomImage src="/images/uottashop/Goal3.svg" alt="User feedback review" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
@@ -557,11 +534,7 @@ const UOttaShopSite = () => {
               </div>
 
               <div className="mb-32">
-                <img
-                  src="/images/uottashop/wdut.svg"
-                  alt="Final dashboard design"
-                  className="w-full h-auto"
-                />
+                <ZoomImage src="/images/uottashop/wdut.svg" alt="Final dashboard design" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-32">
@@ -615,7 +588,7 @@ const UOttaShopSite = () => {
                 <div className="md:col-span-3 space-y-8">
                   <a
                     href="https://shop.uottahack.ca/"
-                    className="text-2xl text-gray-700 font-vietnam underline"
+                    className="inline-block text-lg text-gray-700 font-vietnam underline sm:text-2xl"
                   >
                     Visit uOttaShop Portal →
                   </a>
@@ -623,11 +596,7 @@ const UOttaShopSite = () => {
               </div>
 
               <div className="mb-12">
-                <img
-                  src="/images/uottashop/Primary.svg"
-                  alt="uOttaShop Primary Prototype"
-                  className="w-full h-auto"
-                />
+                <ZoomImage src="/images/uottashop/Primary.svg" alt="uOttaShop Primary Prototype" />
               </div>
       </CaseStudyShell>
     </div>

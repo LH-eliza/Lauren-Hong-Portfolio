@@ -6,6 +6,7 @@ import CaseStudy from '../../../assets/Header';
 import CaseStudyShell from '../../CaseStudyShell';
 import ScrollProgressBar from '../../ScrollProgressBar';
 import Prototype from './Prototype';
+import DesignSystem from './DesignSystem';
 
 const GREEN = '#32863F';
 
@@ -86,9 +87,9 @@ const Quote: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 const ReasonCard: React.FC<{
   eyebrow: string;
   title: string;
-  whatLabel: string;
+  whatLabel?: string;
   what: string;
-  why: string;
+  why?: string;
 }> = ({ eyebrow, title, whatLabel, what, why }) => (
   <div className="rounded-2xl border border-[rgb(229,229,229)] bg-white p-5">
     <p className="text-xs font-vietnam uppercase tracking-wider" style={{ color: GREEN }}>
@@ -96,15 +97,17 @@ const ReasonCard: React.FC<{
     </p>
     <h3 className="mt-1 font-castoro text-xl leading-snug text-gray-900">{title}</h3>
     <p className="mt-3 text-sm font-vietnam leading-relaxed text-gray-700">
-      <span className="font-semibold text-gray-900">{whatLabel}. </span>
+      {whatLabel && <span className="font-semibold text-gray-900">{whatLabel}. </span>}
       {what}
     </p>
-    <p className="mt-3 rounded-lg bg-[#F2F9F1] px-3 py-2 text-sm font-vietnam leading-relaxed text-gray-700">
-      <span className="font-semibold" style={{ color: GREEN }}>
-        Why.{' '}
-      </span>
-      {why}
-    </p>
+    {why && (
+      <p className="mt-3 rounded-lg bg-[#F2F9F1] px-3 py-2 text-sm font-vietnam leading-relaxed text-gray-700">
+        <span className="font-semibold" style={{ color: GREEN }}>
+          Why.{' '}
+        </span>
+        {why}
+      </p>
+    )}
   </div>
 );
 
@@ -410,9 +413,8 @@ const GiatecCaseStudy: React.FC = () => {
           </div>
           <div className="wide:col-span-3 space-y-5">
             <P>
-              A principle is only useful if it can settle an argument. I wrote each one with the
-              reason behind it, so that when a layout choice was unclear I could ask which option
-              better served the reason, not which looked better.
+              Five decisions carried the screens. When a layout was unclear, I checked it against
+              these instead of against which option looked cleaner.
             </P>
           </div>
         </div>
@@ -421,38 +423,37 @@ const GiatecCaseStudy: React.FC = () => {
           <ReasonCard
             eyebrow="Principle 1"
             title="Start from the pour, not the product"
-            whatLabel="In practice"
-            what="Search takes a ticket or pour ID and returns mix, delivery and strength together."
-            why="Users ask questions about a pour. The boundaries between products are how Giatec is organized, not how the work is."
+            what="Search takes a ticket or pour ID and brings mix, delivery, and strength back together. The question people bring is about the pour. Product lines are how the company is organized."
           />
           <ReasonCard
             eyebrow="Principle 2"
-            title="Put time on one axis"
-            whatLabel="In practice"
-            what="Design, delivery and performance share one timeline so events line up without a spreadsheet."
-            why="Finding a cause is a question of order. Drift before a strength lag points to delivery, and drift after it does not."
+            title="One timeline"
+            what="Design, delivery, and performance share a single time axis, so events line up without a spreadsheet. Cause shows up as order. Drift before a strength lag points at delivery. Drift after it does not."
           />
           <ReasonCard
             eyebrow="Principle 3"
-            title="Label every number with its source"
-            whatLabel="In practice"
-            what="Each value names the product it came from, and a conflict between two copies is shown rather than hidden."
-            why="Trust is earned when people can check. Hiding the source forces a guess, and a wrong guess costs more than the extra label."
+            title="Keep the source on the number"
+            what="Every value names the product it came from. When two products disagree, the conflict stays visible so the reader can check it."
           />
           <ReasonCard
             eyebrow="Principle 4"
-            title="Verdict first, evidence second"
-            whatLabel="In practice"
-            what="Each pour opens with a plain status, then the evidence that supports it."
-            why="A person scanning many pours needs to know where to look before they read how. The verdict is the triage, and the evidence is the proof."
+            title="Status before the curves"
+            what="A pour opens with a plain verdict, then the evidence under it. Someone scanning a list should know where to look before they read how the pour got there."
           />
           <ReasonCard
             eyebrow="Principle 5"
-            title="Link out for deep work"
-            whatLabel="In practice"
-            what="Every card links into the full product at the right record."
-            why="Each product is where the work already happens. The portal earns its place by orienting people quickly, not by replacing the tools they rely on."
+            title="Hand off the deep work"
+            what="Each card opens the product that owns the record. Mix edits, routes, and sensors stay in the tools built for them. The portal’s job is to orient."
           />
+        </div>
+
+        <div className="grid grid-cols-1 wide:grid-cols-4 gap-8 mb-16">
+          <div className="wide:col-span-1">
+            <SectionTitle>Design system</SectionTitle>
+          </div>
+          <div className="wide:col-span-3">
+            <DesignSystem />
+          </div>
         </div>
 
         <div id="solution" className="grid grid-cols-1 wide:grid-cols-4 gap-8 mb-10 scroll-mt-28">
