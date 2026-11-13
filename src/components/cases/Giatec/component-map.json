@@ -1,0 +1,260 @@
+{
+  "$description": "Map from Figma components to code. Read this before generating UI. Each entry names the Figma component set, its variant property, the code component to use, and the tokens it is allowed to use.",
+  "figmaFile": {
+    "name": "Giatec Hackathon",
+    "fileKey": "nMgAAd6myrFpu6ZuTKdJ8N",
+    "libraryFrame": "2019:3216"
+  },
+  "codeRoot": "src/components/cases/Giatec",
+  "components": [
+    {
+      "figma": "Giatec/Button",
+      "nodeId": "2002:44924",
+      "variantProperty": "State",
+      "variants": [
+        "Default",
+        "Hover",
+        "Focus",
+        "Disabled",
+        "Loading",
+        "Secondary",
+        "Cancel",
+        "Delete"
+      ],
+      "code": {
+        "component": "Button",
+        "file": "Prototype.tsx",
+        "props": {
+          "variant": "primary | secondary | cancel | destructive",
+          "loading": "boolean",
+          "disabled": "boolean",
+          "onClick": "() => void"
+        },
+        "css": ".btn"
+      },
+      "stateMapping": {
+        "Default": "variant=primary",
+        "Hover": "CSS :hover",
+        "Focus": "CSS :focus-visible",
+        "Disabled": "disabled",
+        "Loading": "loading",
+        "Secondary": "variant=secondary",
+        "Cancel": "variant=cancel",
+        "Delete": "variant=destructive"
+      },
+      "tokens": [
+        "brand-action",
+        "brand-action-hover",
+        "border-focus",
+        "surface-disabled",
+        "text-muted",
+        "action-cancel",
+        "action-destructive",
+        "radius-control"
+      ],
+      "coverage": "complete"
+    },
+    {
+      "figma": "Giatec/Input",
+      "nodeId": "2002:44968",
+      "variantProperty": "State",
+      "variants": [
+        "Normal",
+        "Focus",
+        "Error"
+      ],
+      "code": {
+        "component": "label + input inside .form-card",
+        "file": "Prototype.tsx",
+        "props": {
+          "className": "invalid for the Error state"
+        },
+        "css": ".form-card input"
+      },
+      "tokens": [
+        "border-strong",
+        "border-focus",
+        "status-critical",
+        "text-secondary"
+      ],
+      "coverage": "complete"
+    },
+    {
+      "figma": "Giatec/Navigation item",
+      "nodeId": "2002:45003",
+      "variantProperty": "State",
+      "variants": [
+        "Default",
+        "Active",
+        "With count"
+      ],
+      "code": {
+        "component": "nav a inside PortalApp",
+        "file": "Prototype.tsx",
+        "props": {
+          "className": "active",
+          "count": "nav item count"
+        },
+        "css": ".giatec-portal nav a"
+      },
+      "tokens": [
+        "surface-selected",
+        "brand-action",
+        "text-secondary"
+      ],
+      "coverage": "complete"
+    },
+    {
+      "figma": "Giatec/Status badge",
+      "nodeId": "2002:45034",
+      "variantProperty": "Status",
+      "variants": [
+        "Success",
+        "Warning",
+        "Critical",
+        "Neutral"
+      ],
+      "code": {
+        "component": "Status",
+        "file": "Prototype.tsx",
+        "props": {
+          "tone": "success | warning | critical | information | neutral"
+        },
+        "css": ".status"
+      },
+      "stateMapping": {
+        "Success": "tone=success",
+        "Warning": "tone=warning",
+        "Critical": "tone=critical",
+        "Neutral": "tone=neutral"
+      },
+      "tokens": [
+        "status-success-tint",
+        "status-warning-tint",
+        "status-critical-tint",
+        "brand-action",
+        "status-warning",
+        "status-critical",
+        "radius-pill"
+      ],
+      "coverage": "complete"
+    },
+    {
+      "figma": "Giatec/Metric card",
+      "nodeId": "2002:45064",
+      "variantProperty": "Emphasis",
+      "variants": [
+        "Default",
+        "Strong"
+      ],
+      "code": {
+        "component": "MetricCards",
+        "file": "Prototype.tsx",
+        "props": {
+          "items": "{ label, value, note, featured }[]"
+        },
+        "css": ".metric"
+      },
+      "stateMapping": {
+        "Default": "featured omitted",
+        "Strong": "featured: true"
+      },
+      "tokens": [
+        "surface-emphasis",
+        "text-on-emphasis",
+        "radius-card"
+      ],
+      "coverage": "complete"
+    },
+    {
+      "figma": "Giatec/Product card",
+      "nodeId": "2002:45098",
+      "variantProperty": null,
+      "variants": [],
+      "code": {
+        "component": "Card inside Products (inline markup)",
+        "file": "Prototype.tsx",
+        "props": {},
+        "css": ".product-cards .card"
+      },
+      "tokens": [
+        "radius-card",
+        "border-subtle",
+        "status-warning-tint"
+      ],
+      "coverage": "partial",
+      "gap": "Not extracted into its own component. Generated code must copy the markup in Products until it is."
+    },
+    {
+      "figma": "Giatec/Data table",
+      "nodeId": "2002:45133",
+      "variantProperty": null,
+      "variants": [],
+      "code": {
+        "component": "DataTable",
+        "file": "Prototype.tsx",
+        "props": {
+          "headers": "string[]",
+          "rows": "(string | ReactNode)[][]"
+        },
+        "css": "table"
+      },
+      "tokens": [
+        "background-canvas",
+        "border-subtle",
+        "text-secondary"
+      ],
+      "coverage": "complete"
+    },
+    {
+      "figma": "Giatec/Inline alert",
+      "nodeId": "2002:45156",
+      "variantProperty": null,
+      "variants": [],
+      "code": {
+        "component": "WarningNotice",
+        "file": "Prototype.tsx",
+        "props": {
+          "title": "string",
+          "children": "detail text",
+          "mini": "boolean"
+        },
+        "css": ".warning"
+      },
+      "tokens": [
+        "status-warning-tint",
+        "status-warning"
+      ],
+      "coverage": "complete",
+      "gap": "Only the warning style exists in Figma and in code. The information style (.info) has no Figma component."
+    },
+    {
+      "figma": "Giatec/Tabs",
+      "nodeId": "2002:45171",
+      "variantProperty": null,
+      "variants": [],
+      "code": {
+        "component": "Tabs",
+        "file": "Prototype.tsx",
+        "props": {
+          "tabs": "string[]",
+          "initial": "number"
+        },
+        "css": ".tabs"
+      },
+      "tokens": [
+        "brand-action",
+        "border-subtle",
+        "text-secondary"
+      ],
+      "coverage": "complete"
+    }
+  ],
+  "figmaGaps": [
+    "Text properties are auto-named (Text 1 to Text 12) instead of by role (label, value, helperText). Rename them so a generator can map them to props.",
+    "No Code Connect mappings are published, so get_code_connect_map returns nothing for these nodes.",
+    "All variables use ALL_SCOPES. Scope colors to fills, strokes or text so pickers and generators only offer valid choices.",
+    "A stray collection named Variable collection (GRAY, Color) should be deleted.",
+    "The values listed under proposed in tokens.json exist only in code or as hardcoded fills in Figma."
+  ]
+}

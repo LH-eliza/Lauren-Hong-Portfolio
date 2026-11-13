@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import "./tokens.css";
 import "./portal.css";
 import PourTimeline, { SourceChip } from "./PourTimeline";
 import { POURS, findPours } from "./pours";
@@ -158,38 +159,71 @@ function ProductAnalyticsIcon({
   );
 }
 
+type ButtonVariant = "primary" | "secondary" | "cancel" | "destructive";
+
 function Button({
   children,
   onClick,
   secondary = false,
+  variant,
   disabled = false,
+  loading = false,
 }: {
   children: React.ReactNode;
   onClick?: () => void;
   secondary?: boolean;
+  variant?: ButtonVariant;
   disabled?: boolean;
+  loading?: boolean;
 }) {
-  const isDisabled = disabled || !onClick;
+  // Mirrors the Giatec/Button component set in Figma: State = Default | Hover | Focus |
+  // Disabled | Loading | Secondary | Cancel | Delete. Hover and focus are CSS states.
+  const kind: ButtonVariant = variant ?? (secondary ? "secondary" : "primary");
+  const isDisabled = !loading && (disabled || !onClick);
+  const className = ["btn", kind === "primary" ? "" : kind, loading ? "loading" : ""]
+    .filter(Boolean)
+    .join(" ");
   return (
     <button
       type="button"
-      className={secondary ? "btn secondary" : "btn"}
+      className={className}
       disabled={isDisabled}
-      onClick={onClick}
+      aria-busy={loading || undefined}
+      onClick={loading ? undefined : onClick}
     >
+      {loading && <span className="spinner" aria-hidden="true" />}
       {children}
     </button>
   );
 }
 
+// Figma names badge states by meaning (Success, Warning, Critical, Neutral). The original code
+// used colors. Both are accepted so generated code can follow the Figma vocabulary.
+const STATUS_TONE = {
+  success: "green",
+  warning: "orange",
+  critical: "red",
+  information: "blue",
+  neutral: "gray",
+} as const;
+
+type StatusTone =
+  | "green"
+  | "orange"
+  | "red"
+  | "blue"
+  | "gray"
+  | keyof typeof STATUS_TONE;
+
 function Status({
   children,
-  tone = "green",
+  tone = "success",
 }: {
   children: React.ReactNode;
-  tone?: "green" | "orange" | "red" | "blue" | "gray";
+  tone?: StatusTone;
 }) {
-  return <span className={`status ${tone}`}>{children}</span>;
+  const resolved = tone in STATUS_TONE ? STATUS_TONE[tone as keyof typeof STATUS_TONE] : tone;
+  return <span className={`status ${resolved}`}>{children}</span>;
 }
 
 function WarningNotice({

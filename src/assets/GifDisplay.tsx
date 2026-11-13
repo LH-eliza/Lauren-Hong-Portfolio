@@ -1,4 +1,5 @@
 import React from 'react';
+import ZoomImage from '../components/ZoomImage';
 
 interface GifDisplayProps {
   src: string;
@@ -11,11 +12,7 @@ const GifDisplay: React.FC<GifDisplayProps> = ({
   alt,
   className = 'w-full h-auto rounded-lg',
 }) => {
-  return (
-    <div className="relative">
-      <img src={src} alt={alt} className={className} loading="lazy" />
-    </div>
-  );
+  return <ZoomImage src={src} alt={alt} className={className} />;
 };
 
 export default GifDisplay;

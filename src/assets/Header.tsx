@@ -1,5 +1,6 @@
 import React from 'react';
 import { Github } from 'lucide-react';
+import ZoomImage from '../components/ZoomImage';
 
 interface CaseStudyProps {
   title?: string;
@@ -72,7 +73,7 @@ const Header: React.FC<CaseStudyProps> = props => {
 
   return (
     <div className="w-full pb-10 md:pb-14">
-      <h1 className="mb-4 font-castoro text-[3rem] font-medium text-[#5F5F5F] leading-tight normal-case">
+      <h1 className="mb-4 font-castoro text-[clamp(1.85rem,6.4vw,3rem)] font-medium text-[#5F5F5F] leading-tight normal-case">
         {title}
       </h1>
       {subtitle && (
@@ -80,7 +81,7 @@ const Header: React.FC<CaseStudyProps> = props => {
       )}
 
       {metaItems.length > 0 && (
-        <div className={`grid ${metaCols} gap-x-8 gap-y-6`}>
+        <div className={`grid ${metaCols} gap-x-6 gap-y-5 sm:gap-x-8 sm:gap-y-6`}>
           {metaItems.map(item => (
             <div key={item.label} className="min-w-0">
               <h3 className="text-sm text-[#5F5F5F] font-vietnam uppercase tracking-wide">{item.label}</h3>
@@ -90,32 +91,35 @@ const Header: React.FC<CaseStudyProps> = props => {
         </div>
       )}
 
-      {githubLink && (
-        <a
-          href={githubLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-[#EA6C3A] text-white px-6 py-3 rounded-lg hover:bg-[#d55c2d] transition-colors mb-16 font-vietnam inline-flex items-center gap-2"
-        >
-          View Repo
-          <Github className="w-5 h-5" />
-        </a>
-      )}
-
-      {projectLink && (
-        <a
-          href={projectLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-[#EA6C3A] text-white px-6 py-3 rounded-lg hover:bg-[#d55c2d] transition-colors ml-6 mb-16 font-vietnam inline-flex items-center gap-2"
-        >
-          View Website
-        </a>
+      {(githubLink || projectLink) && (
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          {githubLink && (
+            <a
+              href={githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#EA6C3A] px-6 py-3 font-vietnam text-white transition-colors hover:bg-[#d55c2d] sm:justify-start"
+            >
+              View Repo
+              <Github className="h-5 w-5" />
+            </a>
+          )}
+          {projectLink && (
+            <a
+              href={projectLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#EA6C3A] px-6 py-3 font-vietnam text-white transition-colors hover:bg-[#d55c2d] sm:justify-start"
+            >
+              View Website
+            </a>
+          )}
+        </div>
       )}
 
       {!hideHero && heroImage && (
-        <div className={githubLink || projectLink ? '' : 'mt-2'}>
-          <img src={heroImage} alt={title} className="w-full rounded-3xl" />
+        <div className="mt-8">
+          <ZoomImage src={heroImage} alt={title || ''} className="rounded-3xl" />
         </div>
       )}
     </div>
